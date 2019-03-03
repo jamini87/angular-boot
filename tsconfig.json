@@ -60,6 +60,12 @@
       ],
       "@angular-boot/validation/*": [
         "dist/angular-boot/validation/*"
+      ],
+      "@angular-boot/widgets": [
+        "dist/angular-boot/widgets"
+      ],
+      "@angular-boot/widgets/*": [
+        "dist/angular-boot/widgets/*"
       ]
     }
   }
