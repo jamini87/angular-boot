@@ -17,6 +17,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@angular-boot/helper": [
+        "dist/angular-boot/helper"
+      ],
+      "@angular-boot/helper/*": [
+        "dist/angular-boot/helper/*"
+      ]
+    }
   }
 }
