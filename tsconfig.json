@@ -30,6 +30,12 @@
       ],
       "@angular-boot/util/*": [
         "dist/angular-boot/util/*"
+      ],
+      "@angular-boot/animation": [
+        "dist/angular-boot/animation"
+      ],
+      "@angular-boot/animation/*": [
+        "dist/angular-boot/animation/*"
       ]
     }
   }
