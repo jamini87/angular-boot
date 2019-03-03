@@ -48,6 +48,12 @@
       ],
       "@angular-boot/core/*": [
         "dist/angular-boot/core/*"
+      ],
+      "@angular-boot/nb-assets": [
+        "dist/angular-boot/nb-assets"
+      ],
+      "@angular-boot/nb-assets/*": [
+        "dist/angular-boot/nb-assets/*"
       ]
     }
   }

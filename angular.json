@@ -309,6 +309,41 @@
           }
         }
       }
+    },
+    "@angular-boot/nb-assets": {
+      "root": "projects/angular-boot/nb-assets",
+      "sourceRoot": "projects/angular-boot/nb-assets/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/angular-boot/nb-assets/tsconfig.lib.json",
+            "project": "projects/angular-boot/nb-assets/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/angular-boot/nb-assets/src/test.ts",
+            "tsConfig": "projects/angular-boot/nb-assets/tsconfig.spec.json",
+            "karmaConfig": "projects/angular-boot/nb-assets/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/angular-boot/nb-assets/tsconfig.lib.json",
+              "projects/angular-boot/nb-assets/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "angular-boot"
