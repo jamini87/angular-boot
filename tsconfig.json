@@ -36,6 +36,12 @@
       ],
       "@angular-boot/animation/*": [
         "dist/angular-boot/animation/*"
+      ],
+      "@angular-boot/common": [
+        "dist/angular-boot/common"
+      ],
+      "@angular-boot/common/*": [
+        "dist/angular-boot/common/*"
       ]
     }
   }
