@@ -24,6 +24,12 @@
       ],
       "@angular-boot/helper/*": [
         "dist/angular-boot/helper/*"
+      ],
+      "@angular-boot/util": [
+        "dist/angular-boot/util"
+      ],
+      "@angular-boot/util/*": [
+        "dist/angular-boot/util/*"
       ]
     }
   }
