@@ -1,0 +1,16 @@
+while [ $# -gt 0 ]; do
+  if [[ $1 == *"--"* ]]; then
+    v="${1/--/}"
+    declare $v="$2"
+  fi
+  shift
+done
+npm run version:animation $version
+npm run version:common $version
+npm run version:core $version
+npm run version:helper $version
+npm run version:nb-assets $version
+npm run version:util $version
+npm run version:validation $version
+npm run version:widgets $version
+
