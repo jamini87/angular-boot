@@ -42,6 +42,12 @@
       ],
       "@angular-boot/common/*": [
         "dist/angular-boot/common/*"
+      ],
+      "@angular-boot/core": [
+        "dist/angular-boot/core"
+      ],
+      "@angular-boot/core/*": [
+        "dist/angular-boot/core/*"
       ]
     }
   }
