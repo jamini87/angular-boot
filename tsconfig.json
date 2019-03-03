@@ -54,6 +54,12 @@
       ],
       "@angular-boot/nb-assets/*": [
         "dist/angular-boot/nb-assets/*"
+      ],
+      "@angular-boot/validation": [
+        "dist/angular-boot/validation"
+      ],
+      "@angular-boot/validation/*": [
+        "dist/angular-boot/validation/*"
       ]
     }
   }
