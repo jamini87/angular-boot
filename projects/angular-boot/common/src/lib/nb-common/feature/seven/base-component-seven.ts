@@ -2,7 +2,7 @@
  * Created by Jafar Amini in March 2018.
  */
 import {Toolkit2, UnFlatifyOptions} from '@angular-boot/util';
-import {ActionMode} from '@angular-boot/helper';
+import {ActionMode} from '@angular-boot/util';
 import {ActivatedRoute} from '@angular/router';
 import {isNullOrUndefined} from "util";
 import {ModelContainer} from '../shared/model-container';

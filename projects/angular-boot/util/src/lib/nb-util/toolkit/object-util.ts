@@ -2,7 +2,7 @@ import {ActivatedRouteSnapshot} from '@angular/router';
 import {isNullOrUndefined} from 'util';
 import {CaseFormat} from './case-format';
 import {UnFlatifyOptions} from './un-flatify-options';
-import {PairKeyValue} from '@angular-boot/helper';
+import {PairKeyValue} from "../../nb-helper/helper/pairs";
 
 export class ObjectUtil {
   public static getObjectPropertyFromParamMap(object: Object, route: ActivatedRouteSnapshot) {

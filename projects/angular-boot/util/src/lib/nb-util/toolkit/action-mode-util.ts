@@ -2,7 +2,7 @@
  * Created by Jafar Amini in March 2018.
  */
 import {isNullOrUndefined} from 'util';
-import {ActionMode} from '@angular-boot/helper';
+import {ActionMode} from "../../nb-helper/appendix";
 
 export class ActionModeUtil {
   public static isEditOrAddMode(myMode_I: ActionMode){

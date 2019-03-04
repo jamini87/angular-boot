@@ -6,7 +6,7 @@ import {NgForm} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {BaseComponentThree} from './base-component-three';
 import {ModelContainer} from '../shared/model-container';
-import {ActionMode} from '@angular-boot/helper';
+import {ActionMode} from '@angular-boot/util';
 import {GlobalConfigurations} from '@angular-boot/core';
 
 export abstract class BaseActionComponentThree<T> extends BaseComponentThree implements OnChanges {

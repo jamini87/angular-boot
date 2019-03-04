@@ -1,5 +1,4 @@
 import {Toolkit2} from '@angular-boot/util';
-import {isNullOrUndefined} from 'util';
 
 declare var $: any;
 

@@ -1,7 +1,9 @@
 import {AfterViewInit, Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges} from '@angular/core';
 import {ModalUtil} from './modal-util';
 import {isNullOrUndefined} from 'util';
-import {ModalSize} from '@angular-boot/helper';
+import {WindowMediaUtil} from "./window-media-util";
+import {WindowMedias} from "./window-medias";
+import {ModalSize} from "./modal-size.enum";
 
 declare var $: any;
 
@@ -17,7 +19,7 @@ export class ModalComponent implements OnInit, OnChanges, AfterViewInit, OnDestr
   @Input() myId: string = null;
   @Input() autoShow: boolean = true;
   @Input() modalSize: ModalSize = ModalSize.DEFAULT;
-  @Input() customWidthPercent: number = 50;
+  @Input() customWidthPercent: WindowMedias<number>;
   @Input() historyBackOnClose: boolean = false;
   @Input() dataBackdrop: boolean = true;
   @Input() removeFromDomOnHide: boolean;
@@ -26,10 +28,14 @@ export class ModalComponent implements OnInit, OnChanges, AfterViewInit, OnDestr
   myModalSizeClass: string = '';
   hasCustomWidth: boolean = false;
 
+
+  defaultWidthPercent: number = 50;
+  currentWidthPercent: number;
   constructor() {
     if (isNullOrUndefined(this.myId)) {
       this.myId = ModalUtil.generateModalId();
     }
+    this.handleCustomWith();
   }
 
   ngOnInit() {
@@ -104,5 +110,39 @@ export class ModalComponent implements OnInit, OnChanges, AfterViewInit, OnDestr
 
   ngOnDestroy(): void {
     ModalUtil.hideModal(this.myId, this.removeFromDomOnHide);
+  }
+
+  private handleCustomWith() {
+    if (isNullOrUndefined(this.customWidthPercent.xs)) {
+      this.customWidthPercent.xs = this.defaultWidthPercent;
+    }
+    if (isNullOrUndefined(this.customWidthPercent.sm)) {
+      this.customWidthPercent.sm = this.customWidthPercent.xs;
+    }
+    if (isNullOrUndefined(this.customWidthPercent.md)) {
+      this.customWidthPercent.md = this.customWidthPercent.sm;
+    }
+    if (isNullOrUndefined(this.customWidthPercent.lg)) {
+      this.customWidthPercent.lg = this.customWidthPercent.md;
+    }
+    if (isNullOrUndefined(this.customWidthPercent.xl)) {
+      this.customWidthPercent.xl = this.customWidthPercent.lg;
+    }
+
+    if (WindowMediaUtil.isXl()) {
+      this.currentWidthPercent = this.customWidthPercent.xl;
+    }
+    if (WindowMediaUtil.isLg()) {
+      this.currentWidthPercent = this.customWidthPercent.lg;
+    }
+    if (WindowMediaUtil.isMd()) {
+      this.currentWidthPercent = this.customWidthPercent.md;
+    }
+    if (WindowMediaUtil.isSm()) {
+      this.currentWidthPercent = this.customWidthPercent.sm;
+    }
+    if (WindowMediaUtil.isXs()) {
+      this.currentWidthPercent = this.customWidthPercent.xs;
+    }
   }
 }

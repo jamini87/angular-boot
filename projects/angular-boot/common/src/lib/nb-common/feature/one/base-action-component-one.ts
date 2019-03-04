@@ -6,7 +6,7 @@ import {isNullOrUndefined} from 'util';
 import {NgForm} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {BaseComponentOne} from './base-component-one';
-import {ActionMode} from '@angular-boot/helper';
+import {ActionMode} from '@angular-boot/util';
 import {CommonDevTools} from '@angular-boot/util';
 import {GlobalConfigurations} from '@angular-boot/core';
 

@@ -21,6 +21,7 @@ import {JsonUtil as _JsonUtil} from './json-util';
 import {CaseFormat as _CaseFormat} from './case-format';
 import {FileUtil as _FileUtil} from './file-util';
 import {Spesific as _Spesific} from './spesific';
+import {WindowMediaUtil as _WindowMediaUtil} from './window-media-util';
 
 export namespace Toolkit2 {
   export const Notify = _Notify;
@@ -43,4 +44,6 @@ export namespace Toolkit2 {
   export const CaseFormat = _CaseFormat;
   export const FileUtil = _FileUtil;
   export const Spesific = _Spesific;
+  export const WindowMediaUtil = _WindowMediaUtil;
+
 }

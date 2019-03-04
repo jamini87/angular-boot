@@ -7,7 +7,7 @@ import {isNullOrUndefined} from 'util';
 import {ErrorHandle} from '../error-handling/error-handle';
 import {RestExtra} from './rest-extra';
 import {Toolkit2} from '@angular-boot/util';
-import {RestServiceResultPolicy, RestServiceErrorPolicy} from '@angular-boot/helper';
+import {RestServiceResultPolicy, RestServiceErrorPolicy} from '@angular-boot/util';
 import {ServiceUtil} from './service-util';
 import {ResultHandle} from '../result-handling/result-handle';
 

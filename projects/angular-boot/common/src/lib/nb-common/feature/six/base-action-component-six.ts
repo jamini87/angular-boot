@@ -5,7 +5,7 @@ import {OnChanges, SimpleChange} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {ModelContainer} from '../shared/model-container';
-import {ActionMode} from '@angular-boot/helper';
+import {ActionMode} from '@angular-boot/util';
 import {Observable} from 'rxjs';
 import {DialogService} from '@angular-boot/util';
 import {BaseComponentSix} from './base-component-six';

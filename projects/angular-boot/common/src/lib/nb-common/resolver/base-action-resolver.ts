@@ -1,6 +1,6 @@
 import {ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot} from '@angular/router';
 import {Observable} from 'rxjs';
-import {ActionMode} from '@angular-boot/helper';
+import {ActionMode} from '@angular-boot/util';
 import {GlobalConfigurations} from '@angular-boot/core';
 import {ModelContainer} from '../feature/shared/model-container';
 

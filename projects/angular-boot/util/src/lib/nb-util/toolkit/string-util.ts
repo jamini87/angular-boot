@@ -2,7 +2,7 @@
  * Created by Jafar Amini in March 2018.
  */
 import {isNullOrUndefined} from 'util';
-import {PairKeyValue} from '@angular-boot/helper';
+import {PairKeyValue} from "../../nb-helper/helper/pairs";
 
 export class StringUtil {
   public static getShorten(text: string, length: number, extra?: string) {

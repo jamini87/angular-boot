@@ -1,4 +1,4 @@
-import {PairKeyValue} from '@angular-boot/helper';
+import {PairKeyValue} from "../../nb-helper/helper/pairs";
 
 export class JsonUtil {
   public static isJsonString(str) {

@@ -4,8 +4,7 @@ import {RequestContentType} from './request-content-type';
 import {ResponseContentType} from './response-content-type';
 import {HttpHeaders} from '@angular/common/http';
 import {TokenMode} from '../config';
-import {PairKeyValue} from '@angular-boot/helper';
-import {isEmpty} from 'rxjs/operators';
+import {PairKeyValue} from '@angular-boot/util';
 
 export class ServiceUtil {
   public static getName(objectName: string, use?: boolean): string {

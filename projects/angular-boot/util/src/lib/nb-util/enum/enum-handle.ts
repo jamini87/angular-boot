@@ -1,7 +1,7 @@
 /**
  * Created by Jafar Amini on 2018.
  */
-import {PairValueTitle} from '@angular-boot/helper';
+import {PairValueTitle} from "../../nb-helper/helper/pairs";
 
 export class EnumHandle {
 

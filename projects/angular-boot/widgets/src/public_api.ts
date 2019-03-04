@@ -10,3 +10,5 @@ export * from './lib/nb-widgets/xml-print/xml-print.component';
 export * from './lib/widgets.component';
 export * from './lib/nb-widgets.module';
 export * from './lib/nb-widgets/modal/modal-util';
+export * from './lib/nb-widgets/modal/window-media-util';
+export * from './lib/nb-widgets/modal/window-medias';

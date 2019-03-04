@@ -5,7 +5,7 @@ import {EventEmitter, Input, OnChanges, Output, SimpleChange} from '@angular/cor
 import {NgForm} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ModelContainer} from '../shared/model-container';
-import {ActionMode} from '@angular-boot/helper';
+import {ActionMode} from '@angular-boot/util';
 import {Observable} from 'rxjs';
 import {DialogService} from '@angular-boot/util';
 import {BaseComponentSeven} from './base-component-seven';

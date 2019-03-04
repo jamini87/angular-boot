@@ -7,7 +7,7 @@ import {BaseComponentTwo} from './base-component-two';
 import {ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs';
 import {ModelContainer} from '../shared/model-container';
-import {ActionMode} from '@angular-boot/helper';
+import {ActionMode} from '@angular-boot/util';
 import {DialogService} from '@angular-boot/util';
 import {GlobalConfigurations} from '@angular-boot/core';
 

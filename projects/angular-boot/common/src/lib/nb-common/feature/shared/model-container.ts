@@ -1,7 +1,7 @@
 /**
  * Created by Jafar Amini in March 2018.
  */
-import {ActionMode} from '@angular-boot/helper';
+import {ActionMode} from '@angular-boot/util';
 
 export class ModelContainer<T> {
   item: T;

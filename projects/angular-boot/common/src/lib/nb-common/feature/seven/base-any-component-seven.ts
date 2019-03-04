@@ -4,7 +4,7 @@
 import {Toolkit2, UnFlatifyOptions} from '@angular-boot/util';
 import {ActivatedRoute, Router} from '@angular/router';
 import {isNullOrUndefined} from 'util';
-import {ActionMode} from '@angular-boot/helper';
+import {ActionMode} from '@angular-boot/util';
 
 export abstract class BaseAnyComponentSeven<RouteParamClazz, QueryParamClazz> {
   Toolkit2 = Toolkit2;

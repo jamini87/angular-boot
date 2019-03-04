@@ -1,5 +1,5 @@
 import {Directive, Input, TemplateRef, ViewContainerRef} from '@angular/core';
-import {ActionMode} from '@angular-boot/helper';
+import {ActionMode} from '@angular-boot/util';
 import {Toolkit2} from '@angular-boot/util';
 
 

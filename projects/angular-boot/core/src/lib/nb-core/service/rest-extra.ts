@@ -1,7 +1,7 @@
 import {ResponseContentType} from './response-content-type';
 import {RequestContentType} from './request-content-type';
 import {isNullOrUndefined} from 'util';
-import {RestServiceErrorPolicy, RestServiceResultPolicy} from '@angular-boot/helper';
+import {RestServiceErrorPolicy, RestServiceResultPolicy} from '@angular-boot/util';
 
 // export class RestExtra {
 //   use_prefix ? = true;

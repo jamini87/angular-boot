@@ -4,7 +4,7 @@
 import {isNullOrUndefined} from 'util';
 import {SectionObject} from './helper/section-object';
 import {EventEmitter, Input, Output} from '@angular/core';
-import {ActionMode} from '@angular-boot/helper';
+import {ActionMode} from '@angular-boot/util';
 import {Toolkit2} from '@angular-boot/util';
 export abstract class BaseComponentOne {
   @Output() selectedActionMode_Out= new EventEmitter<ActionMode>();
