@@ -46,6 +46,14 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-boot/animation": "http://localhost/libs/angular-boot/0.3.0/angular-boot-animation-0.3.0.tgz",
+    "@angular-boot/common": "http://localhost/libs/angular-boot/0.3.0/angular-boot-common-0.3.0.tgz",
+    "@angular-boot/core": "http://localhost/libs/angular-boot/0.3.0/angular-boot-core-0.3.0.tgz",
+    "@angular-boot/helper": "http://localhost/libs/angular-boot/0.3.0/angular-boot-helper-0.3.0.tgz",
+    "@angular-boot/nb-assets": "http://localhost/libs/angular-boot/0.3.0/angular-boot-nb-assets-0.3.0.tgz",
+    "@angular-boot/util": "http://localhost/libs/angular-boot/0.3.0/angular-boot-util-0.3.0.tgz",
+    "@angular-boot/validation": "http://localhost/libs/angular-boot/0.3.0/angular-boot-validation-0.3.0.tgz",
+    "@angular-boot/widgets": "http://localhost/libs/angular-boot/0.3.0/angular-boot-widgets-0.3.0.tgz",
     "@angular/animations": "~7.2.0",
     "@angular/common": "~7.2.0",
     "@angular/compiler": "~7.2.0",
@@ -57,6 +65,7 @@
     "core-js": "^2.5.4",
     "jalali-moment": "^3.3.1",
     "rxjs": "~6.3.3",
+    "sweetalert2": "^7.33.1",
     "tslib": "^1.9.0",
     "xml-formatter": "^1.1.0",
     "zone.js": "~0.8.26"

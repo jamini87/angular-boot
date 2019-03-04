@@ -8,10 +8,11 @@ import {ActivatedRoute} from '@angular/router';
 import {ModelContainer} from '../shared/model-container';
 import {Observable} from 'rxjs';
 import {DialogService} from '@angular-boot/util';
+import {GlobalConfigurations} from '@angular-boot/core';
 
 export abstract class BaseAddComponentFive<T, Prefix> extends BaseComponentFive implements OnChanges {
   receiveData() {
-    this._ActivatedRoute.data
+    this.activatedRoute.data
       .subscribe((data: { modelContainer: ModelContainer<T> }) => {
         // console.log(data);
         this.onReceiveRouteParam(data.modelContainer.routeParams);
@@ -27,20 +28,21 @@ export abstract class BaseAddComponentFive<T, Prefix> extends BaseComponentFive 
   abstract getMainObject(): Object;
   abstract getMainObjectInDom(): Object;
   constructor(protected featurePrefix: Prefix,
-              protected _ActivatedRoute: ActivatedRoute,
-              protected _DialogService: DialogService) {
-    super(_ActivatedRoute);
+              protected activatedRoute: ActivatedRoute,
+              protected dialogService: DialogService,
+              protected globalConfigurations: GlobalConfigurations) {
+    super(activatedRoute);
 
       }
       // recieveData() {
-      //   this._ActivatedRoute.data
+      //   this.activatedRoute.data
       //     .subscribe((data: { modelContainer: ModelContainer<Object> }) => {
       //       // console.log(data);
       //       this.applyMode(data.modelContainer.actionMode, data.modelContainer.item);
       //     });
       // }
   // lookQueryParams() {
-  //   this._ActivatedRoute.queryParams.subscribe((params) => {
+  //   this.activatedRoute.queryParams.subscribe((params) => {
   //     const target = params['target'];
   //     const actionMode = params['actionMode'];
   //     const itemId = params['itemId'];
@@ -56,11 +58,12 @@ export abstract class BaseAddComponentFive<T, Prefix> extends BaseComponentFive 
     this.onAddMode();
   }
 
-  afterAdd(form, res) {
+  afterAdd(form, res, msg: { title?: string, text?: string } = {}) {
     console.log(res);
     // this.item_Added_Out.emit(res);
     form.resetForm();
-    this.Toolkit2.SwalUtil.successAdd();
+    // this.Toolkit2.SwalUtil.successAdd();
+    this.globalConfigurations.successCreate(msg);
   }
   ngOnChanges(changes: { [propKey: string]: SimpleChange }): void {
     // CommonDevTools.Interaction.trackChange(changes);
@@ -85,7 +88,7 @@ export abstract class BaseAddComponentFive<T, Prefix> extends BaseComponentFive 
     }
     // Otherwise ask the group with the dialog service and return its
     // observable which resolves to true or false when the group decides
-    return this._DialogService.confirm('صرف نظر کردن از تغییرات؟');
+    return this.dialogService.confirm('صرف نظر کردن از تغییرات؟');
   }
 
   onSubmit(form: NgForm, formIsValidSubmitted, callAddModeSubmit?, that?) {

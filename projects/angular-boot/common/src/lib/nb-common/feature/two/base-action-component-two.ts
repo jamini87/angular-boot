@@ -9,6 +9,7 @@ import {Observable} from 'rxjs';
 import {ModelContainer} from '../shared/model-container';
 import {ActionMode} from '@angular-boot/helper';
 import {DialogService} from '@angular-boot/util';
+import {GlobalConfigurations} from '@angular-boot/core';
 
 export abstract class BaseActionComponentTwo<T> extends BaseComponentTwo implements OnChanges {
   // ActionModeUtil = this.Toolkit2.ActionModeUtil;
@@ -19,7 +20,7 @@ export abstract class BaseActionComponentTwo<T> extends BaseComponentTwo impleme
   // @Output() item_Edited_Out = new EventEmitter<Group>(null);
 
   receiveData() {
-    this._ActivatedRoute.data
+    this.activatedRoute.data
       .subscribe((data: { modelContainer: ModelContainer<T> }) => {
         // console.log(data);
         this.applyMode(data.modelContainer.actionMode, data.modelContainer.item);
@@ -37,8 +38,9 @@ export abstract class BaseActionComponentTwo<T> extends BaseComponentTwo impleme
   abstract onChanges(obj: any);
   abstract getMainObject(): Object;
   abstract getMainObjectInDom(): Object;
-  constructor(protected _ActivatedRoute: ActivatedRoute,
-              protected _DialogService: DialogService) {
+  constructor(protected activatedRoute: ActivatedRoute,
+              protected dialogService: DialogService,
+              protected globalConfigurations: GlobalConfigurations) {
     super();
       }
 
@@ -51,17 +53,17 @@ export abstract class BaseActionComponentTwo<T> extends BaseComponentTwo impleme
     }
     // Otherwise ask the group with the dialog service and return its
     // observable which resolves to true or false when the group decides
-    return this._DialogService.confirm('صرف نظر کردن از تغییرات؟');
+    return this.dialogService.confirm('صرف نظر کردن از تغییرات؟');
   }
       // recieveData() {
-      //   this._ActivatedRoute.data
+      //   this.activatedRoute.data
       //     .subscribe((data: { modelContainer: ModelContainer<Object> }) => {
       //       // console.log(data);
       //       this.applyMode(data.modelContainer.actionMode, data.modelContainer.item);
       //     });
       // }
   // lookQueryParams() {
-  //   this._ActivatedRoute.queryParams.subscribe((params) => {
+  //   this.activatedRoute.queryParams.subscribe((params) => {
   //     const target = params['target'];
   //     const actionMode = params['actionMode'];
   //     const itemId = params['itemId'];
@@ -89,16 +91,19 @@ export abstract class BaseActionComponentTwo<T> extends BaseComponentTwo impleme
     }
   }
 
-  afterAdd(form, res) {
+  afterAdd(form, res, msg: { title?: string, text?: string } = {}) {
     console.log(res);
     // this.item_Added_Out.emit(res);
     form.resetForm();
-    this.Toolkit2.SwalUtil.successAdd();
+    // this.Toolkit2.SwalUtil.successAdd();
+    this.globalConfigurations.successCreate(msg);
   }
-  afterEdit(form, res) {
+  afterEdit(form, res, msg: { title?: string, text?: string } = {}) {
     // this.item_Edited_Out.emit(res);
     // // form.resetForm();
-    this.Toolkit2.SwalUtil.successEdit();
+
+    // this.Toolkit2.SwalUtil.successEdit();
+    this.globalConfigurations.successEdit(msg);
   }
 
   ngOnChanges(changes: { [propKey: string]: SimpleChange }): void {

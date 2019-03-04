@@ -8,10 +8,11 @@ import {ModelContainer} from '../shared/model-container';
 import {Observable} from 'rxjs';
 import {DialogService} from '@angular-boot/util';
 import {BaseComponentSix} from './base-component-six';
+import {GlobalConfigurations} from '@angular-boot/core';
 
 export abstract class BaseEditComponentSix<T, Prefix> extends BaseComponentSix implements OnChanges {
   receiveData() {
-    this._ActivatedRoute.data
+    this.activatedRoute.data
       .subscribe((data: { modelContainer: ModelContainer<T> }) => {
         // console.log(data);
         this.applyMode(data.modelContainer.item);
@@ -22,19 +23,20 @@ export abstract class BaseEditComponentSix<T, Prefix> extends BaseComponentSix i
   abstract getMainObject(): Object;
   abstract getMainObjectInDom(): Object;
   constructor(protected featurePrefix: Prefix,
-              protected _ActivatedRoute: ActivatedRoute,
-              protected _DialogService: DialogService) {
+              protected activatedRoute: ActivatedRoute,
+              protected dialogService: DialogService,
+              protected globalConfigurations: GlobalConfigurations) {
     super();
       }
       // recieveData() {
-      //   this._ActivatedRoute.data
+      //   this.activatedRoute.data
       //     .subscribe((data: { modelContainer: ModelContainer<Object> }) => {
       //       // console.log(data);
       //       this.applyMode(data.modelContainer.actionMode, data.modelContainer.item);
       //     });
       // }
   // lookQueryParams() {
-  //   this._ActivatedRoute.queryParams.subscribe((params) => {
+  //   this.activatedRoute.queryParams.subscribe((params) => {
   //     const target = params['target'];
   //     const actionMode = params['actionMode'];
   //     const itemId = params['itemId'];
@@ -49,10 +51,12 @@ export abstract class BaseEditComponentSix<T, Prefix> extends BaseComponentSix i
   applyMode(item: any) {
         this.onReceivedItem(item);
   }
-  afterEdit(form, res) {
+  afterEdit(form, res, msg: {title?, text?} = {}) {
     // this.item_Edited_Out.emit(res);
     // // form.resetForm();
-    this.Toolkit2.SwalUtil.successEdit();
+
+    // this.Toolkit2.SwalUtil.successEdit();
+    this.globalConfigurations.successEdit(msg);
   }
 
   ngOnChanges(changes: { [propKey: string]: SimpleChange }): void {
@@ -78,7 +82,7 @@ export abstract class BaseEditComponentSix<T, Prefix> extends BaseComponentSix i
     }
     // Otherwise ask the group with the dialog service and return its
     // observable which resolves to true or false when the group decides
-    return this._DialogService.confirm('صرف نظر کردن از تغییرات؟');
+    return this.dialogService.confirm('صرف نظر کردن از تغییرات؟');
   }
 
   onSubmit(form: NgForm, formIsValidSubmitted, callEditModeSubmit?, that?) {

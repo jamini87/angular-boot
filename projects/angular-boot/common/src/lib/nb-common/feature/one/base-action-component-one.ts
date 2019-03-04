@@ -8,6 +8,7 @@ import {ActivatedRoute} from '@angular/router';
 import {BaseComponentOne} from './base-component-one';
 import {ActionMode} from '@angular-boot/helper';
 import {CommonDevTools} from '@angular-boot/util';
+import {GlobalConfigurations} from '@angular-boot/core';
 
 export abstract class BaseActionComponentOne<T> extends BaseComponentOne implements OnChanges {
   @Input() itemId_In: string;
@@ -26,13 +27,13 @@ export abstract class BaseActionComponentOne<T> extends BaseComponentOne impleme
 
   abstract onChanges(obj: any);
 
-  constructor(protected _ActivatedRoute: ActivatedRoute) {
+  constructor(protected activatedRoute: ActivatedRoute, protected globalConfigurations: GlobalConfigurations) {
     super();
 
   }
 
   lookQueryParams() {
-    this._ActivatedRoute.queryParams.subscribe((params) => {
+    this.activatedRoute.queryParams.subscribe((params) => {
       const target = params['target'];
       const actionMode = params['actionMode'];
       const itemId = params['itemId'];
@@ -59,17 +60,20 @@ export abstract class BaseActionComponentOne<T> extends BaseComponentOne impleme
     }
   }
 
-  afterAdd(form, res) {
+  afterAdd(form, res, msg: { title?: string, text?: string } = {}) {
     console.log(res);
     this.item_Added_Out.emit(res);
     form.resetForm();
-    this.Toolkit2.SwalUtil.successAdd();
+    // this.Toolkit2.SwalUtil.successAdd(msg.title, msg.text);
+    this.globalConfigurations.successCreate(msg);
   }
 
-  afterEdit(form, res) {
+  afterEdit(form, res, msg: { title?: string, text?: string } = {}) {
     this.item_Edited_Out.emit(res);
     // form.resetForm();
-    this.Toolkit2.SwalUtil.successEdit();
+
+    // this.Toolkit2.SwalUtil.successEdit();
+    this.globalConfigurations.successEdit(msg);
   }
 
   ngOnChanges(changes: { [propKey: string]: SimpleChange }): void {

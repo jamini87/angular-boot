@@ -2,6 +2,8 @@
  * Created by Jafar Amini in March 2018.
  */
 import swal from 'sweetalert2';
+// declare var swal: any;
+
 import {isNullOrUndefined} from 'util';
 import {EventEmitter, Input, OnChanges, Output, SimpleChange} from '@angular/core';
 import {SectionObject} from './helper/section-object';

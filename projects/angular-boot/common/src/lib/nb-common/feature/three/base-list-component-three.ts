@@ -2,6 +2,7 @@
  * Created by Jafar Amini in March 2018.
  */
 import swal from 'sweetalert2';
+// declare var swal: any;
 import {EventEmitter, Input, OnChanges, Output, SimpleChange} from '@angular/core';
 import {BaseComponentThree} from './base-component-three';
 

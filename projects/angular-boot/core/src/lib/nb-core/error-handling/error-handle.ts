@@ -2,6 +2,7 @@
  * Created by Jafar Amini in March 2018.
  */
 import swal from 'sweetalert2';
+// declare var swal: any;
 import {Notify, NotifyConfig, Toolkit2} from '@angular-boot/util';
 
 
@@ -86,6 +87,7 @@ export class ErrorHandle {
   }
 
   public static alertMessage(messages: string) {
+
     swal({
       showCloseButton: true,
       confirmButtonColor: '#04383c',

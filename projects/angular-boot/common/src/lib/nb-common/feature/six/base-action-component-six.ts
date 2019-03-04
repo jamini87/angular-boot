@@ -9,6 +9,7 @@ import {ActionMode} from '@angular-boot/helper';
 import {Observable} from 'rxjs';
 import {DialogService} from '@angular-boot/util';
 import {BaseComponentSix} from './base-component-six';
+import {GlobalConfigurations} from '@angular-boot/core';
 
 export abstract class BaseActionComponentSix<T, Prefix> extends BaseComponentSix implements OnChanges {
   // ActionModeUtil = this.Toolkit2.ActionModeUtil;
@@ -19,7 +20,7 @@ export abstract class BaseActionComponentSix<T, Prefix> extends BaseComponentSix
   // @Output() item_Edited_Out = new EventEmitter<Group>(null);
 
   receiveData() {
-    this._ActivatedRoute.data
+    this.activatedRoute.data
       .subscribe((data: { modelContainer: ModelContainer<T> }) => {
         // console.log(data);
         this.applyMode(data.modelContainer.actionMode, data.modelContainer.item);
@@ -38,14 +39,15 @@ export abstract class BaseActionComponentSix<T, Prefix> extends BaseComponentSix
   abstract getMainObject(): Object;
   abstract getMainObjectInDom(): Object;
   constructor(protected featurePrefix: Prefix,
-              protected _ActivatedRoute: ActivatedRoute,
-              protected _DialogService: DialogService) {
+              protected activatedRoute: ActivatedRoute,
+              protected dialogService: DialogService,
+              protected globalConfigurations: GlobalConfigurations) {
     super();
     for (const property of this.Toolkit2.ObjectUtil
       .getObjectPropertyList(this.featurePrefix)) {
       if (this.featurePrefix.hasOwnProperty(property) &&
-        _ActivatedRoute.snapshot.params.hasOwnProperty(property)) {
-        this.featurePrefix[property] = _ActivatedRoute.snapshot.params[property];
+        activatedRoute.snapshot.params.hasOwnProperty(property)) {
+        this.featurePrefix[property] = activatedRoute.snapshot.params[property];
       }
     }
   }
@@ -59,18 +61,18 @@ export abstract class BaseActionComponentSix<T, Prefix> extends BaseComponentSix
     }
     // Otherwise ask the group with the dialog service and return its
     // observable which resolves to true or false when the group decides
-    return this._DialogService.confirm('صرف نظر کردن از تغییرات؟');
+    return this.dialogService.confirm('صرف نظر کردن از تغییرات؟');
   }
 
   // recieveData() {
-  //   this._ActivatedRoute.data
+  //   this.activatedRoute.data
   //     .subscribe((data: { modelContainer: ModelContainer<Object> }) => {
   //       // console.log(data);
   //       this.applyMode(data.modelContainer.actionMode, data.modelContainer.item);
   //     });
   // }
   // lookQueryParams() {
-  //   this._ActivatedRoute.queryParams.subscribe((params) => {
+  //   this.activatedRoute.queryParams.subscribe((params) => {
   //     const target = params['target'];
   //     const actionMode = params['actionMode'];
   //     const itemId = params['itemId'];
@@ -98,17 +100,20 @@ export abstract class BaseActionComponentSix<T, Prefix> extends BaseComponentSix
     }
   }
 
-  afterAdd(form, res) {
+  afterAdd(form, res, msg: { title?: string, text?: string } = {}) {
     console.log(res);
     // this.item_Added_Out.emit(res);
     form.resetForm();
-    this.Toolkit2.SwalUtil.successAdd();
+    // this.Toolkit2.SwalUtil.successAdd();
+    this.globalConfigurations.successCreate(msg);
   }
 
-  afterEdit(form, res) {
+  afterEdit(form, res, msg: { title?: string, text?: string } = {}) {
     // this.item_Edited_Out.emit(res);
     // // form.resetForm();
-    this.Toolkit2.SwalUtil.successEdit();
+
+    // this.Toolkit2.SwalUtil.successEdit();
+    this.globalConfigurations.successEdit(msg);
   }
 
   ngOnChanges(changes: { [propKey: string]: SimpleChange }): void {

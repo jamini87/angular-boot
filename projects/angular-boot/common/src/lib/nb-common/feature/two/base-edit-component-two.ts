@@ -6,10 +6,11 @@ import {NgForm} from '@angular/forms';
 import {BaseComponentTwo} from './base-component-two';
 import {ActivatedRoute} from '@angular/router';
 import {ModelContainer} from '../shared/model-container';
+import {GlobalConfigurations} from '@angular-boot/core';
 
 export abstract class BaseEditComponentTwo<T> extends BaseComponentTwo implements OnChanges {
   receiveData() {
-    this._ActivatedRoute.data
+    this.activatedRoute.data
       .subscribe((data: { modelContainer: ModelContainer<T> }) => {
         // console.log(data);
         this.applyMode(data.modelContainer.item);
@@ -18,18 +19,19 @@ export abstract class BaseEditComponentTwo<T> extends BaseComponentTwo implement
   abstract onEditMode(item: any);
   abstract onReceivedItem(item);
   abstract onChanges(obj: any);
-  constructor(protected _ActivatedRoute: ActivatedRoute) {
+  constructor(protected activatedRoute: ActivatedRoute,
+              protected globalConfigurations: GlobalConfigurations) {
     super();
       }
       // recieveData() {
-      //   this._ActivatedRoute.data
+      //   this.activatedRoute.data
       //     .subscribe((data: { modelContainer: ModelContainer<Object> }) => {
       //       // console.log(data);
       //       this.applyMode(data.modelContainer.actionMode, data.modelContainer.item);
       //     });
       // }
   // lookQueryParams() {
-  //   this._ActivatedRoute.queryParams.subscribe((params) => {
+  //   this.activatedRoute.queryParams.subscribe((params) => {
   //     const target = params['target'];
   //     const actionMode = params['actionMode'];
   //     const itemId = params['itemId'];
@@ -44,10 +46,12 @@ export abstract class BaseEditComponentTwo<T> extends BaseComponentTwo implement
   applyMode(item: any) {
         this.onEditMode(item);
   }
-  afterEdit(form, res) {
+  afterEdit(form, res, msg: { title?: string, text?: string } = {}) {
     // this.item_Edited_Out.emit(res);
     // // form.resetForm();
-    this.Toolkit2.SwalUtil.successEdit();
+
+    // this.Toolkit2.SwalUtil.successEdit();
+    this.globalConfigurations.successEdit(msg);
   }
 
   ngOnChanges(changes: { [propKey: string]: SimpleChange }): void {

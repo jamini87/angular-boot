@@ -21,12 +21,13 @@ export class ServiceBase {
 
   getService(restExtra?: RestExtra): Observable<any> {
     let headers: HttpHeaders;
-    headers = this.resolveHeader(this._ServiceConfig, restExtra);
+    let token = this._ServiceConfig.getToken(restExtra.keyToken);
+    headers = this.resolveHeader(this._ServiceConfig, restExtra, token);
     return this._HttpClient.get(this._ServiceConfig.getUrl() + ServiceUtil
       .getRestOfUrlRespectTokenMode(
         this._objectName, restExtra,
         this._ServiceConfig.getTokenMode(),
-        this._ServiceConfig.getToken(restExtra.keyToken)
+        token
       ) // + '?Authorization=' + this._ServiceConfig.getToken(restExtra.keyToken)
       , {
         headers: headers,
@@ -37,13 +38,14 @@ export class ServiceBase {
 
   postService(value: any, restExtra?: RestExtra): Observable<any> {
     let headers: HttpHeaders;
-    headers = this.resolveHeader(this._ServiceConfig, restExtra);
+    let token = this._ServiceConfig.getToken(restExtra.keyToken);
+    headers = this.resolveHeader(this._ServiceConfig, restExtra, token);
 
     return this._HttpClient.post(this._ServiceConfig.getUrl() + ServiceUtil
       .getRestOfUrlRespectTokenMode(
         this._objectName, restExtra,
         this._ServiceConfig.getTokenMode(),
-        this._ServiceConfig.getToken(restExtra.keyToken)
+        token
       ) // + '?Authorization=' + this._ServiceConfig.getToken(restExtra.keyToken)
       , value, {
         headers: headers,
@@ -61,13 +63,31 @@ export class ServiceBase {
     //   }
     //   );
     let headers: HttpHeaders;
-    headers = this.resolveHeader(this._ServiceConfig, restExtra);
+    let token = this._ServiceConfig.getToken(restExtra.keyToken);
+    headers = this.resolveHeader(this._ServiceConfig, restExtra, token);
 
     return this._HttpClient.put(this._ServiceConfig.getUrl() + ServiceUtil
       .getRestOfUrlRespectTokenMode(
         this._objectName, restExtra,
         this._ServiceConfig.getTokenMode(),
-        this._ServiceConfig.getToken(restExtra.keyToken)
+        token
+      ) // + '?Authorization=' + this._ServiceConfig.getToken(restExtra.keyToken)
+      , value, {
+        headers: headers,
+        responseType: ServiceUtil.getResponseContentType(restExtra.responseContentType)
+      });
+  }
+
+  patchService(value: any, restExtra?: RestExtra): Observable<any> {
+    let headers: HttpHeaders;
+    let token = this._ServiceConfig.getToken(restExtra.keyToken);
+    headers = this.resolveHeader(this._ServiceConfig, restExtra, token);
+
+    return this._HttpClient.patch(this._ServiceConfig.getUrl() + ServiceUtil
+      .getRestOfUrlRespectTokenMode(
+        this._objectName, restExtra,
+        this._ServiceConfig.getTokenMode(),
+        token
       ) // + '?Authorization=' + this._ServiceConfig.getToken(restExtra.keyToken)
       , value, {
         headers: headers,
@@ -77,13 +97,14 @@ export class ServiceBase {
 
   deleteService(restExtra: RestExtra): Observable<any> {
     let headers: HttpHeaders;
-    headers = this.resolveHeader(this._ServiceConfig, restExtra);
+    let token = this._ServiceConfig.getToken(restExtra.keyToken);
+    headers = this.resolveHeader(this._ServiceConfig, restExtra, token);
 
     return this._HttpClient.delete(this._ServiceConfig.getUrl() + ServiceUtil
       .getRestOfUrlRespectTokenMode(
         this._objectName, restExtra,
         this._ServiceConfig.getTokenMode(),
-        this._ServiceConfig.getToken(restExtra.keyToken)
+        token
       ) // + '?Authorization=' + this._ServiceConfig.getToken(restExtra.keyToken)
       , {
         headers: headers,
@@ -91,15 +112,15 @@ export class ServiceBase {
       });
   }
 
-  private resolveHeader(_ServiceConfig: ServiceConfig, restExtra: RestExtra) {
+  private resolveHeader(_ServiceConfig: ServiceConfig, restExtra: RestExtra, token: string) {
     let headers = new HttpHeaders();
     headers = ServiceUtil.setRequestContentType(headers, restExtra.requestContentType);
     if (_ServiceConfig.getTokenMode() === TokenMode.HEADER
       && restExtra.needToken === true) {
-      if (isNullOrUndefined(_ServiceConfig.getToken())) {
+      if (isNullOrUndefined(token)) {
         console.warn('token is not set.', '   angular-boot says: if called service does not need token you should set needToken: false in restExtra options');
       } else {
-        headers = headers.set('Authorization', _ServiceConfig.getToken());
+        headers = headers.set('Authorization', token);
       }
     }
     if (!isNullOrUndefined(restExtra.includes) && restExtra.includes.length > 0) {

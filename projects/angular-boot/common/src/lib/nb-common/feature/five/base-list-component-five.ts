@@ -2,6 +2,7 @@
  * Created by Jafar Amini in March 2018.
  */
 import swal from 'sweetalert2';
+// declare var swal: any;
 import {OnChanges, SimpleChange} from '@angular/core';
 import {BaseComponentFive} from './base-component-five';
 import {ActivatedRoute} from '@angular/router';

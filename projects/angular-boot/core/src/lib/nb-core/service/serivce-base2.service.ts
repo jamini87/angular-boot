@@ -197,6 +197,19 @@ export class ServiceBase2 extends ServiceBase {
   }
 
 
+
+  patchService(value: any, restExtra?: RestExtra): Observable<any> {
+    restExtra = this.resolveRestExtra(restExtra);
+    const ret = new Subject();
+    super.patchService(value, restExtra).subscribe((res) => {
+      ret.next(this.handleResult(restExtra, res));
+    }, error => {
+      ret.error(this.handleError(restExtra, error));
+    });
+    return ret.asObservable();
+  }
+
+
   putService_f(value: any, restExtra?: RestExtra): Observable<any> {
     const ret = new Subject();
     super.putService(value, restExtra).subscribe((res) => {

@@ -3,12 +3,14 @@
  */
 import {Subject} from 'rxjs';
 import swal from 'sweetalert2';
+// declare var swal: any;
 import {isNullOrUndefined} from 'util';
 import {Config} from './config';
 import {FakeServiceBase} from './fake-service-base.service';
 import {Keyword, ResponseContent} from '../response';
 
 declare const $: any;
+
 
 // @Injectable()
 export class FakeServiceBase2 extends FakeServiceBase {
