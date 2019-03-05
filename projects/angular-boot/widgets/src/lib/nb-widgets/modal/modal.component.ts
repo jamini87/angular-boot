@@ -1,4 +1,14 @@
-import {AfterViewInit, Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges} from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  Output,
+  SimpleChanges
+} from '@angular/core';
 import {ModalUtil} from './modal-util';
 import {isNullOrUndefined} from 'util';
 import {WindowMediaUtil} from "./window-media-util";
@@ -13,13 +23,24 @@ declare var $: any;
   styleUrls: ['./modal.component.scss']
 })
 export class ModalComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy {
-
+  // private _customWidthPercent: WindowMedias<number> = new WindowMedias<number>();
   @Input() hasHeader: boolean = true;
   @Input() hasFooter: boolean = true;
   @Input() myId: string = null;
   @Input() autoShow: boolean = true;
   @Input() modalSize: ModalSize = ModalSize.DEFAULT;
-  @Input() customWidthPercent: WindowMedias<number>;
+  @Input() customWidthPercent = new WindowMedias<number>();
+  // set customWidthPercent(val: WindowMedias<number>) {
+  //   this._customWidthPercent = val;
+  //   if (this.hasCustomWidth === true) {
+  //     this.handleCustomWith();
+  //   }
+  // }
+  //
+  // get customWidthPercent() {
+  //   return this._customWidthPercent;
+  // }
+
   @Input() historyBackOnClose: boolean = false;
   @Input() dataBackdrop: boolean = true;
   @Input() removeFromDomOnHide: boolean;
@@ -31,11 +52,11 @@ export class ModalComponent implements OnInit, OnChanges, AfterViewInit, OnDestr
 
   defaultWidthPercent: number = 50;
   currentWidthPercent: number;
+
   constructor() {
     if (isNullOrUndefined(this.myId)) {
       this.myId = ModalUtil.generateModalId();
     }
-    this.handleCustomWith();
   }
 
   ngOnInit() {
@@ -97,6 +118,7 @@ export class ModalComponent implements OnInit, OnChanges, AfterViewInit, OnDestr
         case ModalSize.CUSTOM_WIDTH :
           this.myModalSizeClass = '';
           this.hasCustomWidth = true;
+          this.handleCustomWith();
           break;
         case ModalSize.LARGE :
           this.myModalSizeClass = 'modal-lg';
@@ -113,6 +135,9 @@ export class ModalComponent implements OnInit, OnChanges, AfterViewInit, OnDestr
   }
 
   private handleCustomWith() {
+    if (isNullOrUndefined(this.customWidthPercent)) {
+      this.customWidthPercent = new WindowMedias<number>();
+    }
     if (isNullOrUndefined(this.customWidthPercent.xs)) {
       this.customWidthPercent.xs = this.defaultWidthPercent;
     }
