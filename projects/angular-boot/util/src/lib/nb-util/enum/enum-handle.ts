@@ -11,7 +11,7 @@ export class EnumHandle {
     let prevKey, prevVal;
     for (let item in myEnum) {
       if (isNaN(Number(item))) {
-        console.log(item, myEnum[item]);
+        // console.log(item, myEnum[item]);
         if (item !== prevVal && myEnum[item] !== prevKey) {
           myOb[item] = myEnum[item];
         }

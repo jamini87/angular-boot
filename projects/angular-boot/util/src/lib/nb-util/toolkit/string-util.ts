@@ -49,12 +49,12 @@ export class StringUtil {
     let props: Array<PairKeyValue> = new Array();
     Object.keys(object).forEach(key => {
         props.push(new PairKeyValue(key, object[key]));
-        console.log(key);
+        // console.log(key);
       }
     );
     const result = [];
     for (let i = 0; i < props.length; i++) {
-      console.log(i + ' ---> ', props[i]);
+      // console.log(i + ' ---> ', props[i]);
       result.push([props[i].key, props[i].value]);
     }
     //
@@ -95,12 +95,12 @@ export class StringUtil {
         } else {
           props.push(new PairKeyValue(key, object[key]));
         }
-        console.log(key);
+        // console.log(key);
       }
     );
     const result = [];
     for (let i = 0; i < props.length; i++) {
-      console.log(i + ' ---> ', props[i]);
+      // console.log(i + ' ---> ', props[i]);
       result.push([props[i].key, props[i].value]);
     }
     let r = result.map(param => param.join('=')).join('&');

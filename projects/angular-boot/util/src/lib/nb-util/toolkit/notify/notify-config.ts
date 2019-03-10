@@ -10,14 +10,17 @@ import template1 from './templates/template';
 import {TEMPLATES} from './templates/template.enums';
 
 export class NotifyConfig {
-  settings = ConfigDefault.settings;
-  options = ConfigDefault.options;
+  settings?: NotifyConfigSettings;
+  options?: NotifyConfigOptions;
+
   constructor(notifyType: NotifyType,
               notifyPlacement: NotifyPlacement,
               template: TEMPLATES,
               message: string,
               title?: string,
-              ) {
+  ) {
+    this.settings = ConfigDefault.settings;
+    this.options = ConfigDefault.options;
     this.options.title = title;
     this.options.message = message;
     if (!isNullOrUndefined(template) && title !== '') {
@@ -39,7 +42,7 @@ export class NotifyConfig {
       case NotifyType.INFO:
         this.options.icon = 'fa fa-info-circle';
         this.settings.animate.enter = Animate.Fading_Entrances.FadeInLeft;
-        this.settings.animate.exit =  Animate.Fading_Exits.FadeOutLeft;
+        this.settings.animate.exit = Animate.Fading_Exits.FadeOutLeft;
         break;
       case NotifyType.WARNING:
         this.options.icon = 'fa fa-exclamation-triangle';
@@ -49,7 +52,7 @@ export class NotifyConfig {
       case NotifyType.SUCCESS:
         this.options.icon = 'fa fa-check-circle';
         this.settings.animate.enter = Animate.Fading_Entrances.FadeInLeft;
-        this.settings.animate.exit =  Animate.Fading_Exits.FadeOutLeft;
+        this.settings.animate.exit = Animate.Fading_Exits.FadeOutLeft;
         break;
       case NotifyType.DANGER:
         this.options.icon = 'fa fa-exclamation-triangle';
@@ -58,6 +61,7 @@ export class NotifyConfig {
         break;
     }
   }
+
   // options: {
   //   icon: string;
   //   title: string;
@@ -94,4 +98,39 @@ export class NotifyConfig {
   //   icon_type: string;
   //   template: string;
   // };
+}
+
+export class NotifyConfigSettings {
+  element?: string;
+  position?: null;
+  type?: NotifyType;
+  allow_dismiss?: boolean;
+  newest_on_top?: boolean;
+  showProgressbar?: boolean;
+  placement?: NotifyPlacement;
+  offset?: number;
+  spacing?: number;
+  z_index?: number;
+  delay?: number;
+  timer?: number;
+  url_target?: string; // eg '_blank'
+  mouse_over?: any;
+  animate?: {
+    enter: string,
+    exit: string
+  };
+  onShow?: any;
+  onShown?: any;
+  onClose?: any;
+  onClosed?: any;
+  icon_type?: string;
+  template?: string;
+}
+
+export class NotifyConfigOptions {
+  icon?: string;    // eg 'glyphicon glyphicon-warning-sign'
+  title?: string;   // eg 'توجه'
+  message?: string; // 'Your message'
+  url?: string;     // 'https://github.com/mouse0270/bootstrap-notify'
+  target?: string;   // '_blank'
 }

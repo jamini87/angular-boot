@@ -33,7 +33,7 @@ export class JsonUtil {
           } else {
             props.push(new PairKeyValue(key, object[key]));
           }
-          console.log(key);
+          // console.log(key);
         }
       );
     return props;
