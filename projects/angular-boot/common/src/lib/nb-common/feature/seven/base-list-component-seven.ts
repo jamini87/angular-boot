@@ -1,4 +1,3 @@
-import {BaseAnyComponentSeven} from '@angular-boot/common';
 import {EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
 import {isNullOrUndefined} from 'util';
 import {PageContainer} from '@angular-boot/util';
@@ -6,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ListComponentData} from './list-component-data';
 import {ListQueryParam} from './list-query-param';
 import {ListMode} from './list-mode.enum';
+import {BaseAnyComponentSeven} from './base-any-component-seven';
 
 export abstract class BaseListComponentSeven<RouteParamClazz, QueryParamClazz extends ListQueryParam,
   ComponentDataClazz extends ListComponentData<T, RouteParamClazz, QueryParamClazz>, T>

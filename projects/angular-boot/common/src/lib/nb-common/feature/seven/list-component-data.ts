@@ -1,5 +1,4 @@
-import {PageContainer} from '@angular-boot/util';
-import {SpringSorting} from '../common/model/helper/spring-sorting';
+import {PageContainer, SpringSorting} from '@angular-boot/util';
 import {isNullOrUndefined} from 'util';
 
 export class ListComponentData<T, RouteParamClazz, QueryParamClazz> {
