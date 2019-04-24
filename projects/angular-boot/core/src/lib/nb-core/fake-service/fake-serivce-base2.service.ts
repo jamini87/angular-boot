@@ -1,5 +1,5 @@
 /**
- * Created by Jafar Amini in March 2018.
+ * @author Jafar Amini in March 2018.
  */
 import {Subject} from 'rxjs';
 import swal from 'sweetalert2';
@@ -116,12 +116,12 @@ export class FakeServiceBase2 extends FakeServiceBase {
     }
 
     postService(value: any, _url): any {
-      console.log('value: ', value);
+      // console.log('value: ', value);
         const ret = new Subject();
         super.postService(value, _url).subscribe((res: ResponseContent<any>) => {
           super.getService('').subscribe(
             (res2: any[]) => {
-              console.log('ressssssssss: ', res2);
+              // console.log('ressssssssss: ', res2);
               this.updateFakeDatabase(this._objectName, res2);
             }
           );
@@ -324,10 +324,10 @@ export class FakeServiceBase2 extends FakeServiceBase {
     deleteService(parentId: string): any {
         const ret = new Subject();
         super.deleteService(parentId).subscribe((res: ResponseContent<any>) => {
-          console.log('res---------------...>>', res);
+          // console.log('res---------------...>>', res);
           super.getService('').subscribe(
             (res2: any[]) => {
-              console.log('ressssssssss: ', res2);
+              // console.log('ressssssssss: ', res2);
               this.updateFakeDatabase(this._objectName, res2);
 
 

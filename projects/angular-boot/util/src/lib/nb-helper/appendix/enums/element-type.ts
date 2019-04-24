@@ -1,5 +1,5 @@
 /**
- * Created by Jafar Amini in March 2018.
+ * @author Jafar Amini in March 2018.
  */
 import {PreparsedElementType} from '@angular/compiler/src/template_parser/template_preparser';
 

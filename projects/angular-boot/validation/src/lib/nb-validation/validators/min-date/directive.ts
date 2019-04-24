@@ -49,7 +49,7 @@ export class MinDateValidator implements Validator, OnInit, OnChanges {
     const vClassSuffix = '-nbvMinDate';
     const iValidated = this.validator(c);
     if (iValidated) {
-      console.log('this.minDate --> ', this.nbvMinDate);
+      // console.log('this.minDate --> ', this.nbvMinDate);
       const innerHTML = getInnerHTML(this.nbvMinDate.year, this.nbvMinDateValTitle, this.nbvMinDateMsgHtml, this._ValidationMessage);
       manageAddValidationAlert(this.dest, vClassSuffix, innerHTML, this.ValidationConfig);
     } else {

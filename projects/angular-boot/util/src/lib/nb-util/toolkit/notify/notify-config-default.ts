@@ -1,5 +1,5 @@
 /**
- * Created by Jafar Amini in March 2018.
+ * @author Jafar Amini in March 2018.
  */
 import template1 from './templates/template';
 import {NotifyType} from './notify-type';

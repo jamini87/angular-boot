@@ -1,5 +1,5 @@
 /**
- * Created by Jafar Amini in March 2018.
+ * @author Jafar Amini in March 2018.
  */
 import swal from 'sweetalert2';
 // declare var swal: any;
@@ -97,7 +97,7 @@ export abstract class BaseListComponentOne<T> extends BaseComponentOne implement
       try {
         this.itemId_Out.emit(null);
       } catch (e) {
-        console.log('');
+        // console.log('');
       }
       //   alert('Add...');
       //   console.log('this.group_Added_In-->', this.group_Added_In);

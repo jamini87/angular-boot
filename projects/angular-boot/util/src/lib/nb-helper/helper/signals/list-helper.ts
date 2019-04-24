@@ -1,5 +1,4 @@
-import {Paging} from '../query';
-import {SpringSorting} from '../helper';
+import {Paging, SpringSorting} from '../query';
 
 export class ListHelper {
   paging: Paging;

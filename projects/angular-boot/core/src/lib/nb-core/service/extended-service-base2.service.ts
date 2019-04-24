@@ -1,5 +1,5 @@
 /**
- * Created by Jafar Amini in March 2018.
+ * @author Jafar Amini in March 2018.
  */
 import {ServiceBase2} from './serivce-base2.service';
 import {ResponseContentType} from './response-content-type';

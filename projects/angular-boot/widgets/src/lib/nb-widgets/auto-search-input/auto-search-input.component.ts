@@ -47,7 +47,7 @@ export class AutoSearchInputComponent implements OnInit, AfterViewInit {
       .pipe(map(i => i.currentTarget['value']));
     const debouncedInput = example.pipe(debounceTime(this.debounceTime));
     const subscribe = debouncedInput.subscribe(val => {
-      console.log(`Debounced Input: ${val}`);
+      // console.log(`Debounced Input: ${val}`);
       this.currentValue.emit(val);
     });
   }

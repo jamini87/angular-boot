@@ -1,4 +1,5 @@
 import {PairKeyValue} from "../../nb-helper/helper/pairs";
+import {isNullOrUndefined} from "util";
 
 export class JsonUtil {
   public static isJsonString(str) {
@@ -28,10 +29,12 @@ export class JsonUtil {
     Object
       .keys(object)
       .forEach(key => {
-          if (object[key].toString() === '[object Object]') {
-            this.toPairArray(object[key]);
-          } else {
-            props.push(new PairKeyValue(key, object[key]));
+          if (!isNullOrUndefined(object[key])) {
+            if (object[key].toString() === '[object Object]') {
+              this.toPairArray(object[key]);
+            } else {
+              props.push(new PairKeyValue(key, object[key]));
+            }
           }
           // console.log(key);
         }

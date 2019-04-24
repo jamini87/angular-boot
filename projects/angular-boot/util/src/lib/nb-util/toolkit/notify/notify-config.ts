@@ -1,5 +1,5 @@
 /**
- * Created by Jafar Amini in March 2018.
+ * @author Jafar Amini in March 2018.
  */
 import {NotifyType} from './notify-type';
 import ConfigDefault from './notify-config-default';

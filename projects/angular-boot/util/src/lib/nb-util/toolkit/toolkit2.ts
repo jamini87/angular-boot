@@ -1,5 +1,5 @@
 /**
- * Created by Jafar Amini in March 2018.
+ * @author Jafar Amini in March 2018.
  */
 import {Notify as _Notify} from './notify/notify';
 import {NotifyConfig as _NotifyConfig} from './notify/notify-config';
@@ -22,6 +22,7 @@ import {CaseFormat as _CaseFormat} from './case-format';
 import {FileUtil as _FileUtil} from './file-util';
 import {Spesific as _Spesific} from './spesific';
 import {WindowMediaUtil as _WindowMediaUtil} from './window-media-util';
+import {ArrayUtil as _ArrayUtil} from './array-util';
 
 export namespace Toolkit2 {
   export const Notify = _Notify;
@@ -45,5 +46,5 @@ export namespace Toolkit2 {
   export const FileUtil = _FileUtil;
   export const Spesific = _Spesific;
   export const WindowMediaUtil = _WindowMediaUtil;
-
+  export const ArrayUtil = _ArrayUtil;
 }

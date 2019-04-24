@@ -1,5 +1,5 @@
 /**
- * Created by Jafar Amini in March 2018.
+ * @author Jafar Amini in March 2018.
  */
 import {OnChanges, SimpleChange} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';

@@ -11,12 +11,14 @@ export abstract class BaseListComponentSeven<RouteParamClazz, QueryParamClazz ex
   ComponentDataClazz extends ListComponentData<T, RouteParamClazz, QueryParamClazz>, T>
   extends BaseAnyComponentSeven<RouteParamClazz, QueryParamClazz> implements OnChanges {
   componentData: ComponentDataClazz;
+  protected firstOnThisRoute: boolean;
 
   constructor(protected activatedRoute: ActivatedRoute,
               protected router: Router,
               protected routeParamClazzType: (new () => RouteParamClazz),
               protected queryParamClazzType: (new () => QueryParamClazz)) {
     super(activatedRoute, router, routeParamClazzType, queryParamClazzType);
+    this.firstOnThisRoute = true;
   }
 
   MyListMode = ListMode;
@@ -119,41 +121,66 @@ export abstract class BaseListComponentSeven<RouteParamClazz, QueryParamClazz ex
 
   protected abstract _setToQueryParams(queryParam);
 
-  onChangeSize(event, queryParam) {
-    queryParam.paging.size = event.target.value;
-    queryParam.paging.page = 0;
-    this._setToQueryParams(queryParam);
+  onChangeSize(event) {
+    this.componentData.queryParam.paging.size = event.target.value;
+    this.componentData.queryParam.paging.page = 0;
+    this._setToQueryParams(this.componentData.queryParam);
   }
 
-  initiatePagination(componentData, value?: { page?: number, size?: number, indicatorCount?: number }) {
-    componentData.queryParam.paging.page =
-      componentData.queryParamReal.paging.page ||
+  initiatePagination(value?: { page?: number, size?: number, indicatorCount?: number }) {
+    this.componentData.queryParam.paging.page =
+      this.componentData.queryParamReal.paging.page ||
       !isNullOrUndefined(value) && !isNullOrUndefined(value.page) ? value.page : 0;
-    componentData.queryParam.paging.size =
-      componentData.queryParamReal.paging.size ||
+    this.componentData.queryParam.paging.size =
+      this.componentData.queryParamReal.paging.size ||
       !isNullOrUndefined(value) && !isNullOrUndefined(value.size) ? value.size : 5;
-    componentData.indicatorCount =
+    this.componentData.indicatorCount =
       !isNullOrUndefined(value) && !isNullOrUndefined(value.page) ? value.indicatorCount : 5;
   }
 
-  setCurrentPage(queryParam, page) {
-    queryParam.paging.page = page;
-    this._setToQueryParams(queryParam);
+  resetPagination(value?: { page?: number, size?: number, indicatorCount?: number }) {
+    this.componentData.queryParam.paging.page =
+      !isNullOrUndefined(value) && !isNullOrUndefined(value.page) ? value.page : 0;
+    this.componentData.queryParam.paging.size =
+      !isNullOrUndefined(value) && !isNullOrUndefined(value.size) ? value.size : 5;
+    this.componentData.indicatorCount =
+      !isNullOrUndefined(value) && !isNullOrUndefined(value.page) ? value.indicatorCount : 5;
   }
 
-  hardChangeQueryParamReal(componentData) {
-    componentData.queryParamReal = JSON.parse(JSON.stringify(componentData.queryParam));
+  setCurrentPage(page) {
+    if (this.componentData.queryParamReal.paging.page !== page) {
+      this.componentData.queryParam.paging.page = page;
+      this._setToQueryParams(this.componentData.queryParam);
+    }
   }
 
-  defaultOnReceiveQueryParam(queryParamReal, queryParam: any, optionsOfGetList?: any): any {
-    if (queryParamReal.paging.page !== queryParam.paging.page ||
-      queryParamReal.paging.size !== queryParam.paging.size) {
-      queryParamReal.paging = JSON.parse(JSON.stringify(queryParam.paging));
-      this.getList(optionsOfGetList);
+  hardChangeQueryParamReal(queryParam: QueryParamClazz) {
+    this.componentData.queryParamReal = JSON.parse(JSON.stringify(queryParam));
+  }
+
+  hardSyncQueryParamReal() {
+    this.componentData.queryParamReal = JSON.parse(JSON.stringify(this.componentData.queryParam));
+  }
+
+  defaultOnReceiveQueryParam(queryParam: any, optionsOfGetList?: any): any {
+    if (this.componentData.queryParamReal.paging.page !== queryParam.paging.page ||
+      this.componentData.queryParamReal.paging.size !== queryParam.paging.size) {
+      if (this.firstOnThisRoute === false) {
+        if (!isNullOrUndefined(queryParam.paging.page)) {
+          this.componentData.queryParamReal.paging = JSON.parse(JSON.stringify(queryParam.paging));
+        }
+        this.getList(optionsOfGetList);
+      } else {
+        this.firstOnThisRoute = false;
+      }
     }
-    if (queryParamReal.itemId !== queryParam.itemId) {
-      queryParamReal.itemId = queryParam.itemId;
+    if (this.componentData.queryParamReal.itemId !== queryParam.itemId) {
+      this.componentData.queryParamReal.itemId = queryParam.itemId;
     }
+  }
+
+  defaultOnReceiveRouteParam() {
+    this.firstOnThisRoute = true;
   }
 
   abstract sortify(event);

@@ -1,5 +1,5 @@
 /**
- * Created by Jafar Amini in March 2018.
+ * @author Jafar Amini in March 2018.
  */
 import {EventEmitter, Input, OnChanges, Output, SimpleChange} from '@angular/core';
 import {NgForm} from '@angular/forms';
@@ -12,7 +12,7 @@ import {BaseComponentSeven} from './base-component-seven';
 import {isNullOrUndefined} from 'util';
 import {BaseAnyComponentSeven} from './base-any-component-seven';
 
-export abstract class BaseActionComponentSeven<RouteParamClazz, QueryParamClazz, T, Prefix>
+export abstract class BaseActionComponentSeven<RouteParamClazz, QueryParamClazz, T>
   extends BaseAnyComponentSeven<RouteParamClazz, QueryParamClazz> implements OnChanges {
   // ActionModeUtil = this.Toolkit2.ActionModeUtil;
   @Input() item: T;
@@ -23,21 +23,21 @@ export abstract class BaseActionComponentSeven<RouteParamClazz, QueryParamClazz,
   @Output() editedItem = new EventEmitter<T>(null);
 
   receiveActionMode() {
-    this._ActivatedRoute.data
+    this.activatedRoute.data
       .subscribe((data: { actionMode: ActionMode }) => {
         this.applyMode(data.actionMode);
       });
   }
 
   receiveItem() {
-    this._ActivatedRoute.data
+    this.activatedRoute.data
       .subscribe((data: { item: T }) => {
         this.onReceivedItem(data.item);
       });
   }
 
   // receiveData() {
-  //   // this._ActivatedRoute.data
+  //   // this.activatedRoute.data
   //   //   .subscribe((data: { actionMode: ActionMode }) => {
   //   //     // console.log(data);
   //   //     // this.onReceiveRouteParam(data.modelContainer.routeParams);
@@ -57,25 +57,24 @@ export abstract class BaseActionComponentSeven<RouteParamClazz, QueryParamClazz,
 
   abstract onChanges(changes: { [propKey: string]: SimpleChange });
 
-  abstract getMainObject(): Object;
+  abstract getMainObject(): any;
 
-  abstract getMainObjectInDom(): Object;
+  abstract getMainObjectInDom(): any;
 
   constructor(
-    protected _ActivatedRoute: ActivatedRoute,
+    protected activatedRoute: ActivatedRoute,
     protected router: Router,
     protected routeParamClazzType: (new () => RouteParamClazz),
     protected queryParamClazzType: (new () => QueryParamClazz),
-    protected featurePrefix: Prefix,
-    protected _DialogService: DialogService) {
-    super(_ActivatedRoute, router, routeParamClazzType, queryParamClazzType);
-    for (const property of this.Toolkit2.ObjectUtil
-      .getObjectPropertyList(this.featurePrefix)) {
-      if (this.featurePrefix.hasOwnProperty(property) &&
-        _ActivatedRoute.snapshot.params.hasOwnProperty(property)) {
-        this.featurePrefix[property] = _ActivatedRoute.snapshot.params[property];
-      }
-    }
+    protected dialogService: DialogService) {
+    super(activatedRoute, router, routeParamClazzType, queryParamClazzType);
+    // for (const property of this.Toolkit2.ObjectUtil
+    //   .getObjectPropertyList(this.featurePrefix)) {
+    //   if (this.featurePrefix.hasOwnProperty(property) &&
+    //     activatedRoute.snapshot.params.hasOwnProperty(property)) {
+    //     this.featurePrefix[property] = activatedRoute.snapshot.params[property];
+    //   }
+    // }
   }
 
   canDeactivate(): Observable<boolean> | boolean {
@@ -87,18 +86,18 @@ export abstract class BaseActionComponentSeven<RouteParamClazz, QueryParamClazz,
     }
     // Otherwise ask the group with the dialog service and return its
     // observable which resolves to true or false when the group decides
-    return this._DialogService.confirm('صرف نظر کردن از تغییرات؟');
+    return this.dialogService.confirm('صرف نظر کردن از تغییرات؟');
   }
 
   // recieveData() {
-  //   this._ActivatedRoute.data
+  //   this.activatedRoute.data
   //     .subscribe((data: { modelContainer: ModelContainer<Object> }) => {
   //       // console.log(data);
   //       this.applyMode(data.modelContainer.actionMode, data.modelContainer.item);
   //     });
   // }
   // lookQueryParams() {
-  //   this._ActivatedRoute.queryParams.subscribe((params) => {
+  //   this.activatedRoute.queryParams.subscribe((params) => {
   //     const target = params['target'];
   //     const actionMode = params['actionMode'];
   //     const itemId = params['itemId'];
@@ -127,7 +126,7 @@ export abstract class BaseActionComponentSeven<RouteParamClazz, QueryParamClazz,
   }
 
   afterAdd(res, form?) {
-    console.log(res);
+    // console.log(res);
     this.addedItem.emit(res);
     if (!isNullOrUndefined(form)) {
       form.resetForm();

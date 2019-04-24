@@ -1,5 +1,5 @@
 /**
- * Created by Jafar Amini in March 2018.
+ * @author Jafar Amini in March 2018.
  */
 import {EventEmitter, Input, OnChanges, Output, SimpleChange, SimpleChanges} from '@angular/core';
 import {isNullOrUndefined} from 'util';
@@ -61,7 +61,7 @@ export abstract class BaseActionComponentOne<T> extends BaseComponentOne impleme
   }
 
   afterAdd(form, res, msg: { title?: string, text?: string } = {}) {
-    console.log(res);
+    // console.log(res);
     this.item_Added_Out.emit(res);
     form.resetForm();
     // this.Toolkit2.SwalUtil.successAdd(msg.title, msg.text);

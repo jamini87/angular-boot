@@ -1,5 +1,5 @@
 /**
- * Created by Jafar Amini in May 2018.
+ * @author Jafar Amini in May 2018.
  */
 export declare type QueryOperator =
   'equals' | 'notEquals' | 'equalsIgnoreCase' | 'notEqualsIgnoreCase' |

@@ -16,3 +16,7 @@
 //.modal-backdrop {
 //  display: none;
 //}
+
+.not-display-modal-backdrop ::ng-deep .modal-backdrop {
+  display: none;
+}

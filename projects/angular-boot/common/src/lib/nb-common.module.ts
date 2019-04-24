@@ -5,6 +5,8 @@ import {IfEditOrViewModeDirective} from './nb-common/util-directives/action-mode
 import {IfEditOrAddModeDirective} from './nb-common/util-directives/action-mode/if-edit-or-add-mode.directive';
 import {IfEditModeDirective} from './nb-common/util-directives/action-mode/if-edit-mode.directive';
 import {IfViewModeDirective} from './nb-common/util-directives/action-mode/if-view-mode.directive';
+import {ShrPaginationModule} from "./shared-components/pagination/shr-pagination.module";
+import {ShrSortingIconModule} from "./shared-components/sorting-icon/shr-sorting-icon.module";
 
 //Not Worked error:
 // Unexpected value 'undefined' exported by the module
@@ -29,9 +31,15 @@ const UtilDirectives = [
 ];
 
 @NgModule({
-  imports: [],
+  imports: [
+    ShrPaginationModule,
+    ShrSortingIconModule
+  ],
   declarations: [UtilDirectives],
-  exports: [UtilDirectives]
+  exports: [
+    UtilDirectives,
+    ShrPaginationModule,
+    ShrSortingIconModule]
 })
 export class NbCommonModule {
 }

@@ -1,5 +1,5 @@
 /**
- * Created by Jafar Amini in October 2018.
+ * @author Jafar Amini in October 2018.
  */
 export class PairValueTitle {
   value: string;

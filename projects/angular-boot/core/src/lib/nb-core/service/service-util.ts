@@ -119,19 +119,21 @@ export class ServiceUtil {
     Object.keys(object).forEach(key => {
         if (!isNullOrUndefined(object[key]) && object[key].toString().length > 0) {
           // alert('key:.... ' + key + '   object[key] = ' + object[key]);
-          if (object[key].toString() === '[object Object]') {
-            // alert('Wawwwww');
-            this.object2QueryString(finalResult, object[key]);
-          } else {
-            props.push(new PairKeyValue(key, object[key]));
+          if (!isNullOrUndefined(object[key])) {
+            if (object[key].toString() === '[object Object]') {
+              // alert('Wawwwww');
+              this.object2QueryString(finalResult, object[key]);
+            } else {
+              props.push(new PairKeyValue(key, object[key]));
+            }
           }
         }
-        console.log(key);
+        // console.log(key);
       }
     );
     const result = [];
     for (let i = 0; i < props.length; i++) {
-      console.log(i + ' ---> ', props[i]);
+      // console.log(i + ' ---> ', props[i]);
       result.push([props[i].key, props[i].value]);
     }
     let r = result.map(param => param.join('=')).join('&');

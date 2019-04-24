@@ -11,9 +11,9 @@ import {
 } from '@angular/core';
 import {ModalUtil} from './modal-util';
 import {isNullOrUndefined} from 'util';
-import {WindowMediaUtil} from "./window-media-util";
-import {WindowMedias} from "./window-medias";
-import {ModalSize} from "./modal-size.enum";
+import {WindowMediaUtil} from './window-media-util';
+import {WindowMedias} from './window-medias';
+import {ModalSize} from './modal-size.enum';
 
 declare var $: any;
 
@@ -24,10 +24,10 @@ declare var $: any;
 })
 export class ModalComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy {
   // private _customWidthPercent: WindowMedias<number> = new WindowMedias<number>();
-  @Input() hasHeader: boolean = true;
-  @Input() hasFooter: boolean = true;
+  @Input() hasHeader = true;
+  @Input() hasFooter = true;
   @Input() myId: string = null;
-  @Input() autoShow: boolean = true;
+  @Input() autoShow = true;
   @Input() modalSize: ModalSize = ModalSize.DEFAULT;
   @Input() customWidthPercent = new WindowMedias<number>();
   // set customWidthPercent(val: WindowMedias<number>) {
@@ -41,16 +41,18 @@ export class ModalComponent implements OnInit, OnChanges, AfterViewInit, OnDestr
   //   return this._customWidthPercent;
   // }
 
-  @Input() historyBackOnClose: boolean = false;
-  @Input() dataBackdrop: boolean = true;
+  @Input() historyBackOnClose = false;
+  @Input() dataBackdrop = true;
+  @Input() displayBackdrop = true;
+  @Input() scrollLargeContents = true;
   @Input() removeFromDomOnHide: boolean;
   @Input() appendToBodyOnShow: boolean;
   @Output() onClose: EventEmitter<boolean> = new EventEmitter<boolean>();
-  myModalSizeClass: string = '';
-  hasCustomWidth: boolean = false;
+  myModalSizeClass = '';
+  hasCustomWidth = false;
 
 
-  defaultWidthPercent: number = 50;
+  defaultWidthPercent = 50;
   currentWidthPercent: number;
 
   constructor() {
@@ -77,7 +79,7 @@ export class ModalComponent implements OnInit, OnChanges, AfterViewInit, OnDestr
       // do something…
       that.onClose.emit(true);
       // alert(that.myId);
-      if (this.historyBackOnClose == true) {
+      if (this.historyBackOnClose === true) {
         window.history.back();
       }
     });
@@ -169,5 +171,16 @@ export class ModalComponent implements OnInit, OnChanges, AfterViewInit, OnDestr
     if (WindowMediaUtil.isXs()) {
       this.currentWidthPercent = this.customWidthPercent.xs;
     }
+  }
+
+  getCssClasses() {
+    const cssOptions = {};
+
+    // // add the unique class
+    // cssOptions[this.uniqueCssClass] = true;
+
+    // this activates or deactivates the ::ng-deep CSS style
+    cssOptions['not-display-modal-backdrop'] = !this.displayBackdrop;
+    return cssOptions;
   }
 }

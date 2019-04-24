@@ -1,4 +1,4 @@
-import {ReadMode} from "../../nb-helper/helper/helper";
+import {ReadMode} from '../../nb-helper/helper/helper';
 
 export class FileUtil {
   public static readFile(file, done, readMod?: ReadMode) {

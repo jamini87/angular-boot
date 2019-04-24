@@ -1,5 +1,5 @@
 /**
- * Created by Jafar Amini in March 2018.
+ * @author Jafar Amini in March 2018.
  */
 // import 'rxjs/add/operator/map';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
@@ -23,7 +23,7 @@ export class FakeServiceBase {
     }
 
     postService(value: any, _objectsuffix: string): any {
-      console.log('finalUrl: ',this.url + this._prefix + this._objectName + '/' + _objectsuffix);
+      // console.log('finalUrl: ',this.url + this._prefix + this._objectName + '/' + _objectsuffix);
         let headers = new HttpHeaders();
       headers = headers
         .set('Content-Type', 'application/json')

@@ -1,5 +1,5 @@
 /**
- * Created by Jafar Amini in March 2018.
+ * @author Jafar Amini in March 2018.
  */
 import {ServiceBase} from './service-base.service';
 import {Observable, Subject} from 'rxjs';

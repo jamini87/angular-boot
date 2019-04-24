@@ -1,5 +1,5 @@
 /**
- * Created by Jafar Amini on 2018.
+ * @author Jafar Amini on 2018.
  */
 import {PairValueTitle} from "../../nb-helper/helper/pairs";
 

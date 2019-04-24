@@ -1,5 +1,5 @@
 /**
- * Created by Jafar Amini in March 2018.
+ * @author Jafar Amini in March 2018.
  */
 import {isNullOrUndefined} from 'util';
 import {ValidationMessageHelper} from './validation-message-helper';

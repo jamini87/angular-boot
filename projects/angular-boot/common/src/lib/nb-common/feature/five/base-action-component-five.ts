@@ -1,5 +1,5 @@
 /**
- * Created by Jafar Amini in March 2018.
+ * @author Jafar Amini in March 2018.
  */
 import {OnChanges, SimpleChange} from '@angular/core';
 import {NgForm} from '@angular/forms';
@@ -106,7 +106,7 @@ export abstract class BaseActionComponentFive<T, Prefix> extends BaseComponentFi
   }
 
   afterAdd(form, res, msg: { title?: string, text?: string } = {}) {
-    console.log(res);
+    // console.log(res);
     // this.item_Added_Out.emit(res);
     form.resetForm();
     // this.Toolkit2.SwalUtil.successAdd();

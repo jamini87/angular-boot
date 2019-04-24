@@ -1,5 +1,5 @@
 /**
- * Created by Jafar Amini in March 2018.
+ * @author Jafar Amini in March 2018.
  */
 import {EventEmitter, Output} from '@angular/core';
 import {BaseComponentOne} from './base-component-one';

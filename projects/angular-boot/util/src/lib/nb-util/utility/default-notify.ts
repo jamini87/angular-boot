@@ -1,5 +1,5 @@
 /**
- * Created by Jafar Amini in December 2018.
+ * @author Jafar Amini in December 2018.
  */
 import {Notify, NotifyConfig} from '../toolkit/notify';
 import {ObjectUtil} from '../toolkit/object-util';

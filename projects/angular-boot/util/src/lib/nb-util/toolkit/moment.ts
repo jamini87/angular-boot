@@ -1,5 +1,5 @@
 /**
- * Created by Jafar Amini in March 2018.
+ * @author Jafar Amini in March 2018.
  */
 
 // Not worked when npm packaging
@@ -18,42 +18,40 @@ export class Moment {
 
   public static isoToJDay(date) {
     if (date) {
-      return moment(date).format('jYYYY/jMM/jDD');
+      return moment(date).format('jYYYY/jMM/jDD' as JalaliDateFormats);
     }
   }
 
   public static isoToJMin(date) {
     if (date) {
-      return moment(date).format('HH:mm - jYYYY/jMM/jDD');
+      return moment(date).format('HH:mm - jYYYY/jMM/jDD' as JalaliDateFormats);
     }
   }
 
   public static isoToJSec(date) {
     if (date) {
-      return moment(date).format('HH:mm:ss - jYYYY/jMM/jDD');
+      return moment(date).format('HH:mm:ss - jYYYY/jMM/jDD' as JalaliDateFormats);
     }
   }
 
 
   public static isoToGDay(date) {
     if (date) {
-      return moment(date).format('YYYY/MM/DD');
+      return moment(date).format('YYYY/MM/DD' as GregorianDateFormats);
     }
   }
 
   public static isoToGMin(date) {
     if (date) {
-      return moment(date).format('HH:mm - YYYY/MM/DD');
+      return moment(date).format('HH:mm - YYYY/MM/DD' as GregorianDateFormats);
     }
   }
 
   public static isoToGSec(date) {
     if (date) {
-      return moment(date).format('HH:mm:ss - YYYY/MM/DD');
+      return moment(date).format('HH:mm:ss - YYYY/MM/DD' as GregorianDateFormats);
     }
   }
-
-
 
 
   public static getJaliliDateFromIsoOrFull(date) {
@@ -88,8 +86,8 @@ export class Moment {
 
   public static convertGregorianToJaliliWithTime(date) {
     return moment(
-      moment(Common.Fa2En(date), 'HH:mm - YYYY/MM/DD').toISOString()
-    ).format('HH:mm - YYYY/MM/DD');
+      moment(Common.Fa2En(date), 'HH:mm - YYYY/MM/DD').toISOString())
+      .format('HH:mm - YYYY/MM/DD');
   }
 
   public static convertJaliliToIsoDate(jDate) {
@@ -101,3 +99,6 @@ export class Moment {
   }
 
 }
+
+export declare type JalaliDateFormats = 'jYYYY/jMM/jDD' | 'HH:mm - jYYYY/jMM/jDD' | 'HH:mm:ss - jYYYY/jMM/jDD';
+export declare type GregorianDateFormats = 'YYYY/MM/DD' | 'HH:mm - YYYY/MM/DD' | 'HH:mm:ss - YYYY/MM/DD';

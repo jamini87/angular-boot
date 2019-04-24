@@ -1,5 +1,5 @@
 /**
- * Created by Jafar Amini in March 2018.
+ * @author Jafar Amini in March 2018.
  */
 import {isNullOrUndefined} from 'util';
 import {PairKeyValue} from "../../nb-helper/helper/pairs";
@@ -89,11 +89,13 @@ export class StringUtil {
     let props: Array<PairKeyValue> = new Array();
     Object.keys(object).forEach(key => {
         // alert('key:.... ' + key + '   object[key] = ' + object[key]);
-        if (object[key].toString() === '[object Object]') {
-          // alert('Wawwwww');
-          this.object2QueryString(finalResult, object[key]);
-        } else {
-          props.push(new PairKeyValue(key, object[key]));
+        if (!isNullOrUndefined(object[key])) {
+          if (object[key].toString() === '[object Object]') {
+            // alert('Wawwwww');
+            this.object2QueryString(finalResult, object[key]);
+          } else {
+            props.push(new PairKeyValue(key, object[key]));
+          }
         }
         // console.log(key);
       }

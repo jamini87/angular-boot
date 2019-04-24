@@ -8,5 +8,6 @@ export * from './serivce-base2.service';
 export * from './service-base.service';
 export * from './service-util';
 export * from './assets.service';
+export * from './take-until-destroy';
 
 

@@ -1,12 +1,13 @@
 <ng-container *ngIf="myId!==null && myId!==undefined"></ng-container>
 <div class="modal fade bd-example-modal-lg"
+     [ngClass]="getCssClasses()"
      [id]="myId" tabindex="-1" role="dialog"
      data-id="{{myId}}"
      aria-labelledby="myLargeModalLabel"
      aria-hidden="true"
-     [attr.data-backdrop]="dataBackdrop"
->
+     [attr.data-backdrop]="dataBackdrop">
   <div class="modal-dialog modal-dialog-centered"
+       [class.modal-dialog-scrollable]="scrollLargeContents"
        [ngClass]="myModalSizeClass" [ngStyle]="
        hasCustomWidth === true && {'min-width': currentWidthPercent + '%'} ||
        hasCustomWidth === true && {'margin': '0'}
