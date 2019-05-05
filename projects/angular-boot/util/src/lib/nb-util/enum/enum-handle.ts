@@ -5,7 +5,19 @@ import {PairValueTitle} from "../../nb-helper/helper/pairs";
 
 export class EnumHandle {
 
+  // New Way to convert enum to array Try later
+  // // This requires TypeScript 2.1.
+  // // If you need older versions, use `string` instead of `keyof E`.
+  // interface EnumItem<E> { id: E; name: keyof E; }
+  //
+  // function enumToArray<E>(Enum: {[keyof E]: E}): EnumItem<E>[] {
+  //   return Object.keys(Enum).map(key => ({id: Enum[key], name: key} as EnumItem<E>))
+  // }
 
+  /**
+   *
+   * @param myEnum
+   */
   static getAsObject(myEnum) {
     let myOb = new Object();
     let prevKey, prevVal;

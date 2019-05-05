@@ -125,6 +125,9 @@ export class ModalComponent implements OnInit, OnChanges, AfterViewInit, OnDestr
         case ModalSize.LARGE :
           this.myModalSizeClass = 'modal-lg';
           break;
+        case ModalSize.X_LARGE :
+          this.myModalSizeClass = 'modal-xl';
+          break;
         case ModalSize.SMALL :
           this.myModalSizeClass = 'modal-sm';
           break;

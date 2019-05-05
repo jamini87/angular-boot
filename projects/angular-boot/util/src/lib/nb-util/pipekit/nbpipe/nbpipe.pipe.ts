@@ -1,3 +1,6 @@
+/**
+ * @author Jafar Amini
+ */
 import {Pipe, PipeTransform} from '@angular/core';
 
 @Pipe({
