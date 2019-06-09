@@ -4,6 +4,7 @@ import {ServiceUtil} from './service-util';
 import {isNullOrUndefined} from 'util';
 import {Observable} from 'rxjs';
 import {ServiceConfig, TokenMode} from '../config';
+import {map} from "rxjs/operators";
 
 export class ServiceBase {
   public _url: string;
@@ -19,38 +20,49 @@ export class ServiceBase {
     this._prefix = '';
   }
 
+  private addResponseAsBody(options) {
+    options['observe'] = 'response' as 'body';
+  }
+
   getService(restExtra?: RestExtra): Observable<any> {
-    let headers: HttpHeaders;
+    let headers1: HttpHeaders;
     let token = this._ServiceConfig.getToken(restExtra.keyToken);
-    headers = this.resolveHeader(this._ServiceConfig, restExtra, token);
-    return this._HttpClient.get(this._ServiceConfig.getUrl() + ServiceUtil
-      .getRestOfUrlRespectTokenMode(
-        this._objectName, restExtra,
-        this._ServiceConfig.getTokenMode(),
-        token
-      ) // + '?Authorization=' + this._ServiceConfig.getToken(restExtra.keyToken)
-      , {
-        headers: headers,
-        // responseType: 'text'
-        responseType: ServiceUtil.getResponseContentType(restExtra.responseContentType)
-      });
+    headers1 = this.resolveHeader(this._ServiceConfig, restExtra, token);
+    let options = {
+      headers: headers1,
+      responseType: ServiceUtil.getResponseContentType(restExtra.responseContentType)
+    };
+    if (restExtra.responseAsBody === true) {
+      this.addResponseAsBody(options);
+    }
+    return this._HttpClient
+      .get(this._ServiceConfig.getUrl() +
+        ServiceUtil.getRestOfUrlRespectTokenMode(
+          this._objectName, restExtra,
+          this._ServiceConfig.getTokenMode(), token),
+        options)
+      .pipe(map(res => res));
   }
 
   postService(value: any, restExtra?: RestExtra): Observable<any> {
-    let headers: HttpHeaders;
+    let headers1: HttpHeaders;
     let token = this._ServiceConfig.getToken(restExtra.keyToken);
-    headers = this.resolveHeader(this._ServiceConfig, restExtra, token);
-
+    headers1 = this.resolveHeader(this._ServiceConfig, restExtra, token);
+    let options = {
+      headers: headers1,
+      responseType: ServiceUtil.getResponseContentType(restExtra.responseContentType)
+    };
+    if (restExtra.responseAsBody === true) {
+      this.addResponseAsBody(options);
+    }
     return this._HttpClient.post(this._ServiceConfig.getUrl() + ServiceUtil
       .getRestOfUrlRespectTokenMode(
         this._objectName, restExtra,
         this._ServiceConfig.getTokenMode(),
         token
       ) // + '?Authorization=' + this._ServiceConfig.getToken(restExtra.keyToken)
-      , value, {
-        headers: headers,
-        responseType: ServiceUtil.getResponseContentType(restExtra.responseContentType)
-      });
+      , value,
+      options).pipe(map(res => res));
   }
 
 
@@ -62,9 +74,17 @@ export class ServiceBase {
     //              this._ServiceConfig.getToken(restExtra.keyToken)
     //   }
     //   );
-    let headers: HttpHeaders;
+    let headers1: HttpHeaders;
     let token = this._ServiceConfig.getToken(restExtra.keyToken);
-    headers = this.resolveHeader(this._ServiceConfig, restExtra, token);
+    headers1 = this.resolveHeader(this._ServiceConfig, restExtra, token);
+
+    let options = {
+      headers: headers1,
+      responseType: ServiceUtil.getResponseContentType(restExtra.responseContentType)
+    };
+    if (restExtra.responseAsBody === true) {
+      this.addResponseAsBody(options);
+    }
 
     return this._HttpClient.put(this._ServiceConfig.getUrl() + ServiceUtil
       .getRestOfUrlRespectTokenMode(
@@ -72,44 +92,48 @@ export class ServiceBase {
         this._ServiceConfig.getTokenMode(),
         token
       ) // + '?Authorization=' + this._ServiceConfig.getToken(restExtra.keyToken)
-      , value, {
-        headers: headers,
-        responseType: ServiceUtil.getResponseContentType(restExtra.responseContentType)
-      });
+      , value, options).pipe(map(res => res));
   }
 
   patchService(value: any, restExtra?: RestExtra): Observable<any> {
-    let headers: HttpHeaders;
+    let headers1: HttpHeaders;
     let token = this._ServiceConfig.getToken(restExtra.keyToken);
-    headers = this.resolveHeader(this._ServiceConfig, restExtra, token);
+    headers1 = this.resolveHeader(this._ServiceConfig, restExtra, token);
 
+    let options = {
+      headers: headers1,
+      responseType: ServiceUtil.getResponseContentType(restExtra.responseContentType)
+    };
+    if (restExtra.responseAsBody === true) {
+      this.addResponseAsBody(options);
+    }
     return this._HttpClient.patch(this._ServiceConfig.getUrl() + ServiceUtil
       .getRestOfUrlRespectTokenMode(
         this._objectName, restExtra,
         this._ServiceConfig.getTokenMode(),
         token
       ) // + '?Authorization=' + this._ServiceConfig.getToken(restExtra.keyToken)
-      , value, {
-        headers: headers,
-        responseType: ServiceUtil.getResponseContentType(restExtra.responseContentType)
-      });
+      , value, options).pipe(map(res => res));
   }
 
   deleteService(restExtra: RestExtra): Observable<any> {
-    let headers: HttpHeaders;
+    let headers1: HttpHeaders;
     let token = this._ServiceConfig.getToken(restExtra.keyToken);
-    headers = this.resolveHeader(this._ServiceConfig, restExtra, token);
-
+    headers1 = this.resolveHeader(this._ServiceConfig, restExtra, token);
+    let options = {
+      headers: headers1,
+      responseType: ServiceUtil.getResponseContentType(restExtra.responseContentType)
+    };
+    if (restExtra.responseAsBody === true) {
+      this.addResponseAsBody(options);
+    }
     return this._HttpClient.delete(this._ServiceConfig.getUrl() + ServiceUtil
       .getRestOfUrlRespectTokenMode(
         this._objectName, restExtra,
         this._ServiceConfig.getTokenMode(),
         token
       ) // + '?Authorization=' + this._ServiceConfig.getToken(restExtra.keyToken)
-      , {
-        headers: headers,
-        responseType: ServiceUtil.getResponseContentType(restExtra.responseContentType)
-      });
+      , options).pipe(map(res => res));
   }
 
   private resolveHeader(_ServiceConfig: ServiceConfig, restExtra: RestExtra, token: string) {
@@ -128,12 +152,12 @@ export class ServiceBase {
     } else if (!isNullOrUndefined(restExtra.excludes) && restExtra.excludes.length > 0) {
       headers = headers.append('excludes', restExtra.excludes);
     }
-    if(JSON.stringify(restExtra.otherHeaders)!= '{}' &&
-      !isNullOrUndefined(restExtra.otherHeaders)){
-        for (let key in restExtra.otherHeaders) {
-          // console.log("      key:", key, "value:", restExtra.otherHeaders[key]);
-          headers = headers.append(key, restExtra.otherHeaders[key]);
-        }
+    if (JSON.stringify(restExtra.otherHeaders) != '{}' &&
+      !isNullOrUndefined(restExtra.otherHeaders)) {
+      for (let key in restExtra.otherHeaders) {
+        // console.log("      key:", key, "value:", restExtra.otherHeaders[key]);
+        headers = headers.append(key, restExtra.otherHeaders[key]);
+      }
     }
     return headers;
   }

@@ -23,6 +23,7 @@ declare var $: any;
   styleUrls: ['./modal.component.scss']
 })
 export class ModalComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy {
+  MyModalSize = ModalSize;
   // private _customWidthPercent: WindowMedias<number> = new WindowMedias<number>();
   @Input() hasHeader = true;
   @Input() hasFooter = true;
@@ -30,6 +31,7 @@ export class ModalComponent implements OnInit, OnChanges, AfterViewInit, OnDestr
   @Input() autoShow = true;
   @Input() modalSize: ModalSize = ModalSize.DEFAULT;
   @Input() customWidthPercent = new WindowMedias<number>();
+
   // set customWidthPercent(val: WindowMedias<number>) {
   //   this._customWidthPercent = val;
   //   if (this.hasCustomWidth === true) {

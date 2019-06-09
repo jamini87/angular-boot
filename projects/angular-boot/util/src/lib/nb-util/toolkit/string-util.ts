@@ -2,7 +2,7 @@
  * @author Jafar Amini in March 2018.
  */
 import {isNullOrUndefined} from 'util';
-import {PairKeyValue} from "../../nb-helper/helper/pairs";
+import {PairKeyValue} from '../../nb-helper/helper/pairs';
 
 export class StringUtil {
   public static getShorten(text: string, length: number, extra?: string) {
@@ -112,5 +112,32 @@ export class StringUtil {
 
   public static replaceRange(str, start, end, substitute) {
     return str.substring(0, start) + substitute + str.substring(end);
+  }
+
+  public findClosingBracketMatchIndex(
+    str,
+    options: {
+      pos: number, fExp: string,
+      lExp: string
+    }) {
+    if (str.substr(options.pos, options.fExp.length) !== options.fExp) {
+      throw new Error('No ' + options.fExp + ' at index ' + options.pos);
+    }
+    let depth = 1;
+    for (let i = options.pos + 1; i < str.length; i++) {
+      if (str.substr(i, options.fExp.length) === options.fExp) {
+        depth++;
+      }
+      if (str.substr(i, options.lExp.length) === options.lExp) {
+        if (--depth === 0) {
+          return i;
+        }
+      }
+    }
+    return -1;    // No matching closing parenthesis
+  }
+
+  public static putAtIndex(str: string, item, index) {
+    return str.slice(0, index) + item + str.slice(index);
   }
 }

@@ -1,6 +1,7 @@
 <ng-container *ngIf="myId!==null && myId!==undefined"></ng-container>
 <div class="modal fade bd-example-modal-lg"
      [ngClass]="getCssClasses()"
+     [class.modal-full]="modalSize === MyModalSize.FULL_SCREEN"
      [id]="myId" tabindex="-1" role="dialog"
      data-id="{{myId}}"
      aria-labelledby="myLargeModalLabel"
@@ -8,13 +9,14 @@
      [attr.data-backdrop]="dataBackdrop">
   <div class="modal-dialog modal-dialog-centered"
        [class.modal-dialog-scrollable]="scrollLargeContents"
+       [class.modal-dialog-full]="modalSize === MyModalSize.FULL_SCREEN"
        [ngClass]="myModalSizeClass" [ngStyle]="
        hasCustomWidth === true && {'min-width': currentWidthPercent + '%'} ||
        hasCustomWidth === true && {'margin': '0'}
 ">
-    <div class="modal-content">
+    <div class="modal-content" [class.modal-content-full]="modalSize === MyModalSize.FULL_SCREEN">
       <ng-container *ngIf="hasHeader === true">
-        <div class="modal-header">
+        <div class="modal-header" [class.modal-header-full]="modalSize === MyModalSize.FULL_SCREEN">
           <div>
             <ng-content select="[modal-header]"></ng-content>
           </div>
@@ -29,11 +31,11 @@
 
       </ng-container>
 
-      <div class="modal-body">
+      <div class="modal-body" [class.modal-body-full]="modalSize === MyModalSize.FULL_SCREEN">
         <ng-content select="[modal-body]"></ng-content>
       </div>
       <ng-container *ngIf="hasFooter === true">
-        <div class="modal-footer">
+        <div class="modal-footer" [class.modal-footer-full]="modalSize === MyModalSize.FULL_SCREEN">
           <ng-content select="[modal-footer]"></ng-content>
         </div>
       </ng-container>

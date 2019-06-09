@@ -1,6 +1,33 @@
 import {ReadMode} from '../../nb-helper/helper/helper';
+import {isNullOrUndefined} from 'util';
 
 export class FileUtil {
+
+  public static prepareUploadOne(formData, event, multiparKey?: string) {
+    let myMultiparKey = '';
+    if (isNullOrUndefined(multiparKey)) {
+      myMultiparKey = 'file';
+    } else {
+      myMultiparKey = multiparKey;
+    }
+    const x = event.target.files[0];
+    formData.append(myMultiparKey, x);
+    formData.append('count', '1');
+  }
+
+  public static prepareUploadMulti(formData, event, multiparKey?: string) {
+    let myMultiparKey = '';
+    if (isNullOrUndefined(multiparKey)) {
+      myMultiparKey = 'files';
+    } else {
+      myMultiparKey = multiparKey;
+    }
+    for(let i = 0; i < event.target.files.length; i++) {
+      formData.append(myMultiparKey, event.target.files[i]);
+    }
+    formData.append('count', event.target.files.length);
+  }
+
   public static readFile(file, done, readMod?: ReadMode) {
 
     if (!file) {

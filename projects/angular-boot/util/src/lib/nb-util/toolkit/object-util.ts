@@ -129,8 +129,7 @@ export class ObjectUtil {
         } else {
           return clonedCopy[visitedNodes.indexOf(item)];
         }
-      }
-      else if (typeof item === 'object' && Array.isArray(item)) {
+      } else if (typeof item === 'object' && Array.isArray(item)) {
         if (visitedNodes.indexOf(item) === -1) {
           var cloneArray = [];
           visitedNodes.push(item);
@@ -202,11 +201,49 @@ export class ObjectUtil {
     );
     return newObject;
   }
+
   public static getObject2KeyValArray(value): PairKeyValue[] {
     let keys: PairKeyValue[] = [];
     for (let key in value) {
       keys.push(new PairKeyValue(key, value[key]));
     }
     return keys;
+  }
+
+  /**
+   *
+   * @param obj
+   * @param desc
+   * Example:
+   var obj = {a: {b: {c: 0}}};
+   var propPath = getPropPath();  // returns e.g. "a.b.c"
+   var result = getDescendantProp(obj, propPath);
+   console.log(result); // output: 0
+   */
+  public static getDescendantProp(obj, desc) {
+    var arr = desc.split('.');
+    while (arr.length) {
+      obj = obj[arr.shift()];
+    }
+    return obj;
+  }
+
+  /**
+   *
+   * @param obj
+   * @param desc
+   * @param value
+   *
+   Example:
+   var obj = {a: {b: {c: 0}}};
+   var propPath = getPropPath();  // returns e.g. "a.b.c"
+   var result = setDescendantProp(obj, propPath, 1);  // test.a.b.c will now be 1
+   */
+  public static setDescendantProp(obj, desc, value) {
+    var arr = desc.split('.');
+    while (arr.length > 1) {
+      obj = obj[arr.shift()];
+    }
+    return obj[arr[0]] = value;
   }
 }

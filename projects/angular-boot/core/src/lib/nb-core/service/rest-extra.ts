@@ -33,14 +33,15 @@ export class RestExtra {
   responseContentType?: ResponseContentType;
   requestContentType?: RequestContentType;
   urlQuery?: string;
-  urlQueryObject?: Object;
+  urlQueryObject?: any;
   includes?: string[];
   excludes?: string[];
   needToken?: boolean;
   keyToken?: any;
-  otherHeaders?: Object;
+  otherHeaders?: any;
   restServiceResultPolicy?: RestServiceResultPolicy;
   restServiceErrorPolicy?: RestServiceErrorPolicy;
+  responseAsBody?: boolean;
 
   // urlQuery: UrlQuery;
   constructor(
@@ -53,14 +54,15 @@ export class RestExtra {
       responseContentType?: ResponseContentType,
       requestContentType?: RequestContentType,
       urlQuery?: string,
-      urlQueryObject?: Object,
+      urlQueryObject?: any,
       includes?: string[],
       excludes?: string[],
       needToken?: boolean,
       keyToken?: any,
-      otherHeaders?: Object,
+      otherHeaders?: any,
       restServiceResultPolicy?: RestServiceResultPolicy,
-      restServiceErrorPolicy?: RestServiceErrorPolicy
+      restServiceErrorPolicy?: RestServiceErrorPolicy,
+      responseAsBody?: boolean
     }) {
     this.useObjectPrefix = options.useObjectPrefix ? options.useObjectPrefix : true;
     this.useObjectSuffix = options.useObjectSuffix ? options.useObjectSuffix : true;
@@ -80,6 +82,7 @@ export class RestExtra {
       options.restServiceResultPolicy : null;
     this.restServiceErrorPolicy = options.restServiceErrorPolicy ?
       options.restServiceErrorPolicy : null;
+    this.responseAsBody = !isNullOrUndefined(options.responseAsBody) ? options.responseAsBody : false;
   }
 }
 

@@ -22,8 +22,11 @@ export abstract class BaseListComponentSeven<RouteParamClazz, QueryParamClazz ex
   }
 
   MyListMode = ListMode;
-  @Input() protected selectedList: T[] = [];
-  @Input() protected getListOnCallback: Function;
+  @Input() public selectedList: T[] = [];
+
+  // @Input() public getListOnCallback: Function;
+  abstract getListOnCallback(): Function;
+
   protected _listMode: ListMode;
   get listMode() {
     return this._listMode;
@@ -103,13 +106,13 @@ export abstract class BaseListComponentSeven<RouteParamClazz, QueryParamClazz ex
   abstract onChangedTerm();
 
   getListRemote(optionsOfGetList?: any) {
-    this.getListOnCallback(this.getListRemoteArg(optionsOfGetList));
+    this.getListOnCallback()(this.getListRemoteArg(optionsOfGetList));
   }
 
   getList(optionsOfGetList?: any) {
     this.componentData.itemPage = new PageContainer();
     console.log(this.componentData.itemPage);
-    if (isNullOrUndefined(this.getListOnCallback)) {
+    if (isNullOrUndefined(this.getListOnCallback())) {
       this.getListSelf(optionsOfGetList);
     } else {
       this.getListRemote(optionsOfGetList);

@@ -12,14 +12,14 @@ export class AssetsService {
   constructor(private _HttpClient: HttpClient) {
   }
 
-  public getData(apiHost: string, extra?: { responseContentType?: ResponseContentType }): Promise<Object> {
+  public getData(url: string, extra?: { responseContentType?: ResponseContentType }): Promise<any> {
     let myExtra = extra;
     if (isNullOrUndefined(extra)) {
       myExtra = {responseContentType: ResponseContentType.Json};
     } else if (isNullOrUndefined(extra.responseContentType)) {
       myExtra.responseContentType = ResponseContentType.Json;
     }
-    return this._HttpClient.get('./assets/' + apiHost,
+    return this._HttpClient.get(url,
       {responseType: ServiceUtil.getResponseContentType(myExtra.responseContentType)})
       .toPromise()
       .then((response) => {
