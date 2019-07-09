@@ -87,10 +87,10 @@ export class ModalComponent implements OnInit, OnChanges, AfterViewInit, OnDestr
         window.history.back();
       }
     });
-    $('#' + this.myId.toString()).on('show', () => {
+    $('#' + this.myId.toString()).on('show.bs.modal', () => {
       that.onShow.emit(true);
     });
-    $('#' + this.myId.toString()).on('shown', () => {
+    $('#' + this.myId.toString()).on('shown.bs.modal', () => {
       that.onShown.emit(true);
     });
   }
