@@ -41,7 +41,7 @@ export class CustomTranslateHttpLoader implements TranslateLoader {
   public getTranslation(lang: string): Observable<any> {
     debugger;
     // return this.http.get(`${this.prefix}${lang}${this.suffix}`);
-    return this.http.get(this.url + '?lang=' + lang + '&' +
+    return this.http.get(this.url + '?locale=' + lang + '&' +
       Toolkit2.StringUtil.objectToQueryString2(this.query),
       {headers: this.reqHeaders});
     // return this.translateHttpLoaderService.get(this.query);

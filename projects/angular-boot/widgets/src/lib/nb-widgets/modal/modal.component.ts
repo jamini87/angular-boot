@@ -50,6 +50,8 @@ export class ModalComponent implements OnInit, OnChanges, AfterViewInit, OnDestr
   @Input() removeFromDomOnHide: boolean;
   @Input() appendToBodyOnShow: boolean;
   @Output() onClose: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() onShow: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() onShown: EventEmitter<boolean> = new EventEmitter<boolean>();
   myModalSizeClass = '';
   hasCustomWidth = false;
 
@@ -84,6 +86,12 @@ export class ModalComponent implements OnInit, OnChanges, AfterViewInit, OnDestr
       if (this.historyBackOnClose === true) {
         window.history.back();
       }
+    });
+    $('#' + this.myId.toString()).on('show', () => {
+      that.onShow.emit(true);
+    });
+    $('#' + this.myId.toString()).on('shown', () => {
+      that.onShown.emit(true);
     });
   }
 
