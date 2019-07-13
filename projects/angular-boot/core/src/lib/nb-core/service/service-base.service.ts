@@ -4,7 +4,7 @@ import {ServiceUtil} from './service-util';
 import {isNullOrUndefined} from 'util';
 import {Observable} from 'rxjs';
 import {ServiceConfig, TokenMode} from '../config';
-import {map} from "rxjs/operators";
+import {map} from 'rxjs/operators';
 
 export class ServiceBase {
   public _url: string;
@@ -34,14 +34,21 @@ export class ServiceBase {
     };
     if (restExtra.responseAsBody === true) {
       this.addResponseAsBody(options);
+      return this._HttpClient
+        .get(this._ServiceConfig.getUrl() +
+          ServiceUtil.getRestOfUrlRespectTokenMode(
+            this._objectName, restExtra,
+            this._ServiceConfig.getTokenMode(), token),
+          options)
+        .pipe(map(res => res));
+    } else {
+      return this._HttpClient
+        .get(this._ServiceConfig.getUrl() +
+          ServiceUtil.getRestOfUrlRespectTokenMode(
+            this._objectName, restExtra,
+            this._ServiceConfig.getTokenMode(), token),
+          options);
     }
-    return this._HttpClient
-      .get(this._ServiceConfig.getUrl() +
-        ServiceUtil.getRestOfUrlRespectTokenMode(
-          this._objectName, restExtra,
-          this._ServiceConfig.getTokenMode(), token),
-        options)
-      .pipe(map(res => res));
   }
 
   postService(value: any, restExtra?: RestExtra): Observable<any> {
@@ -54,15 +61,25 @@ export class ServiceBase {
     };
     if (restExtra.responseAsBody === true) {
       this.addResponseAsBody(options);
+      return this._HttpClient.post(this._ServiceConfig.getUrl() + ServiceUtil
+        .getRestOfUrlRespectTokenMode(
+          this._objectName, restExtra,
+          this._ServiceConfig.getTokenMode(),
+          token
+        ) // + '?Authorization=' + this._ServiceConfig.getToken(restExtra.keyToken)
+        , value,
+        options).pipe(map(res => res));
+    } else {
+      return this._HttpClient.post(this._ServiceConfig.getUrl() + ServiceUtil
+        .getRestOfUrlRespectTokenMode(
+          this._objectName, restExtra,
+          this._ServiceConfig.getTokenMode(),
+          token
+        ) // + '?Authorization=' + this._ServiceConfig.getToken(restExtra.keyToken)
+        , value,
+        options);
     }
-    return this._HttpClient.post(this._ServiceConfig.getUrl() + ServiceUtil
-      .getRestOfUrlRespectTokenMode(
-        this._objectName, restExtra,
-        this._ServiceConfig.getTokenMode(),
-        token
-      ) // + '?Authorization=' + this._ServiceConfig.getToken(restExtra.keyToken)
-      , value,
-      options).pipe(map(res => res));
+
   }
 
 
@@ -84,15 +101,22 @@ export class ServiceBase {
     };
     if (restExtra.responseAsBody === true) {
       this.addResponseAsBody(options);
+      return this._HttpClient.put(this._ServiceConfig.getUrl() + ServiceUtil
+        .getRestOfUrlRespectTokenMode(
+          this._objectName, restExtra,
+          this._ServiceConfig.getTokenMode(),
+          token
+        ) // + '?Authorization=' + this._ServiceConfig.getToken(restExtra.keyToken)
+        , value, options).pipe(map(res => res));
+    } else {
+      return this._HttpClient.put(this._ServiceConfig.getUrl() + ServiceUtil
+        .getRestOfUrlRespectTokenMode(
+          this._objectName, restExtra,
+          this._ServiceConfig.getTokenMode(),
+          token
+        ) // + '?Authorization=' + this._ServiceConfig.getToken(restExtra.keyToken)
+        , value, options);
     }
-
-    return this._HttpClient.put(this._ServiceConfig.getUrl() + ServiceUtil
-      .getRestOfUrlRespectTokenMode(
-        this._objectName, restExtra,
-        this._ServiceConfig.getTokenMode(),
-        token
-      ) // + '?Authorization=' + this._ServiceConfig.getToken(restExtra.keyToken)
-      , value, options).pipe(map(res => res));
   }
 
   patchService(value: any, restExtra?: RestExtra): Observable<any> {
@@ -106,14 +130,22 @@ export class ServiceBase {
     };
     if (restExtra.responseAsBody === true) {
       this.addResponseAsBody(options);
+      return this._HttpClient.patch(this._ServiceConfig.getUrl() + ServiceUtil
+        .getRestOfUrlRespectTokenMode(
+          this._objectName, restExtra,
+          this._ServiceConfig.getTokenMode(),
+          token
+        ) // + '?Authorization=' + this._ServiceConfig.getToken(restExtra.keyToken)
+        , value, options).pipe(map(res => res));
+    } else {
+      return this._HttpClient.patch(this._ServiceConfig.getUrl() + ServiceUtil
+        .getRestOfUrlRespectTokenMode(
+          this._objectName, restExtra,
+          this._ServiceConfig.getTokenMode(),
+          token
+        ) // + '?Authorization=' + this._ServiceConfig.getToken(restExtra.keyToken)
+        , value, options);
     }
-    return this._HttpClient.patch(this._ServiceConfig.getUrl() + ServiceUtil
-      .getRestOfUrlRespectTokenMode(
-        this._objectName, restExtra,
-        this._ServiceConfig.getTokenMode(),
-        token
-      ) // + '?Authorization=' + this._ServiceConfig.getToken(restExtra.keyToken)
-      , value, options).pipe(map(res => res));
   }
 
   deleteService(restExtra: RestExtra): Observable<any> {
@@ -126,14 +158,22 @@ export class ServiceBase {
     };
     if (restExtra.responseAsBody === true) {
       this.addResponseAsBody(options);
+      return this._HttpClient.delete(this._ServiceConfig.getUrl() + ServiceUtil
+        .getRestOfUrlRespectTokenMode(
+          this._objectName, restExtra,
+          this._ServiceConfig.getTokenMode(),
+          token
+        ) // + '?Authorization=' + this._ServiceConfig.getToken(restExtra.keyToken)
+        , options).pipe(map(res => res));
+    } else {
+      return this._HttpClient.delete(this._ServiceConfig.getUrl() + ServiceUtil
+        .getRestOfUrlRespectTokenMode(
+          this._objectName, restExtra,
+          this._ServiceConfig.getTokenMode(),
+          token
+        ) // + '?Authorization=' + this._ServiceConfig.getToken(restExtra.keyToken)
+        , options);
     }
-    return this._HttpClient.delete(this._ServiceConfig.getUrl() + ServiceUtil
-      .getRestOfUrlRespectTokenMode(
-        this._objectName, restExtra,
-        this._ServiceConfig.getTokenMode(),
-        token
-      ) // + '?Authorization=' + this._ServiceConfig.getToken(restExtra.keyToken)
-      , options).pipe(map(res => res));
   }
 
   private resolveHeader(_ServiceConfig: ServiceConfig, restExtra: RestExtra, token: string) {

@@ -81,11 +81,11 @@ export abstract class BaseAnyComponentSeven<RouteParamClazz, QueryParamClazz> {
 
   abstract onReceiveRouteData(routeData: any);
 
-  getQueryParams() {
+  getQueryParams(): any {
     return this._ActivatedRoute.snapshot.queryParams;
   }
 
-  getUnFlatQueryParams(clazz, options?: UnFlatifyOptions) {
+  getUnFlatQueryParams(clazz, options?: UnFlatifyOptions): QueryParamClazz {
     return this.getUnFlatQueryParams2(clazz, null, options);
   }
 
@@ -98,19 +98,19 @@ export abstract class BaseAnyComponentSeven<RouteParamClazz, QueryParamClazz> {
   }
 
 
-  getRouteParams() {
+  getRouteParams(): any {
     return this._ActivatedRoute.snapshot.paramMap['params'];
   }
 
-  getUnFlatRouteParams(clazz, options?: UnFlatifyOptions) {
+  getUnFlatRouteParams(clazz, options?: UnFlatifyOptions): RouteParamClazz {
     return this.getUnFlatRouteParams2(clazz, null, options);
   }
 
   getUnFlatRouteParams2(clazz, sample, options?: UnFlatifyOptions) {
-    const convertCamelToLowerHyphen = this.getConvertCamelToLowerHyphen(options);
+    const convertCamelToLHyphen = this.getConvertCamelToLowerHyphen(options);
     return this.Toolkit2.ObjectUtil.unFlatify2(
       this._ActivatedRoute.snapshot.paramMap['params'], clazz, sample,
-      {convertCamelToLowerHyphen: convertCamelToLowerHyphen}
+      {convertCamelToLowerHyphen: convertCamelToLHyphen}
     );
   }
 
