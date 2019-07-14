@@ -34,21 +34,22 @@ export class ServiceBase {
     };
     if (restExtra.responseAsBody === true) {
       this.addResponseAsBody(options);
-      return this._HttpClient
-        .get(this._ServiceConfig.getUrl() +
-          ServiceUtil.getRestOfUrlRespectTokenMode(
-            this._objectName, restExtra,
-            this._ServiceConfig.getTokenMode(), token),
-          options)
-        .pipe(map(res => res));
-    } else {
-      return this._HttpClient
-        .get(this._ServiceConfig.getUrl() +
-          ServiceUtil.getRestOfUrlRespectTokenMode(
-            this._objectName, restExtra,
-            this._ServiceConfig.getTokenMode(), token),
-          options);
     }
+    return this._HttpClient
+      .get(this._ServiceConfig.getUrl() +
+        ServiceUtil.getRestOfUrlRespectTokenMode(
+          this._objectName, restExtra,
+          this._ServiceConfig.getTokenMode(), token),
+        options)
+      .pipe(map(res => res));
+    // } else {
+    //   return this._HttpClient
+    //     .get(this._ServiceConfig.getUrl() +
+    //       ServiceUtil.getRestOfUrlRespectTokenMode(
+    //         this._objectName, restExtra,
+    //         this._ServiceConfig.getTokenMode(), token),
+    //       options);
+    // }
   }
 
   postService(value: any, restExtra?: RestExtra): Observable<any> {
@@ -61,24 +62,25 @@ export class ServiceBase {
     };
     if (restExtra.responseAsBody === true) {
       this.addResponseAsBody(options);
-      return this._HttpClient.post(this._ServiceConfig.getUrl() + ServiceUtil
-        .getRestOfUrlRespectTokenMode(
-          this._objectName, restExtra,
-          this._ServiceConfig.getTokenMode(),
-          token
-        ) // + '?Authorization=' + this._ServiceConfig.getToken(restExtra.keyToken)
-        , value,
-        options).pipe(map(res => res));
-    } else {
-      return this._HttpClient.post(this._ServiceConfig.getUrl() + ServiceUtil
-        .getRestOfUrlRespectTokenMode(
-          this._objectName, restExtra,
-          this._ServiceConfig.getTokenMode(),
-          token
-        ) // + '?Authorization=' + this._ServiceConfig.getToken(restExtra.keyToken)
-        , value,
-        options);
     }
+    return this._HttpClient.post(this._ServiceConfig.getUrl() + ServiceUtil
+      .getRestOfUrlRespectTokenMode(
+        this._objectName, restExtra,
+        this._ServiceConfig.getTokenMode(),
+        token
+      ) // + '?Authorization=' + this._ServiceConfig.getToken(restExtra.keyToken)
+      , value,
+      options).pipe(map(res => res));
+    // } else {
+    //   return this._HttpClient.post(this._ServiceConfig.getUrl() + ServiceUtil
+    //     .getRestOfUrlRespectTokenMode(
+    //       this._objectName, restExtra,
+    //       this._ServiceConfig.getTokenMode(),
+    //       token
+    //     ) // + '?Authorization=' + this._ServiceConfig.getToken(restExtra.keyToken)
+    //     , value,
+    //     options);
+    // }
 
   }
 
@@ -101,22 +103,23 @@ export class ServiceBase {
     };
     if (restExtra.responseAsBody === true) {
       this.addResponseAsBody(options);
-      return this._HttpClient.put(this._ServiceConfig.getUrl() + ServiceUtil
-        .getRestOfUrlRespectTokenMode(
-          this._objectName, restExtra,
-          this._ServiceConfig.getTokenMode(),
-          token
-        ) // + '?Authorization=' + this._ServiceConfig.getToken(restExtra.keyToken)
-        , value, options).pipe(map(res => res));
-    } else {
-      return this._HttpClient.put(this._ServiceConfig.getUrl() + ServiceUtil
-        .getRestOfUrlRespectTokenMode(
-          this._objectName, restExtra,
-          this._ServiceConfig.getTokenMode(),
-          token
-        ) // + '?Authorization=' + this._ServiceConfig.getToken(restExtra.keyToken)
-        , value, options);
     }
+    return this._HttpClient.put(this._ServiceConfig.getUrl() + ServiceUtil
+      .getRestOfUrlRespectTokenMode(
+        this._objectName, restExtra,
+        this._ServiceConfig.getTokenMode(),
+        token
+      ) // + '?Authorization=' + this._ServiceConfig.getToken(restExtra.keyToken)
+      , value, options).pipe(map(res => res));
+    // } else {
+    //   return this._HttpClient.put(this._ServiceConfig.getUrl() + ServiceUtil
+    //     .getRestOfUrlRespectTokenMode(
+    //       this._objectName, restExtra,
+    //       this._ServiceConfig.getTokenMode(),
+    //       token
+    //     ) // + '?Authorization=' + this._ServiceConfig.getToken(restExtra.keyToken)
+    //     , value, options);
+    // }
   }
 
   patchService(value: any, restExtra?: RestExtra): Observable<any> {
@@ -130,22 +133,23 @@ export class ServiceBase {
     };
     if (restExtra.responseAsBody === true) {
       this.addResponseAsBody(options);
-      return this._HttpClient.patch(this._ServiceConfig.getUrl() + ServiceUtil
-        .getRestOfUrlRespectTokenMode(
-          this._objectName, restExtra,
-          this._ServiceConfig.getTokenMode(),
-          token
-        ) // + '?Authorization=' + this._ServiceConfig.getToken(restExtra.keyToken)
-        , value, options).pipe(map(res => res));
-    } else {
-      return this._HttpClient.patch(this._ServiceConfig.getUrl() + ServiceUtil
-        .getRestOfUrlRespectTokenMode(
-          this._objectName, restExtra,
-          this._ServiceConfig.getTokenMode(),
-          token
-        ) // + '?Authorization=' + this._ServiceConfig.getToken(restExtra.keyToken)
-        , value, options);
     }
+    return this._HttpClient.patch(this._ServiceConfig.getUrl() + ServiceUtil
+      .getRestOfUrlRespectTokenMode(
+        this._objectName, restExtra,
+        this._ServiceConfig.getTokenMode(),
+        token
+      ) // + '?Authorization=' + this._ServiceConfig.getToken(restExtra.keyToken)
+      , value, options).pipe(map(res => res));
+    // } else {
+    //   return this._HttpClient.patch(this._ServiceConfig.getUrl() + ServiceUtil
+    //     .getRestOfUrlRespectTokenMode(
+    //       this._objectName, restExtra,
+    //       this._ServiceConfig.getTokenMode(),
+    //       token
+    //     ) // + '?Authorization=' + this._ServiceConfig.getToken(restExtra.keyToken)
+    //     , value, options);
+    // }
   }
 
   deleteService(restExtra: RestExtra): Observable<any> {
@@ -158,22 +162,23 @@ export class ServiceBase {
     };
     if (restExtra.responseAsBody === true) {
       this.addResponseAsBody(options);
-      return this._HttpClient.delete(this._ServiceConfig.getUrl() + ServiceUtil
-        .getRestOfUrlRespectTokenMode(
-          this._objectName, restExtra,
-          this._ServiceConfig.getTokenMode(),
-          token
-        ) // + '?Authorization=' + this._ServiceConfig.getToken(restExtra.keyToken)
-        , options).pipe(map(res => res));
-    } else {
-      return this._HttpClient.delete(this._ServiceConfig.getUrl() + ServiceUtil
-        .getRestOfUrlRespectTokenMode(
-          this._objectName, restExtra,
-          this._ServiceConfig.getTokenMode(),
-          token
-        ) // + '?Authorization=' + this._ServiceConfig.getToken(restExtra.keyToken)
-        , options);
     }
+    return this._HttpClient.delete(this._ServiceConfig.getUrl() + ServiceUtil
+      .getRestOfUrlRespectTokenMode(
+        this._objectName, restExtra,
+        this._ServiceConfig.getTokenMode(),
+        token
+      ) // + '?Authorization=' + this._ServiceConfig.getToken(restExtra.keyToken)
+      , options).pipe(map(res => res));
+    // } else {
+    //   return this._HttpClient.delete(this._ServiceConfig.getUrl() + ServiceUtil
+    //     .getRestOfUrlRespectTokenMode(
+    //       this._objectName, restExtra,
+    //       this._ServiceConfig.getTokenMode(),
+    //       token
+    //     ) // + '?Authorization=' + this._ServiceConfig.getToken(restExtra.keyToken)
+    //     , options);
+    // }
   }
 
   private resolveHeader(_ServiceConfig: ServiceConfig, restExtra: RestExtra, token: string) {
