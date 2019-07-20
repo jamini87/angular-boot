@@ -10,7 +10,7 @@ import {BaseAnyComponentSeven} from './base-any-component-seven';
 export abstract class BaseListComponentSeven<RouteParamClazz, QueryParamClazz extends ListQueryParam,
   ComponentDataClazz extends ListComponentData<T, RouteParamClazz, QueryParamClazz>, T>
   extends BaseAnyComponentSeven<RouteParamClazz, QueryParamClazz> implements OnChanges {
-  componentData: ComponentDataClazz;
+
   protected firstOnThisRoute: boolean;
 
   constructor(protected activatedRoute: ActivatedRoute,
@@ -26,7 +26,7 @@ export abstract class BaseListComponentSeven<RouteParamClazz, QueryParamClazz ex
 
   // @Input() public getListOnCallback: Function;
   abstract getListOnCallback(): Function;
-
+  abstract getComponentData(): ComponentDataClazz;
   protected _listMode: ListMode;
   get listMode() {
     return this._listMode;
@@ -71,9 +71,9 @@ export abstract class BaseListComponentSeven<RouteParamClazz, QueryParamClazz ex
   @Input()
   set itemPage(val) {
     console.log('itemPage---------------->', val);
-    this.componentData.itemPage = val;
+    this.getComponentData().itemPage = val;
     if (this.listMode === ListMode.CHOOSE_MULTI) {
-      this.componentData.itemPage.content.forEach((item, i) => {
+      this.getComponentData().itemPage.content.forEach((item, i) => {
         if (!isNullOrUndefined(this.selectedList)) {
           if (this.selectedList.includes(item)) {
             item['selected'] = true;
@@ -110,8 +110,8 @@ export abstract class BaseListComponentSeven<RouteParamClazz, QueryParamClazz ex
   }
 
   getList(optionsOfGetList?: any) {
-    this.componentData.itemPage = new PageContainer();
-    console.log(this.componentData.itemPage);
+    this.getComponentData().itemPage = new PageContainer();
+    console.log(this.getComponentData().itemPage);
     if (isNullOrUndefined(this.getListOnCallback())) {
       this.getListSelf(optionsOfGetList);
     } else {
@@ -125,60 +125,60 @@ export abstract class BaseListComponentSeven<RouteParamClazz, QueryParamClazz ex
   protected abstract _setToQueryParams(queryParam);
 
   onChangeSize(event) {
-    this.componentData.queryParam.paging.size = event.target.value;
-    this.componentData.queryParam.paging.page = 0;
-    this._setToQueryParams(this.componentData.queryParam);
+    this.getComponentData().queryParam.paging.size = event.target.value;
+    this.getComponentData().queryParam.paging.page = 0;
+    this._setToQueryParams(this.getComponentData().queryParam);
   }
 
   initiatePagination(value?: { page?: number, size?: number, indicatorCount?: number }) {
-    this.componentData.queryParam.paging.page =
-      this.componentData.queryParamReal.paging.page ||
+    this.getComponentData().queryParam.paging.page =
+      this.getComponentData().queryParamReal.paging.page ||
       !isNullOrUndefined(value) && !isNullOrUndefined(value.page) ? value.page : 0;
-    this.componentData.queryParam.paging.size =
-      this.componentData.queryParamReal.paging.size ||
+    this.getComponentData().queryParam.paging.size =
+      this.getComponentData().queryParamReal.paging.size ||
       !isNullOrUndefined(value) && !isNullOrUndefined(value.size) ? value.size : 5;
-    this.componentData.indicatorCount =
+    this.getComponentData().indicatorCount =
       !isNullOrUndefined(value) && !isNullOrUndefined(value.page) ? value.indicatorCount : 5;
   }
 
   resetPagination(value?: { page?: number, size?: number, indicatorCount?: number }) {
-    this.componentData.queryParam.paging.page =
+    this.getComponentData().queryParam.paging.page =
       !isNullOrUndefined(value) && !isNullOrUndefined(value.page) ? value.page : 0;
-    this.componentData.queryParam.paging.size =
+    this.getComponentData().queryParam.paging.size =
       !isNullOrUndefined(value) && !isNullOrUndefined(value.size) ? value.size : 5;
-    this.componentData.indicatorCount =
+    this.getComponentData().indicatorCount =
       !isNullOrUndefined(value) && !isNullOrUndefined(value.page) ? value.indicatorCount : 5;
   }
 
   setCurrentPage(page) {
-    if (this.componentData.queryParamReal.paging.page !== page) {
-      this.componentData.queryParam.paging.page = page;
-      this._setToQueryParams(this.componentData.queryParam);
+    if (this.getComponentData().queryParamReal.paging.page !== page) {
+      this.getComponentData().queryParam.paging.page = page;
+      this._setToQueryParams(this.getComponentData().queryParam);
     }
   }
 
   hardChangeQueryParamReal(queryParam: QueryParamClazz) {
-    this.componentData.queryParamReal = JSON.parse(JSON.stringify(queryParam));
+    this.getComponentData().queryParamReal = JSON.parse(JSON.stringify(queryParam));
   }
 
   hardSyncQueryParamReal() {
-    this.componentData.queryParamReal = JSON.parse(JSON.stringify(this.componentData.queryParam));
+    this.getComponentData().queryParamReal = JSON.parse(JSON.stringify(this.getComponentData().queryParam));
   }
 
   defaultOnReceiveQueryParam(queryParam: any, optionsOfGetList?: any): any {
-    if (this.componentData.queryParamReal.paging.page !== queryParam.paging.page ||
-      this.componentData.queryParamReal.paging.size !== queryParam.paging.size) {
+    if (this.getComponentData().queryParamReal.paging.page !== queryParam.paging.page ||
+      this.getComponentData().queryParamReal.paging.size !== queryParam.paging.size) {
       if (this.firstOnThisRoute === false) {
         if (!isNullOrUndefined(queryParam.paging.page)) {
-          this.componentData.queryParamReal.paging = JSON.parse(JSON.stringify(queryParam.paging));
+          this.getComponentData().queryParamReal.paging = JSON.parse(JSON.stringify(queryParam.paging));
         }
         this.getList(optionsOfGetList);
       } else {
         this.firstOnThisRoute = false;
       }
     }
-    if (this.componentData.queryParamReal.itemId !== queryParam.itemId) {
-      this.componentData.queryParamReal.itemId = queryParam.itemId;
+    if (this.getComponentData().queryParamReal.itemId !== queryParam.itemId) {
+      this.getComponentData().queryParamReal.itemId = queryParam.itemId;
     }
   }
 
@@ -216,11 +216,11 @@ export abstract class BaseListComponentSeven<RouteParamClazz, QueryParamClazz ex
   }
 
   protected processPage(optionsOfGetList?: any) {
-    if (this.componentData.itemPage.content.length <= 0) {
-      if (this.componentData.itemPage.last) {
-        if (this.componentData.queryParamReal.paging.page > 0) {
-          this.componentData.queryParam.paging.page--;
-          this._setToQueryParams(this.componentData.queryParam);
+    if (this.getComponentData().itemPage.content.length <= 0) {
+      if (this.getComponentData().itemPage.last) {
+        if (this.getComponentData().queryParamReal.paging.page > 0) {
+          this.getComponentData().queryParam.paging.page--;
+          this._setToQueryParams(this.getComponentData().queryParam);
         }
       } else {
         this.getList(optionsOfGetList);

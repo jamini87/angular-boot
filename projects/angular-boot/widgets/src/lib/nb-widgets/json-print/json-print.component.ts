@@ -6,14 +6,18 @@ import {isNullOrUndefined} from 'util';
 
 @Component({
   selector: 'nbw-json-print',
-  template: '<div #jsonPrintDiv></div>',
+  template: '<div>' +
+    '<pre #jsonPrintPre></pre>' +
+    '</div>',
   styleUrls: ['./json-print.component.scss'],
   encapsulation: ViewEncapsulation.Native
 })
 export class JsonPrintComponent implements OnInit, OnChanges {
   @Input() json_In;
-  @ViewChild('jsonPrintDiv') jsonPrintDiv;
-  constructor() { }
+  @ViewChild('jsonPrintPre') jsonPrintPre;
+
+  constructor() {
+  }
 
   ngOnInit() {
   }
@@ -25,10 +29,11 @@ export class JsonPrintComponent implements OnInit, OnChanges {
   }
 
   output(inp) {
-    this.jsonPrintDiv.nativeElement.appendChild(
-      document.createElement('pre')
-        // .setAttribute('width', '60')
-    ).innerHTML = inp;
+    // this.jsonPrintDiv.nativeElement.appendChild(
+    //   document.createElement('pre')
+    //   // .setAttribute('width', '60')
+    // ).innerHTML = inp;
+    this.jsonPrintPre.nativeElement.innerHTML = inp;
   }
 
   syntaxHighlight(json) {
