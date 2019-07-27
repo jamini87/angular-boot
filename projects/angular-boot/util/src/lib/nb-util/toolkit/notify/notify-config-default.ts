@@ -25,7 +25,7 @@ export default{
     },
     offset: 35,
     spacing: 10,
-    z_index: 1031,
+    z_index: 10000,
     delay: 4000,
     timer: 1000,
     url_target: null, // eg '_blank'
