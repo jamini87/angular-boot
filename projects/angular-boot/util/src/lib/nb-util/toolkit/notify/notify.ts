@@ -5,6 +5,7 @@ import {NotifyType} from './notify-type';
 import {NotifyPlacement} from './notify-placement';
 import {NotifyConfig} from './notify-config';
 import {TEMPLATES} from './templates/template.enums';
+import {isNullOrUndefined} from 'util';
 
 declare const $: any;
 
@@ -22,11 +23,19 @@ export class Notify {
   public static Type = NotifyType;
   public static TEMPLATES = TEMPLATES;
 
-  public static showNotify(notifyConfig: NotifyConfig) {
+  public static showNotify(notifyConfig: NotifyConfig, selector?: string) {
     // $.notify(notifyConfig.options, notifyConfig.settings);
-    $.notify(
-      notifyConfig.options,
-      notifyConfig.settings
+    if (isNullOrUndefined(selector)) {
+      $.notify(
+        notifyConfig.options,
+        notifyConfig.settings
       );
+    } else {
+      $(selector).notify(
+        notifyConfig.options,
+        notifyConfig.settings
+      );
+    }
+
   }
 }
