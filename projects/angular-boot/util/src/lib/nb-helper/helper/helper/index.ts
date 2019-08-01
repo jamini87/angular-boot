@@ -7,3 +7,4 @@ export * from './order-type';
 export * from './page-container';
 export * from './pick-for-dest';
 export * from './read-mode.enum';
+export * from './id-object';
