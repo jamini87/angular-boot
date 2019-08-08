@@ -23,6 +23,7 @@ import {FileUtil as _FileUtil} from './file-util';
 import {Spesific as _Spesific} from './spesific';
 import {WindowMediaUtil as _WindowMediaUtil} from './window-media-util';
 import {ArrayUtil as _ArrayUtil} from './array-util';
+import {DomUtil as _DomUtil} from './dom-util';
 
 export namespace Toolkit2 {
   export const Notify = _Notify;
@@ -47,4 +48,5 @@ export namespace Toolkit2 {
   export const Spesific = _Spesific;
   export const WindowMediaUtil = _WindowMediaUtil;
   export const ArrayUtil = _ArrayUtil;
+  export const DomUtil = _DomUtil;
 }
