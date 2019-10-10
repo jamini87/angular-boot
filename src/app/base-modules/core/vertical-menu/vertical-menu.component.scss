@@ -1,0 +1,124 @@
+@import "../utils/variables";
+a, a:hover, a:focus {
+  color: $black;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+ul.components {
+  padding: 20px 0;
+  border-top: 1px solid $ul-components_border-bottom_back-color;
+  border-bottom: 1px solid $ul-components_border-bottom_back-color;
+}
+
+ul.separator {
+  border-bottom: 1px solid $black;
+}
+
+ul p {
+  color: $white;
+  padding: 10px;
+}
+
+ul li a {
+  padding: 10px;
+  font-size: 1.1em;
+  display: block;
+}
+
+ul li a:hover {
+  color: $hover-color;
+  background: $white;
+}
+
+ul li a:hover {
+  color: $gray-400;
+}
+
+ul li.active > a, a[aria-expanded="true"] {
+  color: $white;
+  background: $lighter-back-color;
+}
+
+ul li.active > a, a[aria-expanded="true"] {
+  //background: $lighter-back-color;
+  background: rgba(108, 100, 97, 0.35);
+  //text-outline: white 1px;
+
+}
+
+@mixin outline-text($outline-color) {
+  text-shadow: -1px -1px 0 $outline-color,
+  1px -1px 0 $outline-color,
+  -1px 1px 0 $outline-color,
+  1px 1px 0 $outline-color;
+}
+
+.profile-text {
+  color: $black !important;
+  font-weight: bold;
+  @include outline-text(white);
+}
+
+a[data-toggle="collapse"] {
+  position: relative;
+}
+
+.dropdown-toggle::after {
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+}
+
+ul ul a {
+  font-size: 0.9em !important;
+  padding-left: 30px !important;
+  background: $lighter-back-color;
+}
+
+ul ul a.profile {
+  font-size: 0.9em !important;
+  padding-left: 30px !important;
+  background: transparent;
+}
+
+ul li.profile {
+  background: repeating-linear-gradient(
+      45deg,
+      rgba(0, 0, 0, 0.1),
+      rgba(0, 0, 0, 0.1) 10px,
+      rgba(0, 0, 0, 0.2) 10px,
+      rgba(0, 0, 0, 0.2) 20px
+  );
+  //background: repeating-radial-gradient(
+  //    circle,
+  //    purple,
+  //    purple 10px,
+  //    #4b026f 10px,
+  //    #4b026f 20px
+  //);
+}
+
+ul.CTAs {
+  padding: 20px;
+}
+
+ul.CTAs a {
+  text-align: center;
+  font-size: 0.9em !important;
+  display: block;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+a.download {
+  background: $white;
+  color: $hover-color;
+}
+
+a.article, a.article:hover {
+  background: $lighter-back-color !important;
+  color: $white !important;
+}

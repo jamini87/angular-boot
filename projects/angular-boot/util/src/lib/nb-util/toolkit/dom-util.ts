@@ -12,7 +12,7 @@ export class DomUtil {
   }
 
 
-  public static insertIntoElement(selector: string, resText, textToInsert, options?: { addSpaceAfter: boolean }) {
+  public static insertTextIntoElement(selector: string, resText, textToInsert, options?: { addSpaceAfter: boolean }) {
     $(selector).val(resText);
     if (options.addSpaceAfter === true) {
       DomUtil.typeInElement($(selector), textToInsert + ' ');

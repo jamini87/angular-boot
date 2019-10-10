@@ -1,0 +1,46 @@
+.rtl-content {
+  text-align: right;
+  direction: rtl;
+}
+
+.ltr-content {
+  text-align: left;
+  direction: ltr;
+}
+//.cursor-pointer {
+//  cursor: pointer !important;
+//}
+
+.fit-content {
+  width: fit-content !important;
+}
+
+
+@mixin rotate-content($degree) {
+  -webkit-transform: rotate($degree);
+  -moz-transform: rotate($degree);
+  -o-transform: rotate($degree);
+  -ms-transform: rotate($degree);
+  transform: rotate($degree);
+}
+
+.rotate-90 {
+  @include rotate-content(-90deg);
+}
+
+.rotate-180 {
+  @include rotate-content(-180deg);
+}
+
+.rotate-270 {
+  @include rotate-content(-270deg);
+}
+
+.gray-disabled {
+  pointer-events: none;
+  opacity: 0.6;
+  -webkit-filter: grayscale(60%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(60%);
+}
+
+

@@ -1,0 +1,21 @@
+<div id="main-wrapper" class="defaultdark">
+  <div class="wrapper">
+    <app-sidebar></app-sidebar>
+    <div id="container">
+      <div id="header">
+        <app-header2></app-header2>
+      </div>
+      <!--<ng-scrollbar class="scroll-frame"-->
+      <!--barClass="scrollbar"-->
+      <!--shown='hover'-->
+      <!--compact="true"-->
+      <!--thumbClass="scroll-thumb">-->
+      <div id="content" class="container-fluid p-3" style="background-color: #f2f3f4">
+        <div class="bg-light p-2">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+      <!--</ng-scrollbar>-->
+    </div>
+  </div>
+</div>

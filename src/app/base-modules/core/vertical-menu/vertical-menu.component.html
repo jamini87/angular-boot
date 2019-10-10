@@ -1,0 +1,146 @@
+<ng-scrollbar class="scroll-frame"
+              barClass="scrollbar"
+              visibility="hover"
+              thumbClass="scroll-thumb">
+  <ul class="list-unstyled components">
+    <!--<p class="logoTitle" style="margin-top: 10px;">سامانه مدیریت فرایند سایار</p>-->
+    <li>
+      <a href="#systemManagement" data-toggle="collapse" aria-expanded="false"
+         class="dropdown-toggle"><span>Widgets</span></a>
+      <!--<ul class="collapse list-unstyled" id="systemManagement">--> <!-- collapse means: menu not expanded -->
+      <ul class="show list-unstyled" id="systemManagement"> <!-- show means    : menu expanded     -->
+        <li>
+          <a [routerLink]="['/panel/widgets/auto-search-input']">
+            <span>Auto Search Input</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a href="#baseInfoSubmenu" data-toggle="collapse" aria-expanded="false"
+         class="dropdown-toggle"><span>اطلاعات پایه</span></a>
+      <ul class="show list-unstyled" id="baseInfoSubmenu">
+
+        <li>
+          <a [routerLink]="['/panel/orgChart']">
+            <span>چارت سازمانی</span>
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/panel/activity']">
+            <span>روند</span>
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/panel/activityProsessing']">
+            <span>برنامه ها(کابر)</span>
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/panel/activityHistory']">
+            <span>تعیین وضعیت برنامه(کارمند)</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a href="#formManagement" data-toggle="collapse" aria-expanded="false"
+         class="dropdown-toggle"><span>مدیریت فرم‌ها</span></a>
+      <!--<ul class="collapse list-unstyled" id="systemManagement">--> <!-- collapse means: menu not expanded -->
+      <ul class="show list-unstyled" id="formManagement"> <!-- show means    : menu expanded     -->
+        <li class="cursor-pointer">
+          <a [routerLink]="'/panel/form'">
+            <span style="color: #000;">ساخت فرم</span>
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/panel/form-list']">
+            <span>لیست فرم‌ها</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a href="#baseInfoSubmenu2" data-toggle="collapse" aria-expanded="false"
+         class="dropdown-toggle"><span>اسناد</span></a>
+      <ul class="show list-unstyled" id="baseInfoSubmenu2">
+        <!--<li>-->
+        <!--<a [routerLink]="['/panel/accountsBase']">-->
+        <!--<span>حساب ها</span>-->
+        <!--</a>-->
+        <!--</li>-->
+        <li>
+          <a [routerLink]="['/panel/managementUsers']">
+            <span> مدیریت افراد</span>
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/panel/managementUsers']">
+            <span> مدیریت افراد</span>
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/panel/managementUsers']">
+            <span> مدیریت افراد</span>
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/panel/managementUsers']">
+            <span> مدیریت افراد</span>
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/panel/managementUsers']">
+            <span> مدیریت افراد</span>
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/panel/managementUsers']">
+            <span> مدیریت افراد</span>
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/panel/managementUsers']">
+            <span> مدیریت افراد</span>
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/panel/managementUsers']">
+            <span> مدیریت افراد</span>
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/panel/managementUsers']">
+            <span> مدیریت افراد</span>
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/panel/managementUsers']">
+            <span> مدیریت افراد</span>
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/panel/managementUsers']">
+            <span> مدیریت افراد</span>
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/panel/managementUsers']">
+            <span> مدیریت افراد</span>
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/panel/managementUsers']">
+            <span> مدیریت افراد</span>
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/panel/managementUsers']">
+            <span> آخرین مدیریت افراد</span>
+          </a>
+        </li>
+
+      </ul>
+    </li>
+  </ul>
+</ng-scrollbar>

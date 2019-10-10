@@ -1,0 +1,17 @@
+<nbw-auto-search-input [cssClass]="'form-control'"
+                       placeholder="Type to search..."
+                       [(ngModel)]="termForSearch"
+                       style="height: 25px!important;width: 250px"
+                       (currentValue)="tableFilter($event)">
+
+</nbw-auto-search-input>
+<div class="form-group row">
+  <label for="result" class="col-sm-2 col-form-label">Result: </label>
+  <div class="col-sm-10">
+    <div class="form-group" dir="ltr">
+      <span id="result" class="form-control-plaintext">
+            {{result}}
+          </span>
+    </div>
+  </div>
+</div>

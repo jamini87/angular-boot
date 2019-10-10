@@ -1,0 +1,16 @@
+.changed-row {
+  animation-duration: 2s;
+  //animation-iteration-count: infinite;
+  animation-name: animation-colors;
+  animation-timing-function: linear;
+}
+
+
+@keyframes animation-colors {
+  0% {
+    background-color: green;
+  }
+  100% {
+    background-color: transparent;
+  }
+}

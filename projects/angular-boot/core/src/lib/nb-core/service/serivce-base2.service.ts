@@ -64,14 +64,18 @@ export class ServiceBase2 extends ServiceBase {
 
   private resolveRestExtra(restExtra?: RestExtra) {
     if (isNullOrUndefined(restExtra)) {
-      return this.handleRestServiceErrorPolicy(this.handleRestServiceResultPolicy(new RestExtra({})));
+      restExtra = this.handleRestServiceErrorPolicy(this.handleRestServiceResultPolicy(new RestExtra({})));
     } else {
       if (JSON.stringify(restExtra.urlQueryObject) != '{}' &&
         !isNullOrUndefined(restExtra.urlQueryObject)) {
         restExtra.urlQuery = ServiceUtil.objectToQueryString2(restExtra.urlQueryObject);
       }
-      return new RestExtra(this.handleRestServiceErrorPolicy(this.handleRestServiceResultPolicy(restExtra)));
+      restExtra = new RestExtra(this.handleRestServiceErrorPolicy(this.handleRestServiceResultPolicy(restExtra)));
     }
+    if (isNullOrUndefined(restExtra.objectPrefix) || restExtra.objectPrefix === '') {
+      restExtra.objectPrefix = this.getPrefix({});
+    }
+    return restExtra;
   }
 
   private handleResult(restExtra, res) {
@@ -195,7 +199,6 @@ export class ServiceBase2 extends ServiceBase {
     });
     return ret.asObservable();
   }
-
 
 
   patchService(value: any, restExtra?: RestExtra): Observable<any> {

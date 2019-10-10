@@ -2,6 +2,7 @@
 
 # compiled output
 /dist
+/npm-pack-result/libs/angular-boot
 /tmp
 /out-tsc
 # Only exists if Bazel was run

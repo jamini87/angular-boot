@@ -1,0 +1,4 @@
+:host-context(html[dir="rtl"]) .dropdown-toggle::after {
+  right: auto;
+  left: 20px;
+}

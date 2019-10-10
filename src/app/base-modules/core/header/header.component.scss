@@ -1,0 +1,99 @@
+//@import "../utils/variables";
+//.navbar {
+//  padding: 10px 7px;
+//  background-color: $back-color !important;
+//  border: none;
+//  border-radius: 0;
+//  margin-bottom: 2px;
+//  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+//}
+//
+//.navbar-btn {
+//  box-shadow: none;
+//  outline: none !important;
+//  border: none;
+//}
+//
+//.logoTitle {
+//  color: $foreground-color !important;
+//}
+//
+//#sidebarCollapse {
+//  width: 35px;
+//  height: 35px;
+//  background: $lighter-back-color;
+//  cursor: pointer;
+//}
+//
+//#sidebarCollapse span {
+//  width: 80%;
+//  height: 2px;
+//  margin: 0 auto;
+//  display: block;
+//  background: $foreground-color;
+//  transition: all 0.8s cubic-bezier(0.810, -0.330, 0.345, 1.375);
+//  transition-delay: 0.2s;
+//}
+//
+//#sidebarCollapse span:first-of-type {
+//  transform: rotate(45deg) translate(2px, 2px);
+//}
+//#sidebarCollapse span:nth-of-type(2) {
+//  opacity: 0;
+//}
+//#sidebarCollapse span:last-of-type {
+//  transform: rotate(-45deg) translate(1px, -1px);
+//}
+//
+//
+//#sidebarCollapse.active span {
+//  transform: none;
+//  opacity: 1;
+//  margin: 5px auto;
+//}
+//
+//
+///* ---------------------------------------------------
+//    MEDIAQUERIES
+//----------------------------------------------------- */
+//@media (max-width: 768px) {
+//  #sidebarCollapse span:first-of-type,
+//  #sidebarCollapse span:nth-of-type(2),
+//  #sidebarCollapse span:last-of-type {
+//    transform: none;
+//    opacity: 1;
+//    margin: 5px auto;
+//  }
+//  #sidebarCollapse.active span {
+//    margin: 0 auto;
+//  }
+//  #sidebarCollapse.active span:first-of-type {
+//    transform: rotate(45deg) translate(2px, 2px);
+//  }
+//  #sidebarCollapse.active span:nth-of-type(2) {
+//    opacity: 0;
+//  }
+//  #sidebarCollapse.active span:last-of-type {
+//    transform: rotate(-45deg) translate(1px, -1px);
+//  }
+//}
+
+
+.defaultdark .topbar {
+  background: #fff;
+}
+
+.topbar {
+  z-index: 50;
+  box-shadow: 0 1px 5px rgba(0,0,0,.05);
+}
+
+i {
+  color: white!important;
+  cursor:pointer;
+}
+
+.highlighted-item {
+  margin-left: 20px;
+  background-color: rgba(150,150,150,0.04)
+}

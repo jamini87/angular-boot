@@ -1,0 +1,7 @@
+:host-context(html[dir="ltr"]) #navbar-nav {
+  margin-left: auto !important;
+}
+
+:host-context(html[dir="rtl"]) #navbar-nav {
+  margin-right: auto !important;
+}

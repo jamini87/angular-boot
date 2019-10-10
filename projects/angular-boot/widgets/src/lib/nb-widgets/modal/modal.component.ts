@@ -47,6 +47,7 @@ export class ModalComponent implements OnInit, OnChanges, AfterViewInit, OnDestr
   @Input() dataBackdrop = true;
   @Input() displayBackdrop = true;
   @Input() scrollLargeContents = true;
+  @Input() modalDialogCentered = false;
   @Input() removeFromDomOnHide: boolean;
   @Input() appendToBodyOnShow: boolean;
   @Output() onClose: EventEmitter<boolean> = new EventEmitter<boolean>();

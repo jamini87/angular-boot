@@ -43,12 +43,25 @@ export class AutoSearchInputComponent implements OnInit, AfterViewInit {
 
   inputHandle() {
     const input = document.getElementById(this.myId);
-    const example = fromEvent(input, 'keyup')
+
+
+    const example1 = fromEvent(input, 'keyup')
       .pipe(map(i => i.currentTarget['value']));
-    const debouncedInput = example.pipe(debounceTime(this.debounceTime));
-    const subscribe = debouncedInput.subscribe(val => {
+    const example2 = fromEvent(input, 'paste')
+      .pipe(map(i => i.currentTarget['value']));
+    const debouncedInputOnKeyup = example1.pipe(debounceTime(this.debounceTime));
+    const debouncedInputOnPaste = example2.pipe(debounceTime(this.debounceTime));
+    const subscribe1 = debouncedInputOnKeyup.subscribe(val => {
       // console.log(`Debounced Input: ${val}`);
       this.currentValue.emit(val);
+    });
+
+    const subscribe2 = debouncedInputOnPaste.subscribe(val => {
+      // console.log(`Debounced Input: ${val}`);
+      // alert(2 + '  ' + val);
+      setTimeout(() => {
+        this.currentValue.emit(this.value);
+      }, 10);
     });
   }
 

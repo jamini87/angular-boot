@@ -1,0 +1,26 @@
+@font-face {
+  font-family: IRANSansWeb;
+  font-style: normal;
+  font-weight: normal;
+  src: url('/assets/fonts/iransans/IRANSansWeb.eot');
+  src: url('/assets/fonts/iransans/IRANSansWeb.eot?#iefix') format('embedded-opentype'),
+  url('/assets/fonts/iransans/IRANSansWeb.woff2') format('woff2'),
+  url('/assets/fonts/iransans/IRANSansWeb.woff') format('woff'),
+  url('/assets/fonts/iransans/IRANSansWeb.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: yekanweb;
+  font-style: normal;
+  font-weight: normal;
+  src: url('/assets/fonts/yekan/yekanweb-regular.eot') format("embedded-opentype"),
+  url('/assets/fonts/yekan/yekanweb-regular.woff') format("woff"),
+  url('/assets/fonts/yekan/yekanweb-regular.ttf') format("truetype"),
+  url('/assets/fonts/yekan/yekanweb-regular.svg') format("svg");
+}
+
+body, div, table, label, button, span, a, p, legend, input, strong,
+h1, h2, h3, h4, h5, h6 {
+  font-family: IRANSansWeb !important;
+  text-decoration: none;
+}

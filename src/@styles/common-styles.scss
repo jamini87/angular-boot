@@ -1,0 +1,11 @@
+html, body {
+  overflow-y: hidden !important;
+  height: 100% !important;
+  background-color: rgba(246, 246, 246, 1)!important;
+}
+
+div, table, label, button, span, a, p, legend, input {
+  //text-align: right !important;
+  // direction: rtl !important;
+  text-decoration: none;
+}

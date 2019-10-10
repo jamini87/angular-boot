@@ -1,0 +1,15 @@
+// Global
+html[dir="rtl"] body,
+html[dir="rtl"] table,
+html[dir="rtl"] label,
+html[dir="rtl"] button,
+html[dir="rtl"] span,
+html[dir="rtl"] a,
+html[dir="rtl"] p,
+html[dir="rtl"] legend,
+html[dir="rtl"] input
+{
+  text-align: right;
+  direction: rtl;
+}
+//  Bootstrap 4

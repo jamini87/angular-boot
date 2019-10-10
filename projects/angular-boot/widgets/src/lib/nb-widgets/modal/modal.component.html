@@ -7,7 +7,8 @@
      aria-labelledby="myLargeModalLabel"
      aria-hidden="true"
      [attr.data-backdrop]="dataBackdrop">
-  <div class="modal-dialog modal-dialog-centered"
+  <div class="modal-dialog"
+       [class.modal-dialog-centered]="modalDialogCentered"
        [class.modal-dialog-scrollable]="scrollLargeContents"
        [class.modal-dialog-full]="modalSize === MyModalSize.FULL_SCREEN"
        [ngClass]="myModalSizeClass" [ngStyle]="
