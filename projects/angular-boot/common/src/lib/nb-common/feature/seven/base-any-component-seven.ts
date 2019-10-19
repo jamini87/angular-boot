@@ -4,9 +4,9 @@
 import {Toolkit2, UnFlatifyOptions} from '@angular-boot/util';
 import {ActivatedRoute, Router} from '@angular/router';
 import {isNullOrUndefined} from 'util';
-import {ActionMode} from '@angular-boot/util';
+import {ComponentCanDeactivate, FormCanDeactivate} from '../../routing';
 
-export abstract class BaseAnyComponentSeven<RouteParamClazz, QueryParamClazz> {
+export abstract class BaseAnyComponentSeven<RouteParamClazz, QueryParamClazz> extends ComponentCanDeactivate{
   Toolkit2 = Toolkit2;
   queryParamClazz: QueryParamClazz;
   routeParamClazz: RouteParamClazz;
@@ -18,11 +18,13 @@ export abstract class BaseAnyComponentSeven<RouteParamClazz, QueryParamClazz> {
               protected _Router: Router,
               routeParamClazzType: (new () => RouteParamClazz),
               queryParamClazzType: (new () => QueryParamClazz)) {
+    super();
     this.routeParamClazz = new routeParamClazzType;
     this.queryParamClazz = new queryParamClazzType;
 
   }
 
+  abstract canDeactivate(): boolean;
   receiveData() {
     // this.route.params
     //   .subscribe((params: Params) => {
@@ -90,10 +92,10 @@ export abstract class BaseAnyComponentSeven<RouteParamClazz, QueryParamClazz> {
   }
 
   getUnFlatQueryParams2(clazz, sample, options?: UnFlatifyOptions) {
-    const convertCamelToLowerHyphen = this.getConvertCamelToLowerHyphen(options);
+    const convertCamelToLowerHyphen1 = this.getConvertCamelToLowerHyphen(options);
     return this.Toolkit2.ObjectUtil.unFlatify2(
       this._ActivatedRoute.snapshot.queryParams, clazz, sample,
-      {convertCamelToLowerHyphen: convertCamelToLowerHyphen}
+      {convertCamelToLowerHyphen: convertCamelToLowerHyphen1}
     );
   }
 

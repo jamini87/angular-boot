@@ -6,12 +6,13 @@ import {ActionMode} from '@angular-boot/util';
 import {ActivatedRoute} from '@angular/router';
 import {isNullOrUndefined} from "util";
 import {ModelContainer} from '../shared/model-container';
+import {ComponentCanDeactivate} from "../../routing";
 
-export abstract class BaseComponentSeven {
+export abstract class BaseComponentSeven extends ComponentCanDeactivate{
   Toolkit2 = Toolkit2;
   ActionMode = ActionMode;
   constructor(protected _ActivatedRoute: ActivatedRoute) {
-
+    super();
   }
   receiveData() {
     this._ActivatedRoute.data

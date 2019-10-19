@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 
 import {HttpClientModule} from '@angular/common/http';
 import {AngularBootBaseModule} from './_base/angular-boot/angular-boot-base.module';
+import {CanDeactivateGuard} from "../../projects/angular-boot/common/src/lib/nb-common/routing";
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import {AngularBootBaseModule} from './_base/angular-boot/angular-boot-base.modu
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [CanDeactivateGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -5,10 +5,10 @@
   <ul class="list-unstyled components">
     <!--<p class="logoTitle" style="margin-top: 10px;">سامانه مدیریت فرایند سایار</p>-->
     <li>
-      <a href="#systemManagement" data-toggle="collapse" aria-expanded="false"
+      <a href="#widgets" data-toggle="collapse" aria-expanded="false"
          class="dropdown-toggle"><span>Widgets</span></a>
-      <!--<ul class="collapse list-unstyled" id="systemManagement">--> <!-- collapse means: menu not expanded -->
-      <ul class="show list-unstyled" id="systemManagement"> <!-- show means    : menu expanded     -->
+      <!--<ul class="collapse list-unstyled" id="widgets">--> <!-- collapse means: menu not expanded -->
+      <ul class="show list-unstyled" id="widgets"> <!-- show means    : menu expanded     -->
         <li>
           <a [routerLink]="['/panel/widgets/auto-search-input']">
             <span>Auto Search Input</span>
@@ -16,6 +16,19 @@
         </li>
       </ul>
     </li>
+    <li>
+      <a href="#common" data-toggle="collapse" aria-expanded="false"
+         class="dropdown-toggle"><span>Widgets</span></a>
+      <!--<ul class="collapse list-unstyled" id="common">--> <!-- collapse means: menu not expanded -->
+      <ul class="show list-unstyled" id="common"> <!-- show means    : menu expanded     -->
+        <li>
+          <a [routerLink]="['/panel/commons/can-deactivate-test/user-form']">
+            <span>Can Deactivate Test</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+
     <li>
       <a href="#baseInfoSubmenu" data-toggle="collapse" aria-expanded="false"
          class="dropdown-toggle"><span>اطلاعات پایه</span></a>

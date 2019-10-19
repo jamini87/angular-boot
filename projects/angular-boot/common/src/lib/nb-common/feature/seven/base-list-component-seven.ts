@@ -172,6 +172,10 @@ export abstract class BaseListComponentSeven<RouteParamClazz, QueryParamClazz ex
         if (!isNullOrUndefined(queryParam.paging.page)) {
           this.getComponentData().queryParamReal.paging = JSON.parse(JSON.stringify(queryParam.paging));
         }
+
+        /**
+         * Should remove next line
+         */
         this.getList(optionsOfGetList);
       } else {
         this.firstOnThisRoute = false;

@@ -46,17 +46,17 @@ export abstract class BaseEditComponentSeven<RouteParamClazz, QueryParamClazz, T
   }
 
 
-  canDeactivate(): Observable<boolean> | boolean {
-    // Allow synchronous navigation (`true`) if no crisis or the crisis is unchanged
-    if (!this.getMainObject() ||
-      JSON.stringify(this.getMainObject()) ===
-      JSON.stringify(this.getMainObjectInDom())) {
-      return true;
-    }
-    // Otherwise ask the group with the dialog service and return its
-    // observable which resolves to true or false when the group decides
-    return this.dialogService.confirm('صرف نظر کردن از تغییرات؟');
-  }
+  // canDeactivate(): Observable<boolean> | boolean {
+  //   // Allow synchronous navigation (`true`) if no crisis or the crisis is unchanged
+  //   if (!this.getMainObject() ||
+  //     JSON.stringify(this.getMainObject()) ===
+  //     JSON.stringify(this.getMainObjectInDom())) {
+  //     return true;
+  //   }
+  //   // Otherwise ask the group with the dialog service and return its
+  //   // observable which resolves to true or false when the group decides
+  //   return this.dialogService.confirm('صرف نظر کردن از تغییرات؟');
+  // }
 
   afterEdit(res, form?) {
     this.editedItem.emit(res);

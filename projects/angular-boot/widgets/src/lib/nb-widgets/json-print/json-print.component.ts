@@ -6,9 +6,11 @@ import {isNullOrUndefined} from 'util';
 
 @Component({
   selector: 'nbw-json-print',
-  template: '<div>' +
-    '<pre #jsonPrintPre></pre>' +
-    '</div>',
+  template: `
+      <div>
+          <ng-content></ng-content>
+          <pre #jsonPrintPre></pre>
+      </div>`,
   styleUrls: ['./json-print.component.scss'],
   encapsulation: ViewEncapsulation.Native
 })

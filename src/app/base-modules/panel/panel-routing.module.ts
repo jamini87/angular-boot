@@ -14,6 +14,10 @@ const routes: Routes = [
       {
         path: 'widgets',
         loadChildren: '../../main-modules/-widgets/widgets-routing.module#WidgetsRoutingModule'
+      },
+      {
+        path: 'commons',
+        loadChildren: '../../main-modules/-commons/commons-routing.module#CommonsRoutingModule'
       }
     ]
   }
