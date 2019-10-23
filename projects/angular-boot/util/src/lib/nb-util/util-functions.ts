@@ -96,14 +96,14 @@ export function copyTextToClipboard(text: string) {
   document.body.appendChild(textArea);
   textArea.focus();
   textArea.select();
-
+  let commandResult = false;
   try {
-    const successful = document.execCommand('copy');
-    const msg = successful ? 'successful' : 'unsuccessful';
-    console.log('Copying text command was ' + msg);
+    commandResult = document.execCommand('copy');
+    // const msg = commandResult ? 'successful' : 'unsuccessful';
+    // console.log('Copying text command was ' + msg);
   } catch (err) {
-    console.log('Oops, unable to copy');
+    console.error('Oops, unable to copy');
   }
-
   document.body.removeChild(textArea);
+  return commandResult;
 }

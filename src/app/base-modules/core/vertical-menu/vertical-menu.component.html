@@ -9,11 +9,18 @@
          class="dropdown-toggle"><span>Widgets</span></a>
       <!--<ul class="collapse list-unstyled" id="widgets">--> <!-- collapse means: menu not expanded -->
       <ul class="show list-unstyled" id="widgets"> <!-- show means    : menu expanded     -->
-        <li>
-          <a [routerLink]="['/panel/widgets/auto-search-input']">
-            <span>Auto Search Input</span>
-          </a>
-        </li>
+
+        <li><a [routerLink]="['/panel/widgets/auto-search-input']">
+          <span>Auto Search Input</span>
+        </a></li>
+
+        <li><a [routerLink]="['/panel/widgets/modal']">
+          <span>Modal</span>
+        </a></li>
+
+        <li><a [routerLink]="['/panel/widgets/modal2']">
+          <span>Modal2 with Routing</span>
+        </a></li>
       </ul>
     </li>
     <li>

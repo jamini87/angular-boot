@@ -1,0 +1,16 @@
+<button (click)="showModal()">Show Modal</button>
+
+<nbw-modal #testModal [myId]="modalId" [appendToBodyOnShow]="true" autoShow="false"
+  removeFromDomOnHide="true">
+<div modal-body>
+  Hi
+  <button (click)="showModal2()">Show Modal</button>
+</div>
+</nbw-modal>
+
+<nbw-modal #testModal2 [myId]="modalId2" [appendToBodyOnShow]="true" autoShow="false"
+           removeFromDomOnHide="true">
+  <div modal-body>
+    Hello
+  </div>
+</nbw-modal>

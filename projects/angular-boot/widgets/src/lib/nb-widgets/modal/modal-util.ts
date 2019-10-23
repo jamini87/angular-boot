@@ -12,7 +12,14 @@ export class ModalUtil {
     // if ($('#' + modalId).parent().get(0).tagName != 'BODY')
     //   $('.modal-backdrop').insertAfter($('#' + modalId));
     if (appendToBodyOnShow !== false) {
-      $('#' + modalId).appendTo('body').modal('show');
+      if ($('body>div#' + modalId).length > 0) {
+        $('#' + modalId).modal('show');
+      } else {
+        $('#' + modalId).appendTo('body').modal('show'); // removes Original
+      }
+      // $('#' + modalId).clone(false, true).appendTo('body').modal('show'); // preserve original but not works scripts
+      // //OR
+      // $('body').append($('#' + modalId).clone()).modal('show'); // preserve original but not works scripts
     } else {
       $('#' + modalId).modal('show');
     }
@@ -21,11 +28,15 @@ export class ModalUtil {
   public static hideModal(modalId: string, removeFromDom?: boolean) {
     $('#' + modalId).modal('hide');
     if (removeFromDom === true) {
-      $('body>#' + modalId).remove();
-      $('body>.modal-backdrop').remove();
+      ModalUtil.removeModalFromDom(modalId);
     }
     // setTimeout(() => {
     //   $('#' + modalId).remove();
     // }, 1000);
+  }
+
+  public static removeModalFromDom(modalId: string) {
+    $('body>#' + modalId).remove();
+    $('body>.modal-backdrop').remove();
   }
 }

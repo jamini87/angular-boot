@@ -84,6 +84,9 @@ export class ModalComponent implements OnInit, OnChanges, AfterViewInit, OnDestr
       // do something…
       that.onClose.emit(true);
       // alert(that.myId);
+      if (that.removeFromDomOnHide) {
+        ModalUtil.removeModalFromDom(this.myId);
+      }
       if (this.historyBackOnClose === true) {
         window.history.back();
       }
@@ -147,7 +150,7 @@ export class ModalComponent implements OnInit, OnChanges, AfterViewInit, OnDestr
   }
 
   ngOnDestroy(): void {
-    ModalUtil.hideModal(this.myId, this.removeFromDomOnHide);
+    ModalUtil.hideModal(this.myId, true);
   }
 
   private handleCustomWith() {
