@@ -8,6 +8,7 @@ import {creditCard} from './validators/credit-card/validator';
 import {date} from './validators/date/validator';
 import {dateISO_8601} from './validators/date-iso/validator';
 import {digits} from './validators/digits/validator';
+import {nationalCode} from './validators/national-code/validator';
 import {email} from './validators/email/validator';
 import {equal} from './validators/equal/validator';
 import {equalTo} from './validators/equal-to/validator';
@@ -61,7 +62,7 @@ import {MinlengthValidator} from './validators/min-length/directive';
 import {RequiredValidator} from './validators/required/directive';
 import {MaxlengthValidator} from './validators/max-length/directive';
 import {PatternValidator} from './validators/pattern/directive';
-
+import {NationalCodeValidator} from './validators/national-code/directive';
 export const NbValidators: any = {
   arrayLength,
   base64,
@@ -88,7 +89,8 @@ export const NbValidators: any = {
   range,
   rangeLength,
   url,
-  uuid
+  uuid,
+  nationalCode
 };
 
 const CustomDirectives = [
@@ -121,7 +123,8 @@ const CustomDirectives = [
   MinlengthValidator,
   MaxlengthValidator,
   RequiredValidator,
-  PatternValidator
+  PatternValidator,
+  NationalCodeValidator
 ];
 
 @NgModule({
