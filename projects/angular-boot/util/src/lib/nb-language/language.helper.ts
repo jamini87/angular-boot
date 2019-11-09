@@ -22,22 +22,22 @@ export class LanguageHelper {
     this.init();
   }
 
-  switchLanguage(languageKey: string) {
-    this.translateService.use(languageKey);
-    // this.accessToLabelsFromTypescript();
-  }
-
-  setDefaultLang(lang) {
-    this.translateService.setDefaultLang(lang);
-  }
-
-  // /**
-  //  * Sample that shows we can access to labels value in current language
-  //  */
-  // accessToLabelsFromTypescript() {
-  //   const intro = this.translateService.instant('Intro');
-  //   console.log(intro);
+  // switchLanguage(languageKey: string) {
+  //   this.translateService.use(languageKey);
+  //   // this.accessToLabelsFromTypescript();
   // }
+  //
+  // setDefaultLang(lang) {
+  //   this.translateService.setDefaultLang(lang);
+  // }
+  //
+  // // /**
+  // //  * Sample that shows we can access to labels value in current language
+  // //  */
+  // // accessToLabelsFromTypescript() {
+  // //   const intro = this.translateService.instant('Intro');
+  // //   console.log(intro);
+  // // }
 
   setLanguageList(languageCodes, set) {
     this.getAll(languageCodes).then((langs) => {

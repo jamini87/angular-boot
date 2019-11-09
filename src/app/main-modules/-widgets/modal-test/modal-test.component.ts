@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {ModalUtil} from "../../../../../projects/angular-boot/widgets/src/lib/nb-widgets/modal/modal-util";
-import {ModalComponent} from "../../../../../projects/angular-boot/widgets/src/lib/nb-widgets/modal/modal.component";
+import {ModalUtil} from '../../../../../projects/angular-boot/widgets/src/lib/nb-widgets/modal/modal-util';
+import {ModalComponent} from '../../../../../projects/angular-boot/widgets/src/lib/nb-widgets/modal/modal.component';
 
 @Component({
   selector: 'app-modal-test',

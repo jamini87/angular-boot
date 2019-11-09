@@ -1,5 +1,6 @@
 export * from './browsed-file';
 export * from './css3-colors';
+export * from './delete-model';
 export * from './devision-result';
 export * from './general-domain';
 export * from './list-container';

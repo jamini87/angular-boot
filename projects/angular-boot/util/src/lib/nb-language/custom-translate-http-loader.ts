@@ -38,12 +38,21 @@ export class CustomTranslateHttpLoader implements TranslateLoader {
   /**
    * Gets the translations from the server
    */
-  public getTranslation(lang: string): Observable<any> {
-    debugger;
-    // return this.http.get(`${this.prefix}${lang}${this.suffix}`);
+  public getTranslation(lang: string, remote: boolean = false): Observable<any> {
+    if (remote === true) {
+      return this.getRemoteJson(lang);
+    } else {
+      return this.getLocalJson(lang);
+    }
+  }
+
+  public getLocalJson(lang) {
+    return this.http.get(`${this.url}/${lang}.json`);
+  }
+
+  public getRemoteJson(lang) {
     return this.http.get(this.url + '?locale=' + lang + '&' +
       Toolkit2.StringUtil.objectToQueryString2(this.query),
       {headers: this.reqHeaders});
-    // return this.translateHttpLoaderService.get(this.query);
   }
 }
