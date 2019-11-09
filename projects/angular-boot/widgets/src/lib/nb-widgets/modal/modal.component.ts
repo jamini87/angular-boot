@@ -61,12 +61,12 @@ export class ModalComponent implements OnInit, OnChanges, AfterViewInit, OnDestr
   currentWidthPercent: number;
 
   constructor() {
-    if (isNullOrUndefined(this.myId)) {
-      this.myId = ModalUtil.generateModalId();
-    }
   }
 
   ngOnInit() {
+    if (isNullOrUndefined(this.myId)) {
+      this.myId = ModalUtil.generateModalId();
+    }
     // alert(this.myId);
 
     //
