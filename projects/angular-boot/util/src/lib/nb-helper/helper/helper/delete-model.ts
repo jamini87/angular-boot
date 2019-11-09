@@ -1,4 +1,4 @@
-export class DeleteModel<T> {
+export class DeleteModel<T = any> {
   id: string;
   index: number;
   title: string;

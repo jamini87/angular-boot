@@ -1,7 +1,7 @@
 import {TranslateLoader} from '@ngx-translate/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Toolkit2} from '@angular-boot/util';
+import {Toolkit2} from '../nb-util';
 
 /**
  // Usage in module
