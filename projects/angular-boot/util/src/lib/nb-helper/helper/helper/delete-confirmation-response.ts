@@ -1,11 +1,11 @@
-import {DeleteModel} from './delete-model';
+import {PickModel} from './pick-model';
 
 export class DeleteConfirmationResponse {
   confirmed?: boolean;
-  deleteModel?: DeleteModel;
+  pickModel?: PickModel;
 
   constructor(init: DeleteConfirmationResponse = {}) {
     this.confirmed = init.confirmed;
-    this.deleteModel = init.deleteModel;
+    this.pickModel = init.pickModel;
   }
 }

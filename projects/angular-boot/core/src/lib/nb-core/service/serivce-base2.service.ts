@@ -109,7 +109,9 @@ export class ServiceBase2 extends ServiceBase {
   getService(restExtra?: RestExtra): Observable<any> {
     restExtra = this.resolveRestExtra(restExtra);
     let ret = new Subject();
+    restExtra.restRequestStatus = 'pending';
     super.getService(restExtra).subscribe((res) => {
+      restExtra.restRequestStatus = 'success';
       ret.next(this.handleResult(restExtra, res));
       // if (isNullOrUndefined(res) || isNullOrUndefined(res.flag)) {
       //   ret.next(res);
@@ -121,32 +123,35 @@ export class ServiceBase2 extends ServiceBase {
       //   );
       // }
     }, error => {
+      restExtra.restRequestStatus = 'failure';
       ret.error(this.handleError(restExtra, error));
     });
     return ret.asObservable();
   }
 
-  getService_f(restExtra?: RestExtra): Observable<any> {
-    const ret = new Subject();
-    super.getService(restExtra).subscribe((res) => {
-      ret.next(res);
-      // if (isNullOrUndefined(res) || isNullOrUndefined(res.flag)) {
-      //   ret.next(res);
-      // } else if (res.flag) {
-      //   ret.next(res.data);
-      // } else if (!res.flag) {
-      //   ret.logicalError(res); //for future
-      // }
-    }, error => {
-      ret.error(error);
-    });
-    return ret.asObservable();
-  }
+  // getService_f(restExtra?: RestExtra): Observable<any> {
+  //   const ret = new Subject();
+  //   super.getService(restExtra).subscribe((res) => {
+  //     ret.next(res);
+  //     // if (isNullOrUndefined(res) || isNullOrUndefined(res.flag)) {
+  //     //   ret.next(res);
+  //     // } else if (res.flag) {
+  //     //   ret.next(res.data);
+  //     // } else if (!res.flag) {
+  //     //   ret.logicalError(res); //for future
+  //     // }
+  //   }, error => {
+  //     ret.error(error);
+  //   });
+  //   return ret.asObservable();
+  // }
 
   postService(value: any, restExtra?: RestExtra): Observable<any> {
     restExtra = this.resolveRestExtra(restExtra);
     const ret = new Subject();
+    restExtra.restRequestStatus = 'pending';
     super.postService(value, restExtra).subscribe((res) => {
+      restExtra.restRequestStatus = 'success';
       ret.next(this.handleResult(restExtra, res));
       // console.log('response =======>', res);
       // if (isNullOrUndefined(res) || isNullOrUndefined(res.flag)) {
@@ -159,6 +164,7 @@ export class ServiceBase2 extends ServiceBase {
       //   );
       // }
     }, error => {
+      restExtra.restRequestStatus = 'failure';
       ret.error(this.handleError(restExtra, error));
       // ErrorHandle.handleDefault(error, this._ServiceConfig);
       // ret.error(error);
@@ -166,21 +172,23 @@ export class ServiceBase2 extends ServiceBase {
     return ret.asObservable();
   }
 
-  postService_f(value: any, restExtra?: RestExtra): Observable<any> {
-    const ret = new Subject();
-    super.postService(value, restExtra).subscribe((res) => {
-      ret.next(res);
-    }, error => {
-      ret.error(error);
-    });
-    return ret.asObservable();
-  }
+  // postService_f(value: any, restExtra?: RestExtra): Observable<any> {
+  //   const ret = new Subject();
+  //   super.postService(value, restExtra).subscribe((res) => {
+  //     ret.next(res);
+  //   }, error => {
+  //     ret.error(error);
+  //   });
+  //   return ret.asObservable();
+  // }
 
 
   putService(value: any, restExtra?: RestExtra): Observable<any> {
     restExtra = this.resolveRestExtra(restExtra);
     const ret = new Subject();
+    restExtra.restRequestStatus = 'pending';
     super.putService(value, restExtra).subscribe((res) => {
+      restExtra.restRequestStatus = 'success';
       ret.next(this.handleResult(restExtra, res));
       // console.log('response =======>', res);
       // if (isNullOrUndefined(res) || isNullOrUndefined(res.flag)) {
@@ -193,6 +201,7 @@ export class ServiceBase2 extends ServiceBase {
       //   );
       // }
     }, error => {
+      restExtra.restRequestStatus = 'failure';
       ret.error(this.handleError(restExtra, error));
       // ErrorHandle.handleDefault(error, this._ServiceConfig);
       // ret.error(error);
@@ -204,29 +213,34 @@ export class ServiceBase2 extends ServiceBase {
   patchService(value: any, restExtra?: RestExtra): Observable<any> {
     restExtra = this.resolveRestExtra(restExtra);
     const ret = new Subject();
+    restExtra.restRequestStatus = 'pending';
     super.patchService(value, restExtra).subscribe((res) => {
+      restExtra.restRequestStatus = 'success';
       ret.next(this.handleResult(restExtra, res));
     }, error => {
+      restExtra.restRequestStatus = 'failure';
       ret.error(this.handleError(restExtra, error));
     });
     return ret.asObservable();
   }
 
 
-  putService_f(value: any, restExtra?: RestExtra): Observable<any> {
-    const ret = new Subject();
-    super.putService(value, restExtra).subscribe((res) => {
-      ret.next(res);
-    }, error => {
-      ret.error(error);
-    });
-    return ret.asObservable();
-  }
+  // putService_f(value: any, restExtra?: RestExtra): Observable<any> {
+  //   const ret = new Subject();
+  //   super.putService(value, restExtra).subscribe((res) => {
+  //     ret.next(res);
+  //   }, error => {
+  //     ret.error(error);
+  //   });
+  //   return ret.asObservable();
+  // }
 
   deleteService(restExtra: RestExtra): Observable<any> {
     restExtra = this.resolveRestExtra(restExtra);
     const ret = new Subject();
+    restExtra.restRequestStatus = 'pending';
     super.deleteService(restExtra).subscribe((res) => {
+      restExtra.restRequestStatus = 'success';
       ret.next(this.handleResult(restExtra, res));
       // if (isNullOrUndefined(res) || isNullOrUndefined(res.flag)) {
       //   ret.next(res);
@@ -238,6 +252,7 @@ export class ServiceBase2 extends ServiceBase {
       //   );
       // }
     }, error => {
+      restExtra.restRequestStatus = 'failure';
       ret.error(this.handleError(restExtra, error));
       // ErrorHandle.handleDefault(error, this._ServiceConfig);
       // ret.error(error);
@@ -245,24 +260,24 @@ export class ServiceBase2 extends ServiceBase {
     return ret.asObservable();
   }
 
-  readyDeleteService(prefix: Object, suffix: Object, suffixPath: string): any {
-    return this.deleteService({
-      objectPrefix: this.getPrefix(prefix),
-      objectSuffix: this.replaceParams(suffixPath, suffix)
-    });
-  }
+  // readyDeleteService(prefix: Object, suffix: Object, suffixPath: string): any {
+  //   return this.deleteService({
+  //     objectPrefix: this.getPrefix(prefix),
+  //     objectSuffix: this.replaceParams(suffixPath, suffix)
+  //   });
+  // }
 
-  readyPostService() {
+  // readyPostService() {
+  //
+  // }
 
-  }
-
-  deleteService_f(restExtra: RestExtra): Observable<any> {
-    const ret = new Subject();
-    super.deleteService(restExtra).subscribe((res) => {
-      ret.next(res);
-    }, error => {
-      ret.error(error);
-    });
-    return ret.asObservable();
-  }
+  // deleteService_f(restExtra: RestExtra): Observable<any> {
+  //   const ret = new Subject();
+  //   super.deleteService(restExtra).subscribe((res) => {
+  //     ret.next(res);
+  //   }, error => {
+  //     ret.error(error);
+  //   });
+  //   return ret.asObservable();
+  // }
 }

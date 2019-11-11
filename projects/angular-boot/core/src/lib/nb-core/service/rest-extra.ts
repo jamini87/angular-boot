@@ -1,7 +1,7 @@
 import {ResponseContentType} from './response-content-type';
 import {RequestContentType} from './request-content-type';
 import {isNullOrUndefined} from 'util';
-import {RestServiceErrorPolicy, RestServiceResultPolicy} from '@angular-boot/util';
+import {RestRequestStatus, RestServiceErrorPolicy, RestServiceResultPolicy} from '@angular-boot/util';
 
 // export class RestExtra {
 //   use_prefix ? = true;
@@ -42,6 +42,7 @@ export class RestExtra {
   restServiceResultPolicy?: RestServiceResultPolicy;
   restServiceErrorPolicy?: RestServiceErrorPolicy;
   responseAsBody?: boolean;
+  restRequestStatus?: RestRequestStatus;
 
   // urlQuery: UrlQuery;
   constructor(
@@ -62,7 +63,8 @@ export class RestExtra {
       otherHeaders?: any,
       restServiceResultPolicy?: RestServiceResultPolicy,
       restServiceErrorPolicy?: RestServiceErrorPolicy,
-      responseAsBody?: boolean
+      responseAsBody?: boolean,
+      restRequestStatus?: RestRequestStatus
     }) {
     this.useObjectPrefix = options.useObjectPrefix ? options.useObjectPrefix : true;
     this.useObjectSuffix = options.useObjectSuffix ? options.useObjectSuffix : true;
@@ -83,6 +85,7 @@ export class RestExtra {
     this.restServiceErrorPolicy = options.restServiceErrorPolicy ?
       options.restServiceErrorPolicy : null;
     this.responseAsBody = !isNullOrUndefined(options.responseAsBody) ? options.responseAsBody : false;
+    this.restRequestStatus = !isNullOrUndefined(options.restRequestStatus) ? options.restRequestStatus : 'not-started';
   }
 }
 

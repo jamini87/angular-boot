@@ -1,0 +1,3 @@
+npm run build:libs
+npm run pack:libs
+./cp
