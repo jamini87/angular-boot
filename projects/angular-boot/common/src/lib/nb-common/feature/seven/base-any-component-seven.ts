@@ -6,7 +6,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {isNullOrUndefined} from 'util';
 import {ComponentCanDeactivate, FormCanDeactivate} from '../../routing';
 
-export abstract class BaseAnyComponentSeven<RouteParamClazz, QueryParamClazz> extends ComponentCanDeactivate{
+export abstract class BaseAnyComponentSeven<RouteParamClazz, QueryParamClazz> extends ComponentCanDeactivate {
   Toolkit2 = Toolkit2;
   queryParamClazz: QueryParamClazz;
   routeParamClazz: RouteParamClazz;
@@ -25,6 +25,7 @@ export abstract class BaseAnyComponentSeven<RouteParamClazz, QueryParamClazz> ex
   }
 
   abstract canDeactivate(): boolean;
+
   receiveData() {
     // this.route.params
     //   .subscribe((params: Params) => {
@@ -62,8 +63,11 @@ export abstract class BaseAnyComponentSeven<RouteParamClazz, QueryParamClazz> ex
     //   });
   }
 
-  setToQueryParams(obj: any, options: { skipLocationChange?: boolean, replaceUrl?: boolean } = {}) {
-    obj = this.Toolkit2.ObjectUtil.FlatiFy(new Object(), obj);
+  setToQueryParams(obj: any, options: { skipLocationChange?: boolean, replaceUrl?: boolean, removeIfEmpty?: boolean } = {}) {
+    if (isNullOrUndefined(options.removeIfEmpty)) {
+      options.removeIfEmpty = true;
+    }
+    obj = this.Toolkit2.ObjectUtil.FlatiFy(new Object(), obj, options.removeIfEmpty);
     this._Router.navigate([], {
       relativeTo: this._ActivatedRoute,
       queryParams: {

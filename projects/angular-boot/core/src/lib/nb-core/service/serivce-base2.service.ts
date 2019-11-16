@@ -6,7 +6,7 @@ import {Observable, Subject} from 'rxjs';
 import {isNullOrUndefined} from 'util';
 import {ErrorHandle} from '../error-handling/error-handle';
 import {RestExtra} from './rest-extra';
-import {Toolkit2} from '@angular-boot/util';
+import {RestRequestOptions, RestRequestStatus, Toolkit2} from '@angular-boot/util';
 import {RestServiceResultPolicy, RestServiceErrorPolicy} from '@angular-boot/util';
 import {ServiceUtil} from './service-util';
 import {ResultHandle} from '../result-handling/result-handle';
@@ -106,12 +106,16 @@ export class ServiceBase2 extends ServiceBase {
     }
   }
 
-  getService(restExtra?: RestExtra): Observable<any> {
+  getService(restExtra?: RestExtra, options?: RestRequestOptions): Observable<any> {
     restExtra = this.resolveRestExtra(restExtra);
     let ret = new Subject();
-    restExtra.restRequestStatus = 'pending';
+    if (!isNullOrUndefined(options) && !isNullOrUndefined(options.status)) {
+      options.status = 'pending';
+    }
     super.getService(restExtra).subscribe((res) => {
-      restExtra.restRequestStatus = 'success';
+      if (!isNullOrUndefined(options) && !isNullOrUndefined(options.status)) {
+        options.status = 'success';
+      }
       ret.next(this.handleResult(restExtra, res));
       // if (isNullOrUndefined(res) || isNullOrUndefined(res.flag)) {
       //   ret.next(res);
@@ -123,7 +127,9 @@ export class ServiceBase2 extends ServiceBase {
       //   );
       // }
     }, error => {
-      restExtra.restRequestStatus = 'failure';
+      if (!isNullOrUndefined(options) && !isNullOrUndefined(options.status)) {
+        options.status = 'failure';
+      }
       ret.error(this.handleError(restExtra, error));
     });
     return ret.asObservable();
@@ -146,12 +152,16 @@ export class ServiceBase2 extends ServiceBase {
   //   return ret.asObservable();
   // }
 
-  postService(value: any, restExtra?: RestExtra): Observable<any> {
+  postService(value: any, restExtra?: RestExtra, options?: RestRequestOptions): Observable<any> {
     restExtra = this.resolveRestExtra(restExtra);
     const ret = new Subject();
-    restExtra.restRequestStatus = 'pending';
+    if (!isNullOrUndefined(options) && !isNullOrUndefined(options.status)) {
+      options.status = 'pending';
+    }
     super.postService(value, restExtra).subscribe((res) => {
-      restExtra.restRequestStatus = 'success';
+      if (!isNullOrUndefined(options) && !isNullOrUndefined(options.status)) {
+        options.status = 'success';
+      }
       ret.next(this.handleResult(restExtra, res));
       // console.log('response =======>', res);
       // if (isNullOrUndefined(res) || isNullOrUndefined(res.flag)) {
@@ -164,7 +174,9 @@ export class ServiceBase2 extends ServiceBase {
       //   );
       // }
     }, error => {
-      restExtra.restRequestStatus = 'failure';
+      if (!isNullOrUndefined(options) && !isNullOrUndefined(options.status)) {
+        options.status = 'failure';
+      }
       ret.error(this.handleError(restExtra, error));
       // ErrorHandle.handleDefault(error, this._ServiceConfig);
       // ret.error(error);
@@ -183,12 +195,16 @@ export class ServiceBase2 extends ServiceBase {
   // }
 
 
-  putService(value: any, restExtra?: RestExtra): Observable<any> {
+  putService(value: any, restExtra?: RestExtra, options?: RestRequestOptions): Observable<any> {
     restExtra = this.resolveRestExtra(restExtra);
     const ret = new Subject();
-    restExtra.restRequestStatus = 'pending';
+    if (!isNullOrUndefined(options) && !isNullOrUndefined(options.status)) {
+      options.status = 'pending';
+    }
     super.putService(value, restExtra).subscribe((res) => {
-      restExtra.restRequestStatus = 'success';
+      if (!isNullOrUndefined(options) && !isNullOrUndefined(options.status)) {
+        options.status = 'success';
+      }
       ret.next(this.handleResult(restExtra, res));
       // console.log('response =======>', res);
       // if (isNullOrUndefined(res) || isNullOrUndefined(res.flag)) {
@@ -201,7 +217,9 @@ export class ServiceBase2 extends ServiceBase {
       //   );
       // }
     }, error => {
-      restExtra.restRequestStatus = 'failure';
+      if (!isNullOrUndefined(options) && !isNullOrUndefined(options.status)) {
+        options.status = 'failure';
+      }
       ret.error(this.handleError(restExtra, error));
       // ErrorHandle.handleDefault(error, this._ServiceConfig);
       // ret.error(error);
@@ -210,15 +228,21 @@ export class ServiceBase2 extends ServiceBase {
   }
 
 
-  patchService(value: any, restExtra?: RestExtra): Observable<any> {
+  patchService(value: any, restExtra?: RestExtra, options?: RestRequestOptions): Observable<any> {
     restExtra = this.resolveRestExtra(restExtra);
     const ret = new Subject();
-    restExtra.restRequestStatus = 'pending';
+    if (!isNullOrUndefined(options) && !isNullOrUndefined(options.status)) {
+      options.status = 'pending';
+    }
     super.patchService(value, restExtra).subscribe((res) => {
-      restExtra.restRequestStatus = 'success';
+      if (!isNullOrUndefined(options) && !isNullOrUndefined(options.status)) {
+        options.status = 'success';
+      }
       ret.next(this.handleResult(restExtra, res));
     }, error => {
-      restExtra.restRequestStatus = 'failure';
+      if (!isNullOrUndefined(options) && !isNullOrUndefined(options.status)) {
+        options.status = 'failure';
+      }
       ret.error(this.handleError(restExtra, error));
     });
     return ret.asObservable();
@@ -235,12 +259,16 @@ export class ServiceBase2 extends ServiceBase {
   //   return ret.asObservable();
   // }
 
-  deleteService(restExtra: RestExtra): Observable<any> {
+  deleteService(restExtra: RestExtra, options?: RestRequestOptions): Observable<any> {
     restExtra = this.resolveRestExtra(restExtra);
     const ret = new Subject();
-    restExtra.restRequestStatus = 'pending';
+    if (!isNullOrUndefined(options) && !isNullOrUndefined(options.status)) {
+      options.status = 'pending';
+    }
     super.deleteService(restExtra).subscribe((res) => {
-      restExtra.restRequestStatus = 'success';
+      if (!isNullOrUndefined(options) && !isNullOrUndefined(options.status)) {
+        options.status = 'success';
+      }
       ret.next(this.handleResult(restExtra, res));
       // if (isNullOrUndefined(res) || isNullOrUndefined(res.flag)) {
       //   ret.next(res);
@@ -252,7 +280,9 @@ export class ServiceBase2 extends ServiceBase {
       //   );
       // }
     }, error => {
-      restExtra.restRequestStatus = 'failure';
+      if (!isNullOrUndefined(options) && !isNullOrUndefined(options.status)) {
+        options.status = 'failure';
+      }
       ret.error(this.handleError(restExtra, error));
       // ErrorHandle.handleDefault(error, this._ServiceConfig);
       // ret.error(error);

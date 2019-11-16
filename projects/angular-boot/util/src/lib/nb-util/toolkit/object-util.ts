@@ -3,6 +3,7 @@ import {isNullOrUndefined} from 'util';
 import {CaseFormat} from './case-format';
 import {UnFlatifyOptions} from './un-flatify-options';
 import {PairKeyValue} from "../../nb-helper/helper/pairs";
+import {el} from "@angular/platform-browser/testing/src/browser_util";
 
 export class ObjectUtil {
   public static getObjectPropertyFromParamMap(object: Object, route: ActivatedRouteSnapshot) {
@@ -190,12 +191,16 @@ export class ObjectUtil {
   }
 
 // یک آبجکت ساده یا مرکب (دارای تودرتویی) را می‌گیرد و یک آبجکت ساده بدون تودرتویی تحویل می‌دهد.
-  public static FlatiFy(newObject, object) {
+  public static FlatiFy(newObject, object, removeIfEmpty?: boolean) {
     Object.keys(object).forEach(key => {
         if (!isNullOrUndefined(object[key]) && object[key].toString() === '[object Object]') {
-          this.FlatiFy(newObject, object[key]);
+          this.FlatiFy(newObject, object[key], removeIfEmpty);
         } else {
-          newObject[key] = object[key];
+          if (removeIfEmpty === true && object[key] === '') {
+            newObject[key] = null;
+          } else {
+            newObject[key] = object[key];
+          }
         }
       }
     );

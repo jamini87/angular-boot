@@ -46,7 +46,7 @@
     "@angular-boot/common": "http://localhost/libs/angular-boot/0.6.3/angular-boot-common-0.6.3.tgz",
     "@angular-boot/core": "http://localhost/libs/angular-boot/0.6.3/angular-boot-core-0.6.3.tgz",
     "@angular-boot/nb-assets": "http://localhost/libs/angular-boot/0.6.3/angular-boot-nb-assets-0.6.3.tgz",
-    "@angular-boot/util": "http://localhost/libs/angular-boot/0.6.3/angular-boot-util-0.6.3.tgz",
+    "@angular-boot/util": "http://localhost/libs/angular-boot/0.6.4/angular-boot-util-0.6.4.tgz",
     "@angular-boot/validation": "http://localhost/libs/angular-boot/0.6.3/angular-boot-validation-0.6.3.tgz",
     "@angular-boot/widgets": "http://localhost/libs/angular-boot/0.6.3/angular-boot-widgets-0.6.3.tgz",
     "@angular/animations": "~7.2.0",

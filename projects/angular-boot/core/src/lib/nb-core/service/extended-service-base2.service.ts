@@ -18,60 +18,60 @@ export class ExtendedServiceBase2<T> extends ServiceBase2 {
       {objectSuffix: objectSuffix, responseContentType: responseContentType});
   }
 
-  g_getOne_f(objectSuffix: string, responseContentType?: ResponseContentType): any {
-    return this.getService_f(
-      {objectSuffix: objectSuffix, responseContentType: responseContentType});
-  }
+  // g_getOne_f(objectSuffix: string, responseContentType?: ResponseContentType): any {
+  //   return this.getService_f(
+  //     {objectSuffix: objectSuffix, responseContentType: responseContentType});
+  // }
 
   g_createOne(item: T, objectSuffix?: string, responseContentType?: ResponseContentType): any {
     return this.postService(item,
       {objectSuffix: objectSuffix, responseContentType: responseContentType});
   }
 
-  g_createOne_f(item: T, objectSuffix?: string, responseContentType?: ResponseContentType): any {
-    return this.postService(item,
-      {objectSuffix: objectSuffix, responseContentType: responseContentType});
-  }
+  // g_createOne_f(item: T, objectSuffix?: string, responseContentType?: ResponseContentType): any {
+  //   return this.postService(item,
+  //     {objectSuffix: objectSuffix, responseContentType: responseContentType});
+  // }
 
   g_getList(objectSuffix?: string, responseContentType?: ResponseContentType): any {
     return this.getService(
       {objectSuffix: objectSuffix, responseContentType: responseContentType});
   }
 
-  g_getList_f(objectSuffix?: string, responseContentType?: ResponseContentType): any {
-    return this.getService_f(
-      {objectSuffix: objectSuffix, responseContentType: responseContentType});
-  }
+  // g_getList_f(objectSuffix?: string, responseContentType?: ResponseContentType): any {
+  //   return this.getService_f(
+  //     {objectSuffix: objectSuffix, responseContentType: responseContentType});
+  // }
 
   g_deleteOne(objectSuffix: string, responseContentType?: ResponseContentType): any {
     return this.deleteService(
       {objectSuffix: objectSuffix, responseContentType: responseContentType});
   }
 
-  g_deleteOne_f(objectSuffix: string, responseContentType?: ResponseContentType): any {
-    return this.deleteService_f(
-      {objectSuffix: objectSuffix, responseContentType: responseContentType});
-  }
+  // g_deleteOne_f(objectSuffix: string, responseContentType?: ResponseContentType): any {
+  //   return this.deleteService_f(
+  //     {objectSuffix: objectSuffix, responseContentType: responseContentType});
+  // }
 
   g_updateOne(item: T, objectSuffix?: string, responseContentType?: ResponseContentType): any {
     return this.putService(item,
       {objectSuffix: objectSuffix, responseContentType: responseContentType});
   }
 
-  g_updateOne_f(item: T, objectSuffix?: string, responseContentType?: ResponseContentType): any {
-    return this.putService_f(item,
-      {objectSuffix: objectSuffix, responseContentType: responseContentType});
-  }
+  // g_updateOne_f(item: T, objectSuffix?: string, responseContentType?: ResponseContentType): any {
+  //   return this.putService_f(item,
+  //     {objectSuffix: objectSuffix, responseContentType: responseContentType});
+  // }
 
   g_getListByParentId(objectSuffix?: string, responseContentType?: ResponseContentType): any {
     return this.getService(
       {objectSuffix: 'parentId/' + objectSuffix, responseContentType: responseContentType});
   }
-
-  g_getListByParentId_f(objectSuffix?: string, responseContentType?: ResponseContentType): any {
-    return this.getService(
-      {objectSuffix: 'parentId/' + objectSuffix, responseContentType: responseContentType});
-  }
+  //
+  // g_getListByParentId_f(objectSuffix?: string, responseContentType?: ResponseContentType): any {
+  //   return this.getService(
+  //     {objectSuffix: 'parentId/' + objectSuffix, responseContentType: responseContentType});
+  // }
 
   signIn(item: T, objectSuffix?: string, responseContentType?: ResponseContentType): any {
     return this.postService(item,
