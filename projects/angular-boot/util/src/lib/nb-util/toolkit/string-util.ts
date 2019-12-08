@@ -140,4 +140,32 @@ export class StringUtil {
   public static putAtIndex(str: string, item, index) {
     return str.slice(0, index) + item + str.slice(index);
   }
+
+  /**
+   *
+   * @param str: string to  split
+   * @param separator: split based on this
+   * @param index: index of splitted array to return value
+   * @param beginDirection: 'fromStart' | 'fromEnd'
+   */
+  public static splitAndReturnItemByIndex(str: string, separator: string, index: number, beginDirection: BeginDirection = 'fromStart') {
+    const arr = str.split(separator);
+    let res: string = null;
+    if (arr.length > 0) {
+      if (index > arr.length - 1) {
+        throw new Error('index is out of bound of splitted array; array length: ' + arr.length + ', index: ' + index);
+      } else {
+        if (beginDirection === 'fromStart') {
+          res = arr[index];
+        } else if (beginDirection === 'fromEnd'){
+          res = arr[arr.length - 1 - index];
+        }
+      }
+    } else {
+      res = null;
+    }
+    return res;
+  }
 }
+
+export declare type BeginDirection = 'fromStart' | 'fromEnd';

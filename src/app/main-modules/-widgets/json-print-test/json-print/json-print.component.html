@@ -1,0 +1,31 @@
+<form #form="ngForm" (submit)="doSubmit(form)">
+  <div class="form-group row">
+    <label for="firstName" class="col-sm-2 col-form-label">A: </label>
+    <div class="col-sm-10">
+      <div class="form-group" dir="ltr">
+        <input id="firstName" [(ngModel)]="testPerson.firstName" name="firstName"
+               #firstName="ngModel">
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="lastName" class="col-sm-2 col-form-label">B: </label>
+    <div class="col-sm-10">
+      <div class="form-group" dir="ltr">
+        <input id="lastName" [(ngModel)]="testPerson.lastName" name="lastName"
+               #lastName="ngModel">
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="c" class="col-sm-2 col-form-label">C: </label>
+    <div class="col-sm-10">
+      <div class="form-group" dir="ltr">
+        <input id="c" name="c">
+      </div>
+    </div>
+  </div>
+  <input type="submit" value="Send">
+</form>
+{{form.value | json}}
+<nbw-json-print [json_In]="testPerson | json"></nbw-json-print>

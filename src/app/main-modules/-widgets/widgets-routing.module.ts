@@ -15,8 +15,12 @@ const routes: Routes = [
     loadChildren: './modal-test2/modal-test2.module#ModalTest2Module'
   },
   {
+    path: 'json-print',
+    loadChildren: './json-print-test/json-print-test.module#JsonPrintTestModule'
+  },
+  {
     path: 'test3',
-    loadChildren: './modal-test2/test3/test3.component#Test3Component'
+    loadChildren: './modal-test2/modal-test2.module#ModalTest2Module'
   }
 ];
 
