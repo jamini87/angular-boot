@@ -251,4 +251,29 @@ export class ObjectUtil {
     }
     return obj[arr[0]] = value;
   }
+
+  /**
+   *
+   * @param str
+   * @param val
+   * @param obj
+   * example: str= 'a.b.c', val = {"title":"alef", code: 2}, obj = {} --> result: obj= a: {b: {c: {"title":"alef", code: 2}}}
+   */
+
+  parseDotNotationAndSetValue(str, val, obj) {
+    let currentObj = obj;
+    const keys = str.split('.');
+    let i, key;
+    const l = Math.max(1, keys.length - 1);
+
+    for (i = 0; i < l; ++i) {
+      key = keys[i];
+      currentObj[key] = currentObj[key] || {};
+      currentObj = currentObj[key];
+    }
+
+    currentObj[keys[i]] = val;
+    delete obj[str];
+  }
+
 }
