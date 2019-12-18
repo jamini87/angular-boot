@@ -106,6 +106,15 @@ export class ServiceBase2 extends ServiceBase {
     }
   }
 
+  private resetRestRequestStatus(options: RestRequestOptions) {
+    // if (options.resetStatusOnSuccess && options.resetStatusWaitTime > 0) {
+    //   setTimeout(() => {
+    //     options.status = 'not-started';
+    //   }, options.resetStatusWaitTime);
+    // }
+
+  }
+
   getService(restExtra?: RestExtra, options?: RestRequestOptions): Observable<any> {
     restExtra = this.resolveRestExtra(restExtra);
     let ret = new Subject();
@@ -115,6 +124,7 @@ export class ServiceBase2 extends ServiceBase {
     super.getService(restExtra).subscribe((res) => {
       if (!isNullOrUndefined(options) && !isNullOrUndefined(options.status)) {
         options.status = 'success';
+        // this.resetRestRequestStatus(options);
       }
       ret.next(this.handleResult(restExtra, res));
       // if (isNullOrUndefined(res) || isNullOrUndefined(res.flag)) {
@@ -161,6 +171,7 @@ export class ServiceBase2 extends ServiceBase {
     super.postService(value, restExtra).subscribe((res) => {
       if (!isNullOrUndefined(options) && !isNullOrUndefined(options.status)) {
         options.status = 'success';
+        // this.resetRestRequestStatus(options);
       }
       ret.next(this.handleResult(restExtra, res));
       // console.log('response =======>', res);
@@ -204,6 +215,7 @@ export class ServiceBase2 extends ServiceBase {
     super.putService(value, restExtra).subscribe((res) => {
       if (!isNullOrUndefined(options) && !isNullOrUndefined(options.status)) {
         options.status = 'success';
+        // this.resetRestRequestStatus(options);
       }
       ret.next(this.handleResult(restExtra, res));
       // console.log('response =======>', res);
@@ -237,6 +249,7 @@ export class ServiceBase2 extends ServiceBase {
     super.patchService(value, restExtra).subscribe((res) => {
       if (!isNullOrUndefined(options) && !isNullOrUndefined(options.status)) {
         options.status = 'success';
+        // this.resetRestRequestStatus(options);
       }
       ret.next(this.handleResult(restExtra, res));
     }, error => {
@@ -268,6 +281,7 @@ export class ServiceBase2 extends ServiceBase {
     super.deleteService(restExtra).subscribe((res) => {
       if (!isNullOrUndefined(options) && !isNullOrUndefined(options.status)) {
         options.status = 'success';
+        // this.resetRestRequestStatus(options);
       }
       ret.next(this.handleResult(restExtra, res));
       // if (isNullOrUndefined(res) || isNullOrUndefined(res.flag)) {

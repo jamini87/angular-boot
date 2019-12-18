@@ -260,7 +260,7 @@ export class ObjectUtil {
    * example: str= 'a.b.c', val = {"title":"alef", code: 2}, obj = {} --> result: obj= a: {b: {c: {"title":"alef", code: 2}}}
    */
 
-  parseDotNotationAndSetValue(str, val, obj) {
+  public static parseDotNotationAndSetValue(str, val, obj) {
     let currentObj = obj;
     const keys = str.split('.');
     let i, key;
