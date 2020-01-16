@@ -4,6 +4,7 @@ import {PipeMomentModule} from './moment/pipe-moment.module';
 import {NbpipePipe} from './nbpipe/nbpipe.pipe';
 import {PipeStringModule} from './string/pipe-string.module';
 import {DateToolsModule} from './date-tools/date-tools.module';
+import { SafeHtmlPipe } from './safe-html/safe-html.pipe';
 
 @NgModule({
   imports: [
@@ -12,12 +13,13 @@ import {DateToolsModule} from './date-tools/date-tools.module';
     PipeStringModule,
     DateToolsModule
   ],
-  declarations: [NbpipePipe],
+  declarations: [NbpipePipe, SafeHtmlPipe],
   exports: [
     PipeMomentModule,
     PipeStringModule,
     NbpipePipe,
-    DateToolsModule
+    DateToolsModule,
+    SafeHtmlPipe
   ]
 })
 export class NbPipesModule {

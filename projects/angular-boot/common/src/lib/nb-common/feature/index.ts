@@ -29,6 +29,7 @@ export * from './seven/base-component-seven';
 export * from './seven/base-create-component-seven';
 export * from './seven/base-edit-component-seven';
 export * from './seven/base-list-component-seven';
+export * from './seven/base-list-component-seven2';
 export * from './seven/base-receiver-component-seven';
 export * from './seven/base-view-component-seven';
 export * from './seven/list-component-data';

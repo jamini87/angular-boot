@@ -76,6 +76,17 @@ export class ModalComponent implements OnInit, OnChanges, AfterViewInit, OnDestr
   }
 
   ngAfterViewInit(): void {
+    // $.fn.modal.Constructor.prototype.enforceFocus = function () {
+    //   let modal_this = this;
+    //   $(document).on('focusin.modal', function (e) {
+    //     if (modal_this.$element[0] !== e.target && !modal_this.$element.has(e.target).length
+    //       // add whatever conditions you need here:
+    //       &&
+    //       !$(e.target.parentNode).hasClass('cke_dialog_ui_input_select') && !$(e.target.parentNode).hasClass('cke_dialog_ui_input_text')) {
+    //       modal_this.$element.focus();
+    //     }
+    //   });
+    // };
     const that = this;
     if (this.autoShow === true) {
       ModalUtil.showModal(this.myId);
