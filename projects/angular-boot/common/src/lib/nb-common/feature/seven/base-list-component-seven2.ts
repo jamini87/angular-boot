@@ -161,6 +161,9 @@ export abstract class BaseListComponentSeven2<RouteParamClazz, QueryParamClazz e
       this._setToQueryParams(this.getComponentData().queryParam);
     }
   }
+  getCurrentPage() {
+    return this.getComponentData().queryParamReal.paging.page;
+  }
 
   hardChangeQueryParamReal(queryParam: QueryParamClazz) {
     this.getComponentData().queryParamReal = JSON.parse(JSON.stringify(queryParam));
