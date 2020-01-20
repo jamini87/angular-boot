@@ -36,6 +36,7 @@
         <ng-content select="[modal-body]"></ng-content>
       </div>
       <ng-container *ngIf="hasFooter === true">
+
         <div class="modal-footer row" [class.modal-footer-full]="modalSize === MyModalSize.FULL_SCREEN">
           <ng-content select="[modal-footer]"></ng-content>
         </div>
