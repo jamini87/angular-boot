@@ -225,8 +225,8 @@ export class ObjectUtil {
    var result = getDescendantProp(obj, propPath);
    console.log(result); // output: 0
    */
-  public static getDescendantProp(obj, desc) {
-    var arr = desc.split('.');
+  public static getDescendantProp(obj, propPath) {
+    var arr = propPath.split('.');
     while (arr.length) {
       obj = obj[arr.shift()];
     }
@@ -244,12 +244,31 @@ export class ObjectUtil {
    var propPath = getPropPath();  // returns e.g. "a.b.c"
    var result = setDescendantProp(obj, propPath, 1);  // test.a.b.c will now be 1
    */
-  public static setDescendantProp(obj, desc, value) {
-    var arr = desc.split('.');
+  public static setDescendantProp(obj, propPath, value) {
+    var arr = propPath.split('.');
     while (arr.length > 1) {
       obj = obj[arr.shift()];
     }
     return obj[arr[0]] = value;
+  }
+
+  /**
+   *
+   * @param obj
+   * @param desc
+   * @param value
+   *
+   Example:
+   var obj = {a: {b: {c: 0}}};
+   var propPath = getPropPath();  // returns e.g. "a.b.c"
+   var result = pushDescendantProp(obj, propPath, 1);  // test.a.b.c will now be 1
+   */
+  public static pushDescendantProp(obj, propPath, value) {
+    var arr = propPath.split('.');
+    while (arr.length > 1) {
+      obj = obj[arr.shift()];
+    }
+    return obj[arr[0]].push(value);
   }
 
   /**

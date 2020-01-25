@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {Injector, NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {GlobalConfigurations, ServiceConfig} from '@angular-boot/core';
 import {ServiceConfigImpl} from './config/service-config-impl';
@@ -15,7 +15,8 @@ import {CustomValidationMessageImpl} from './overrides/custom-validation-message
   providers: [
     {
       provide: ServiceConfig,
-      useClass: ServiceConfigImpl // <--- Defining the swappable implementation.
+      useClass: ServiceConfigImpl, // <--- Defining the swappable implementation.
+      deps: [Injector]
     },
     {
       provide: ValidationConfig,
