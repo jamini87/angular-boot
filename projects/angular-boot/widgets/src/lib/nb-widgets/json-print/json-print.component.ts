@@ -12,7 +12,7 @@ import {isNullOrUndefined} from 'util';
           <pre #jsonPrintPre></pre>
       </div>`,
   styleUrls: ['./json-print.component.scss'],
-  encapsulation: ViewEncapsulation.Native
+  encapsulation: ViewEncapsulation.ShadowDom
 })
 export class JsonPrintComponent implements OnInit, OnChanges {
   @Input() json_In;

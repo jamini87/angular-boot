@@ -10,7 +10,7 @@ const format = require('xml-formatter');
   selector: 'nbw-xml-print',
   template: '<div #xmlPrintDiv></div>',
   styleUrls: ['./xml-print.component.scss'],
-  encapsulation: ViewEncapsulation.Native
+  encapsulation: ViewEncapsulation.ShadowDom
 })
 
 
