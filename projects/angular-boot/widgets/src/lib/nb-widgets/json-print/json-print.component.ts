@@ -18,6 +18,7 @@ export class JsonPrintComponent implements OnInit, OnChanges {
   @Input() json_In;
   @ViewChild('jsonPrintPre') jsonPrintPre;
 
+
   constructor() {
   }
 
