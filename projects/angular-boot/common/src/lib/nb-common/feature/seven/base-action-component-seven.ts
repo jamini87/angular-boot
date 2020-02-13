@@ -22,9 +22,13 @@ export abstract class BaseActionComponentSeven<RouteParamClazz, QueryParamClazz,
   @Output() addedItem = new EventEmitter<T>(null);
   @Output() editedItem = new EventEmitter<T>(null);
 
-  receiveActionMode() {
+  receiveActionMode(afterModeChange?) {
     this.activatedRoute.data
       .subscribe((data: { actionMode: ActionMode }) => {
+        this.actionMode = data.actionMode;
+        if (afterModeChange) {
+          afterModeChange(this.actionMode);
+        }
         this.applyMode(data.actionMode);
       });
   }
