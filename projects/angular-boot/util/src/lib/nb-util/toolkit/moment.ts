@@ -17,7 +17,7 @@ import {Common} from './common';
 export class Moment {
   // *************************************
   public static isoToJalaliFormat(date, format: JalaliDateFormats) {
-    return jalaliMoment(moment(date, 'YYYY-MM-DDTHH:mm:ss.SSZ').toString()).format(format);
+    return jalaliMoment(Date.parse(date)).format(format);
   }
 
   public static isoToJDay(date) {
