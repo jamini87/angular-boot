@@ -11,11 +11,11 @@ import {ComponentCanDeactivate} from "../../routing";
 export abstract class BaseComponentSeven extends ComponentCanDeactivate{
   Toolkit2 = Toolkit2;
   ActionMode = ActionMode;
-  constructor(protected _ActivatedRoute: ActivatedRoute) {
+  constructor(public activatedRoute: ActivatedRoute) {
     super();
   }
   receiveData() {
-    this._ActivatedRoute.data
+    this.activatedRoute.data
       .subscribe((data: { modelContainer: ModelContainer<Object> }) => {
         // console.log(data);
         this.onReceiveRouteParam(data.modelContainer.routeParams);
@@ -25,7 +25,7 @@ export abstract class BaseComponentSeven extends ComponentCanDeactivate{
   abstract onReceiveRouteParam(routeParam: any);
   abstract onReceiveQueryParam(queryParam: any);
   getQueryParams() {
-    return this._ActivatedRoute.snapshot.queryParams;
+    return this.activatedRoute.snapshot.queryParams;
   }
   getUnFlatQueryParams(clazz, options?: UnFlatifyOptions) {
     return this.getUnFlatQueryParams2(clazz, null, options);
@@ -33,14 +33,14 @@ export abstract class BaseComponentSeven extends ComponentCanDeactivate{
   getUnFlatQueryParams2(clazz, sample, options?: UnFlatifyOptions) {
     const convertCamelToLowerHyphen = this.getConvertCamelToLowerHyphen(options);
     return this.Toolkit2.ObjectUtil.unFlatify2(
-      this._ActivatedRoute.snapshot.queryParams, clazz, sample,
+      this.activatedRoute.snapshot.queryParams, clazz, sample,
       {convertCamelToLowerHyphen: convertCamelToLowerHyphen}
     );
   }
 
 
   getRouteParams() {
-    return this._ActivatedRoute.snapshot.paramMap['params'];
+    return this.activatedRoute.snapshot.paramMap['params'];
   }
 
   getUnFlatRouteParams(clazz, options?: UnFlatifyOptions) {
@@ -48,10 +48,10 @@ export abstract class BaseComponentSeven extends ComponentCanDeactivate{
   }
 
   getUnFlatRouteParams2(clazz, sample, options?: UnFlatifyOptions) {
-    const convertCamelToLowerHyphen = this.getConvertCamelToLowerHyphen(options);
+    const convertCamelToLowerHyphen1 = this.getConvertCamelToLowerHyphen(options);
     return this.Toolkit2.ObjectUtil.unFlatify2(
-      this._ActivatedRoute.snapshot.paramMap['params'], clazz, sample,
-      {convertCamelToLowerHyphen: convertCamelToLowerHyphen}
+      this.activatedRoute.snapshot.paramMap['params'], clazz, sample,
+      {convertCamelToLowerHyphen: convertCamelToLowerHyphen1}
     );
   }
 

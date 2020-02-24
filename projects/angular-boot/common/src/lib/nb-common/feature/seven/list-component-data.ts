@@ -12,8 +12,8 @@ export class ListComponentData<T, RouteParamClazz, QueryParamClazz> {
   term: string;
   sortings: SpringSorting[];
 
-  constructor(protected routeParamClazzType: (new () => RouteParamClazz),
-              protected queryParamClazzType: (new () => QueryParamClazz)) {
+  constructor(public routeParamClazzType: (new () => RouteParamClazz),
+              public queryParamClazzType: (new () => QueryParamClazz)) {
     this.queryParam = new queryParamClazzType();
     this.routeParam = new routeParamClazzType();
     this.queryParamReal = new queryParamClazzType();

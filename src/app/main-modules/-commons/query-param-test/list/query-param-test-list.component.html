@@ -1,0 +1,58 @@
+<header class="ad-head">
+  <div class="row">
+    <div class="title-section col-md">
+      <h2 class="title">
+        لیست فرم‌های گزارش
+      </h2>
+    </div>
+    <div class="search-section col-md">
+      <div class="search">
+        <div class="search-box">
+          <i class="fa fa-search"></i>
+          <nbw-auto-search-input cssClass="form-control search-input"
+                                 class="w-100"
+                                 placeholder="جستجو"
+                                 [(ngModel)]="dataOfReportList.queryParam.term"
+                                 (currentValue)="search()">
+          </nbw-auto-search-input>
+        </div>
+      </div>
+    </div>
+    <div class="btn-section col-md text-left">
+      <!--      <button class="btn btn-add" [routerLink]="['create']">-->
+      <!--        ساخت فرم گزارش جدید-->
+      <!--      </button>-->
+    </div>
+  </div>
+</header>
+<div class="">
+  <div class="table-wrap table-responsive">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>نام فرم</th>
+        <th>توضیحات</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let reportForm of dataOfReportList.itemPage.content; let i = index;">
+        <td>{{+i + 1}}</td>
+        <td>{{reportForm.title}}</td>
+        <td>{{reportForm.description}}</td>
+        <td><button class="btn btn-light" type="button" (click)="prepareReportView(reportForm.id)">مشاهده</button></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <shr-pagination
+    *ngIf="dataOfReportList.itemPage !== null && dataOfReportList.itemPage !== undefined"
+    [indicatorCount]="dataOfReportList.indicatorCount"
+    [totalPages]="dataOfReportList.itemPage.totalPages"
+    [currentPage]="dataOfReportList.queryParamReal.paging.page"
+    (selectedPage)="setCurrentPage($event)"
+    class="class1"
+  ></shr-pagination>
+  <!--</div>-->
+</div>

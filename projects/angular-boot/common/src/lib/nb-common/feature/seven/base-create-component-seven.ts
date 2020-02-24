@@ -20,11 +20,11 @@ export abstract class BaseCreateComponentSeven<RouteParamClazz, QueryParamClazz,
 
 
   constructor(
-    protected activatedRoute: ActivatedRoute,
-    protected router: Router,
-    protected routeParamClazzType: (new () => RouteParamClazz),
-    protected queryParamClazzType: (new () => QueryParamClazz),
-    protected dialogService: DialogService) {
+    public activatedRoute: ActivatedRoute,
+    public router: Router,
+    public routeParamClazzType: (new () => RouteParamClazz),
+    public queryParamClazzType: (new () => QueryParamClazz),
+    public dialogService: DialogService) {
     super(activatedRoute, router, routeParamClazzType, queryParamClazzType);
     // for (const property of this.Toolkit2.ObjectUtil
     //   .getObjectPropertyList(this.featurePrefix)) {

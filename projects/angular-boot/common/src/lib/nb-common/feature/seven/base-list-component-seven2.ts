@@ -13,10 +13,10 @@ export abstract class BaseListComponentSeven2<RouteParamClazz, QueryParamClazz e
 
   protected firstOnThisRoute: boolean;
 
-  constructor(protected activatedRoute: ActivatedRoute,
-              protected router: Router,
-              protected routeParamClazzType: (new () => RouteParamClazz),
-              protected queryParamClazzType: (new () => QueryParamClazz)) {
+  constructor(public activatedRoute: ActivatedRoute,
+              public router: Router,
+              public routeParamClazzType: (new () => RouteParamClazz),
+              public queryParamClazzType: (new () => QueryParamClazz)) {
     super(activatedRoute, router, routeParamClazzType, queryParamClazzType);
     this.firstOnThisRoute = true;
   }

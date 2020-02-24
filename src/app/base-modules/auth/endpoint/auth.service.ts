@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {SignIn} from '../model/dto/sign-in';
 
-@Injectable()
-export class AuthService{
+@Injectable({providedIn: 'root'})
+export class AuthService {
 
   constructor() {
   }
