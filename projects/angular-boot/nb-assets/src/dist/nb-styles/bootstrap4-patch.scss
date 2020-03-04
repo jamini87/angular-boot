@@ -1,0 +1,6 @@
+:host-context(html:not([dir]), html[dir="ltr"]) .remove-start-15px {
+  margin-left: -15px;
+}
+:host-context(html[dir="rtl"]) .remove-start-15px {
+  margin-right: -15px!important;
+}
