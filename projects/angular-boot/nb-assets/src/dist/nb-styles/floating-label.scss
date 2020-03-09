@@ -1,0 +1,33 @@
+.form-group-float-place {
+  position: relative;
+  margin-top: 1.75rem;
+}
+
+.form-control-placeholder {
+  position: absolute;
+  top: 0;
+  padding: 7px 13px 7px 13px;
+  transition: all 200ms;
+  opacity: 0.5;
+}
+html[dir="rtl"] .form-control-placeholder {
+  right: 0;
+  left: auto;
+}
+input[float-label]:focus + .form-control-placeholder,
+input[float-label].filled + .form-control-placeholder,
+textarea[float-label]:focus + .form-control-placeholder,
+textarea[float-label].filled + .form-control-placeholder
+{
+  font-size: 80%;
+  transform: translate3d(0, -100%, 0);
+  opacity: 1;
+  color: #242424;
+}
+
+.float-label {
+  font-size: 80%;
+  transform: translate3d(0, -100%, 0);
+  opacity: 1;
+  color: #242424;
+}

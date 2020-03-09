@@ -1,6 +1,46 @@
-html:not([dir]) .remove-start-15px, html[dir="ltr"] .remove-start-15px  {
-  margin-left: -15px;
+// Worked Very Good. but we can use margin-start instead.
+//html:not([dir]) .remove-start-15px, html[dir="ltr"] .remove-start-15px  {
+//  margin-left: -15px;
+//}
+//html[dir="rtl"] .remove-start-15px {
+//  margin-right: -15px!important;
+//}
+.remove-margin-start-15 {
+  -webkit-margin-start: -15px !important;
+  -moz-margin-start: -15px !important;
 }
-html[dir="rtl"] .remove-start-15px {
-  margin-right: -15px!important;
+.remove-margin-end-15 {
+  -webkit-margin-end: -15px !important;
+  -moz-margin-end: -15px !important;
 }
+.remove-margin-x-15 {
+  margin-right: -15px !important;
+  margin-left: -15px !important;
+}
+.text-start {
+  text-align: start !important;
+}
+.text-end {
+  text-align: end !important;
+}
+
+//html:not([dir]) .remove-padding-start, html[dir="ltr"] .remove-padding-start {
+//  padding-left: 0 !important;
+//}
+//
+//html[dir="rtl"] .remove-padding-start {
+//  padding-right: 0 !important;
+//}
+
+//html:not([dir]) .remove-padding-end, html[dir="ltr"] .remove-padding-end {
+//  padding-right: 0 !important;
+//}
+//
+//html[dir="rtl"] .remove-padding-end {
+//  padding-left: 0 !important;
+//}
+
+//.remove-padding-x {
+//  padding-left: 0 !important;
+//  padding-right: 0 !important;
+//}

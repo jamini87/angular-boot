@@ -7,6 +7,7 @@ import {IfEditModeDirective} from './nb-common/util-directives/action-mode/if-ed
 import {IfViewModeDirective} from './nb-common/util-directives/action-mode/if-view-mode.directive';
 import {ShrPaginationModule} from "./shared-components/pagination/shr-pagination.module";
 import {ShrSortingIconModule} from "./shared-components/sorting-icon/shr-sorting-icon.module";
+import { FloatLabelDirective } from './nb-common/util-directives/float-label.directive';
 
 //Not Worked error:
 // Unexpected value 'undefined' exported by the module
@@ -27,7 +28,8 @@ const UtilDirectives = [
   IfEditModeDirective,
   IfEditOrAddModeDirective,
   IfEditOrViewModeDirective,
-  IfViewModeDirective
+  IfViewModeDirective,
+  FloatLabelDirective
 ];
 
 @NgModule({
@@ -35,7 +37,7 @@ const UtilDirectives = [
     ShrPaginationModule,
     ShrSortingIconModule
   ],
-  declarations: [UtilDirectives],
+  declarations: [UtilDirectives, FloatLabelDirective],
   exports: [
     UtilDirectives,
     ShrPaginationModule,
