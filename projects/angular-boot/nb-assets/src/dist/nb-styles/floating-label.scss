@@ -22,14 +22,12 @@ textarea[float-label].filled + .form-control-placeholder
   font-size: 80%;
   transform: translate3d(0, -100%, 0);
   opacity: 1;
-  color: #242424;
 }
 
 .float-label {
   font-size: 80%;
   transform: translate3d(0, -100%, 0);
   opacity: 1;
-  color: #242424;
 }
 input[float-label]::placeholder, textarea[float-label]::placeholder {
   color: transparent;
