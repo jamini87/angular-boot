@@ -1,8 +1,8 @@
+$placeholderColor: #848484;
 .form-group-float-place {
   position: relative;
   margin-top: 1.75rem;
 }
-
 .form-control-placeholder {
   position: absolute;
   top: 0;
@@ -30,4 +30,11 @@ textarea[float-label].filled + .form-control-placeholder
   transform: translate3d(0, -100%, 0);
   opacity: 1;
   color: #242424;
+}
+input[float-label]::placeholder, textarea[float-label]::placeholder {
+  color: transparent;
+}
+input[float-label]:focus::placeholder, textarea[float-label]:focus::placeholder {
+  color: $placeholderColor;
+  transition: 0.8s;
 }
