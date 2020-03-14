@@ -60,10 +60,17 @@ export class ModalComponent implements OnInit, OnChanges, AfterViewInit, OnDestr
   defaultWidthPercent = 50;
   currentWidthPercent: number;
 
+  isShow: boolean;
+  isShown: boolean;
   constructor() {
   }
 
+  private reset() {
+    this.isShow = false;
+    this.isShown = false;
+  }
   ngOnInit() {
+    this.reset();
     if (isNullOrUndefined(this.myId)) {
       this.myId = ModalUtil.generateModalId();
     }
@@ -92,6 +99,7 @@ export class ModalComponent implements OnInit, OnChanges, AfterViewInit, OnDestr
       ModalUtil.showModal(this.myId);
     }
     $('#' + this.myId.toString()).on('hidden.bs.modal', () => {
+      this.reset();
       // do something…
       that.onClose.emit(true);
       // alert(that.myId);
@@ -103,9 +111,11 @@ export class ModalComponent implements OnInit, OnChanges, AfterViewInit, OnDestr
       }
     });
     $('#' + this.myId.toString()).on('show.bs.modal', () => {
+      this.isShow = true;
       that.onShow.emit(true);
     });
     $('#' + this.myId.toString()).on('shown.bs.modal', () => {
+      this.isShown = true;
       that.onShown.emit(true);
     });
   }
