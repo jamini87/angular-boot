@@ -1,5 +1,6 @@
 <ng-container *ngIf="myId!==null && myId!==undefined"></ng-container>
-<div class="modal fade bd-example-modal-lg"
+<div class="modal"
+     [class.fade]="fade"
      [ngClass]="getCssClasses()"
      [class.modal-full]="modalSize === MyModalSize.FULL_SCREEN"
      [id]="myId" tabindex="-1" role="dialog"

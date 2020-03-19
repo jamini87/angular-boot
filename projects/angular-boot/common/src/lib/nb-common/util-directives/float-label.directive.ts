@@ -7,7 +7,7 @@ export class FloatLabelDirective {
   constructor(private renderer: Renderer2, private hostElement: ElementRef) {
   }
 
-  @HostListener('change') onMouseEnter() {
+  @HostListener('change') onChange() {
     if (this.hostElement.nativeElement.value !== '') {
       this.renderer.addClass(this.hostElement.nativeElement, 'filled');
     } else {

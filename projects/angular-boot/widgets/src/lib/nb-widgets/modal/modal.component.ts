@@ -1,4 +1,5 @@
 import {
+  AfterContentInit,
   AfterViewInit,
   Component,
   EventEmitter,
@@ -22,7 +23,7 @@ declare var $: any;
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.scss']
 })
-export class ModalComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy {
+export class ModalComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy, AfterContentInit {
   MyModalSize = ModalSize;
   // private _customWidthPercent: WindowMedias<number> = new WindowMedias<number>();
   @Input() hasHeader = true;
@@ -50,6 +51,7 @@ export class ModalComponent implements OnInit, OnChanges, AfterViewInit, OnDestr
   @Input() modalDialogCentered = false;
   @Input() removeFromDomOnHide: boolean;
   @Input() appendToBodyOnShow: boolean;
+  @Input() fade = true;
   @Output() onClose: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() onShow: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() onShown: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -60,9 +62,10 @@ export class ModalComponent implements OnInit, OnChanges, AfterViewInit, OnDestr
   defaultWidthPercent = 50;
   currentWidthPercent: number;
 
-  isShow: boolean;
-  isShown: boolean;
+  public isShow: boolean;
+  public isShown: boolean;
   constructor() {
+    this.reset();
   }
 
   private reset() {
@@ -118,6 +121,10 @@ export class ModalComponent implements OnInit, OnChanges, AfterViewInit, OnDestr
       this.isShown = true;
       that.onShown.emit(true);
     });
+  }
+
+  ngAfterContentInit(): void {
+
   }
 
   // getExtraClass() {

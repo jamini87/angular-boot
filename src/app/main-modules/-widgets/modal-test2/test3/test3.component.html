@@ -1,5 +1,5 @@
-<nbw-modal [historyBackOnClose]="true" (onClose)="doAfterClose()">
-  <div modal-body>
+<nbw-modal [historyBackOnClose]="true" (onClose)="doAfterClose()" #gg>
+  <div modal-body *ngIf="gg.isShow">
     Hi
   </div>
 </nbw-modal>

@@ -11,3 +11,4 @@ export * from './page-container';
 export * from './pick-for-dest';
 export * from './pick-model';
 export * from './read-mode.enum';
+export * from './for-check';
