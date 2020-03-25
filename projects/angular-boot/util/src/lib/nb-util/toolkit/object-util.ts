@@ -297,8 +297,10 @@ export class ObjectUtil {
 
   public static listToObject(list: any[], getKey) {
     const obj = {};
-    for (const item of list) {
-      obj[getKey(item)] = item;
+    if (list && list.length && list.length > 0) {
+      for (const item of list) {
+        obj[getKey(item)] = item;
+      }
     }
     return obj;
   }
