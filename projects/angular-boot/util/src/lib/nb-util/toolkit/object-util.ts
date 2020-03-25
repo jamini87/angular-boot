@@ -295,4 +295,12 @@ export class ObjectUtil {
     delete obj[str];
   }
 
+  public static listToObject(list: any[], getKey) {
+    const obj = {};
+    for (const item of list) {
+      obj[getKey(item)] = item;
+    }
+    return obj;
+  }
+
 }
