@@ -3,7 +3,8 @@
  */
 export declare type QueryOperator =
   'equals' | 'notEquals' | 'equalsIgnoreCase' | 'notEqualsIgnoreCase' |
-  'lessThan' | 'greaterThan' | 'lessThanOrEquals' | 'greaterThanOrEquals' | 'like';
+  'lessThan' | 'greaterThan' | 'lessThanOrEquals' | 'greaterThanOrEquals' | 'like' |
+  'contain' | 'notContain';
 export declare type SortDirection =
   'asc' | 'desc' | '';
 
