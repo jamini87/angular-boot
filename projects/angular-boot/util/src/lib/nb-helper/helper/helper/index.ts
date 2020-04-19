@@ -5,6 +5,7 @@ export * from './delete-model';
 export * from './devision-result';
 export * from './general-domain';
 export * from './id-object';
+export * from './label-object';
 export * from './list-container';
 export * from './order-type';
 export * from './page-container';

@@ -1,6 +1,6 @@
 import {BehaviorSubject} from 'rxjs';
 import {ListHolder} from './list-holder';
-import {clone} from "@angular-boot/util/lib/nb-util";
+import {clone} from '../util-functions';
 
 export class ListDataService<T> {
   private listHolder: ListHolder<T> = new ListHolder<T>();
