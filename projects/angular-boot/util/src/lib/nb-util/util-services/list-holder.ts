@@ -5,11 +5,11 @@ export class ListHolder<T> {
     this._holder.push(item);
   }
 
-  remove(filterFunction) {
+  remove(filterFunction: (e: T) => any) {
     this._holder = this._holder.filter(filterFunction);
   }
 
-  find(filterFunction) {
+  find(filterFunction: (e: T) => any) {
     return this._holder.filter(filterFunction);
   }
 
