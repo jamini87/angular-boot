@@ -7,7 +7,7 @@ import {StringUtil} from '../../../toolkit/string-util';
 export class ShortenPipe implements PipeTransform {
 
   transform(value: string, length: number, extra?: string): any {
-    return StringUtil.getShorten(value, length, extra);
+    return value ? StringUtil.getShorten(value, length, extra) : '';
   }
 
 }
