@@ -7,9 +7,18 @@ import {PairKeyValue} from '../../nb-helper/helper/pairs';
 export class StringUtil {
   public static getShorten(text: string, length: number, extra?: string) {
     let exText = '';
-    exText = !isNullOrUndefined(extra) ? ' ' + extra : '...';
     // alert("exText: " + exText);
-    return text.substr(0, length) + exText;
+    if (!text || (text && text.length === 0)) {
+      return '';
+    } else {
+      if (text.length > length) {
+        exText = !isNullOrUndefined(extra) ? ' ' + extra : '...';
+        return text.substr(0, length) + exText;
+      } else {
+        return text.substr(0, length);
+      }
+    }
+
     // return text.substr(0,length,)+' '+ !isNullOrUndefined(extra) ? extra : "";
   }
 
@@ -157,7 +166,7 @@ export class StringUtil {
       } else {
         if (beginDirection === 'fromStart') {
           res = arr[index];
-        } else if (beginDirection === 'fromEnd'){
+        } else if (beginDirection === 'fromEnd') {
           res = arr[arr.length - 1 - index];
         }
       }

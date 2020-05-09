@@ -1,6 +1,6 @@
 {
   "name": "@angular-boot/nb-assets",
-  "version": "0.6.40",
+  "version": "0.6.42",
   "peerDependencies": {
     "@angular/common": ">=7.2.0",
     "@angular/core": ">=7.2.0"

@@ -8,12 +8,12 @@ export class ListDataService<T> {
   currentList = this.holderBs.asObservable();
 
   public trigger() {
-    this.holderBs.next(this.listHolder.holder);
+    this.holderBs.next(this.listHolder.list);
   }
 
   set(value: T []) {
     alert(1);
-    this.listHolder.setHolder(value);
+    this.listHolder.setList(value);
     this.trigger();
   }
 
@@ -23,9 +23,9 @@ export class ListDataService<T> {
   }
 
   update(item: T, getCondition) {
-    for (let i = 0; i < this.listHolder.holder.length; i++) {
-      if (getCondition(this.listHolder.holder[i])) {
-        this.listHolder.holder[i] = clone(item);
+    for (let i = 0; i < this.listHolder.list.length; i++) {
+      if (getCondition(this.listHolder.list[i])) {
+        this.listHolder.list[i] = clone(item);
         break;
       }
     }

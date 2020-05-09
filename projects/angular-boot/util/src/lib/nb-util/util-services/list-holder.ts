@@ -1,23 +1,23 @@
 export class ListHolder<T> {
-  private _holder: T[] = [];
+  private _list: T[] = [];
 
   push(item: T) {
-    this._holder.push(item);
+    this._list.push(item);
   }
 
   remove(filterFunction: (e: T) => any) {
-    this._holder = this._holder.filter(filterFunction);
+    this._list = this._list.filter(filterFunction);
   }
 
   find(filterFunction: (e: T) => any) {
-    return this._holder.filter(filterFunction);
+    return this._list.filter(filterFunction);
   }
 
-  get holder(): T[] {
-    return this._holder;
+  get list(): T[] {
+    return this._list;
   }
 
-  setHolder(val: T[]) {
-    this._holder = val;
+  setList(val: T[]) {
+    this._list = val;
   }
 }

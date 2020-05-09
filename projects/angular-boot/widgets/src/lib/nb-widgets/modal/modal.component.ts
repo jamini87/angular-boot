@@ -64,6 +64,7 @@ export class ModalComponent implements OnInit, OnChanges, AfterViewInit, OnDestr
 
   public isShow: boolean;
   public isShown: boolean;
+
   constructor() {
     this.reset();
   }
@@ -72,6 +73,7 @@ export class ModalComponent implements OnInit, OnChanges, AfterViewInit, OnDestr
     this.isShow = false;
     this.isShown = false;
   }
+
   ngOnInit() {
     this.reset();
     if (isNullOrUndefined(this.myId)) {
