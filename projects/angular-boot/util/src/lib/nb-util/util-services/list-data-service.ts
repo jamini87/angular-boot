@@ -17,6 +17,10 @@ export class ListDataService<T> {
     this.trigger();
   }
 
+  getList() {
+    return this.listHolder.list;
+  }
+
   push(item: T) {
     this.listHolder.push(item);
     this.trigger();
