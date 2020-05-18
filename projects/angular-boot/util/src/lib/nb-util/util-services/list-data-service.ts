@@ -12,7 +12,6 @@ export class ListDataService<T> {
   }
 
   set(value: T []) {
-    alert(1);
     this.listHolder.setList(value);
     this.trigger();
   }
