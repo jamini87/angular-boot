@@ -2,6 +2,7 @@ export * from './pair-key-value';
 export * from './pair-value-title';
 export * from './pair-name-value';
 export * from './pair-id-title';
+export * from './pair-key-title';
 export * from './object-util-t';
 export * from './pair-key-value-t';
 export * from './pair-value-title-t';
