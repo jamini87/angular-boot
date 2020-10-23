@@ -1,5 +1,5 @@
 import {RestExtra} from './rest-extra';
-import {isNullOrUndefined} from 'util';
+import {isNullOrUndefined} from '@angular-boot/util';
 import {RequestContentType} from './request-content-type';
 import {ResponseContentType} from './response-content-type';
 import {HttpHeaders} from '@angular/common/http';

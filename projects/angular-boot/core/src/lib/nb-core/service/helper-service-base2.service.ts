@@ -3,7 +3,7 @@
  */
 import {ServiceBase2} from './serivce-base2.service';
 import {ResponseContentType} from './response-content-type';
-import {isNullOrUndefined} from 'util';
+import {isNullOrUndefined} from '@angular-boot/util';
 import {RequestContentType} from './request-content-type';
 import {RestExtra} from './rest-extra';
 import {Observable} from 'rxjs';

@@ -1,6 +1,12 @@
 nav {
-  margin: 0 auto;
-  padding-top: 10px;
+  //margin: 0 auto;
+  //padding-top: 10px;
+  margin: 10px auto 0px;
+
+  //margin-top: 10px;
+  //margin-left: auto;
+  //margin-right: auto;
+  //margin-bottom: 0px;
 }
 
 .pagination.pagination-circle .page-item.active .page-link {
@@ -12,6 +18,9 @@ nav {
   transition: all .3s linear;
   border-radius: .125rem;
   background-color: #eee;
+}
+.pagination {
+  margin-top: 15px;
 }
 
 .pagination.pg-blue .page-item.active .page-link:hover {

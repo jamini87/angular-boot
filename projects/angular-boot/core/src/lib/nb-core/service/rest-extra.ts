@@ -1,6 +1,6 @@
 import {ResponseContentType} from './response-content-type';
 import {RequestContentType} from './request-content-type';
-import {isNullOrUndefined} from 'util';
+import {isNullOrUndefined} from '@angular-boot/util';
 import {RestRequestStatus, RestServiceErrorPolicy, RestServiceResultPolicy} from '@angular-boot/util';
 
 // export class RestExtra {

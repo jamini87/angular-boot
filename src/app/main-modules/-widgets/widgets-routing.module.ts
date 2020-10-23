@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
 
 const routes: Routes = [
   {
@@ -21,6 +21,10 @@ const routes: Routes = [
   {
     path: 'test3',
     loadChildren: './modal-test2/modal-test2.module#ModalTest2Module'
+  },
+  {
+    path: 'pagination-test',
+    loadChildren: './pagination-test/pagination-test.module#PaginationTestModule'
   }
 ];
 
@@ -28,4 +32,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class WidgetsRoutingModule { }
+export class WidgetsRoutingModule {
+}

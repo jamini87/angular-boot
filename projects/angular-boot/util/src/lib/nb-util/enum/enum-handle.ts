@@ -1,7 +1,7 @@
 /**
  * @author Jafar Amini on 2018.
  */
-import {PairValueTitle} from "../../nb-helper/helper/pairs";
+import {PairValueTitle, PairValueTitleT} from "../../nb-helper/helper/pairs";
 
 export class EnumHandle {
 
@@ -34,6 +34,7 @@ export class EnumHandle {
     }
     return keys;
   }
+
 
   static getAsValueList(myEnum): any[] {
     let value = EnumHandle.getAsObject(myEnum);

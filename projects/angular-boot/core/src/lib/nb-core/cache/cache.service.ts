@@ -8,7 +8,7 @@ import {CacheType} from './util/enums/cache-type';
 import {StorageValueInterface} from './util/interfaces/storage-value.interface';
 import {StoredItem} from './helper/stored-item';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {isNullOrUndefined} from 'util';
+import {isNullOrUndefined} from '@angular-boot/util';
 
 // const CACHE_PREFIX = 'CacheService';
 const CACHE_PREFIX = '';

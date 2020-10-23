@@ -35,12 +35,12 @@ export class ListDataService<T> {
     this.trigger();
   }
 
-  remove(filterFunction) {
+  remove(filterFunction: (value: T) => any) {
     this.listHolder.remove(filterFunction);
     this.trigger();
   }
 
-  find(filterFunction) {
+  find(filterFunction: (value: T) => any) {
     return this.listHolder.find(filterFunction);
   }
 }

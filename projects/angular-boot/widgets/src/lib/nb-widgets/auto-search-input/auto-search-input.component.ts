@@ -1,8 +1,19 @@
-import {AfterViewInit, Component, EventEmitter, forwardRef, Input, OnInit, Output} from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  EventEmitter,
+  forwardRef,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+  ElementRef,
+  ViewChild
+} from '@angular/core';
 import {isNullOrUndefined} from 'util';
 import {Toolkit2} from '@angular-boot/util';
-import {fromEvent} from 'rxjs';
-import {debounceTime, map} from 'rxjs/operators';
+import {fromEvent, Subject} from 'rxjs';
+import {debounceTime, map, takeUntil} from 'rxjs/operators';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
 
 
@@ -20,7 +31,7 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
   styleUrls: ['./auto-search-input.component.scss'],
   providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
 })
-export class AutoSearchInputComponent implements OnInit, AfterViewInit {
+export class AutoSearchInputComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @Input() placeholder: string;
   @Input() cssClass: string;
@@ -28,11 +39,13 @@ export class AutoSearchInputComponent implements OnInit, AfterViewInit {
   @Input() debounceTime: number;
 
   @Output() currentValue: EventEmitter<string> = new EventEmitter<string>();
-
+  unsubscribe1$ = new Subject<void>();
+  unsubscribe2$ = new Subject<void>();
   constructor() {
   }
 
   ngOnInit() {
+
     if (isNullOrUndefined(this.myId)) {
       this.myId = Toolkit2.Common.create().uuidv4();
     }
@@ -43,26 +56,33 @@ export class AutoSearchInputComponent implements OnInit, AfterViewInit {
 
   inputHandle() {
     const input = document.getElementById(this.myId);
-
-
-    const example1 = fromEvent(input, 'keyup')
-      .pipe(map(i => i.currentTarget['value']));
-    const example2 = fromEvent(input, 'paste')
-      .pipe(map(i => i.currentTarget['value']));
-    const debouncedInputOnKeyup = example1.pipe(debounceTime(this.debounceTime));
-    const debouncedInputOnPaste = example2.pipe(debounceTime(this.debounceTime));
-    const subscribe1 = debouncedInputOnKeyup.subscribe(val => {
-      // console.log(`Debounced Input: ${val}`);
-      this.currentValue.emit(val);
-    });
-
-    const subscribe2 = debouncedInputOnPaste.subscribe(val => {
-      // console.log(`Debounced Input: ${val}`);
-      // alert(2 + '  ' + val);
-      setTimeout(() => {
-        this.currentValue.emit(this.value);
-      }, 10);
-    });
+    if (input) {
+      const example1 = fromEvent(input, 'keyup')
+        .pipe(map(i => i.currentTarget['value']));
+      const example2 = fromEvent(input, 'paste')
+        .pipe(map(i => i.currentTarget['value']));
+      const debouncedInputOnKeyup = example1.pipe(debounceTime(this.debounceTime));
+      const debouncedInputOnPaste = example2.pipe(debounceTime(this.debounceTime));
+      if (debouncedInputOnKeyup) {
+        debouncedInputOnKeyup
+          .pipe(takeUntil(this.unsubscribe1$))
+          .subscribe(val => {
+            // console.log(`Debounced Input: ${val}`);
+            this.currentValue.emit(val);
+          });
+      }
+      if (debouncedInputOnPaste) {
+        debouncedInputOnPaste
+          .pipe(takeUntil(this.unsubscribe2$))
+          .subscribe(val => {
+            // console.log(`Debounced Input: ${val}`);
+            // alert(2 + '  ' + val);
+            setTimeout(() => {
+              this.currentValue.emit(this.value);
+            }, 10);
+          });
+      }
+    }
   }
 
   ngAfterViewInit(): void {
@@ -118,6 +138,13 @@ export class AutoSearchInputComponent implements OnInit, AfterViewInit {
     if (value !== this.innerValue) {
       this.innerValue = value;
     }
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe1$.next();
+    this.unsubscribe1$.complete();
+    this.unsubscribe2$.next();
+    this.unsubscribe2$.complete();
   }
 
 

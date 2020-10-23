@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {isNullOrUndefined} from 'util';
+import {isNullOrUndefined} from '@angular-boot/util';
 import {ResponseContentType} from './response-content-type';
 import {ServiceUtil} from './service-util';
 

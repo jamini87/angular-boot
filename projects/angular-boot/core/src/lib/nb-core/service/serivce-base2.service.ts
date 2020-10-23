@@ -3,7 +3,7 @@
  */
 import {ServiceBase} from './service-base.service';
 import {Observable, Subject} from 'rxjs';
-import {isNullOrUndefined} from 'util';
+import {isNullOrUndefined} from '@angular-boot/util';
 import {ErrorHandle} from '../error-handling/error-handle';
 import {RestExtra} from './rest-extra';
 import {RestRequestOptions, RestRequestStatus, Toolkit2} from '@angular-boot/util';

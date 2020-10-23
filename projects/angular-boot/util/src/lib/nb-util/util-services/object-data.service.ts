@@ -1,7 +1,7 @@
-import {ReplaySubject} from 'rxjs';
+import {BehaviorSubject} from 'rxjs';
 
 export class ObjectDataService<T> {
-  private model = new ReplaySubject<T>(1);
+  private model = new BehaviorSubject<T>(null);
   currentModel = this.model.asObservable();
 
   changeModel(value: T) {

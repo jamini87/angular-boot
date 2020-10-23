@@ -1,7 +1,7 @@
 /**
  * @author Jafar Amini in March 2018.
  */
-import {isNullOrUndefined} from 'util';
+import {isNullOrUndefined} from '@angular-boot/util';
 
 export class FakeData {
 

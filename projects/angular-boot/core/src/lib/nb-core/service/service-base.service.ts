@@ -1,7 +1,7 @@
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {RestExtra} from './rest-extra';
 import {ServiceUtil} from './service-util';
-import {isNullOrUndefined} from 'util';
+import {isNullOrUndefined} from '@angular-boot/util';
 import {Observable} from 'rxjs';
 import {ServiceConfig, TokenMode} from '../config';
 import {map} from 'rxjs/operators';

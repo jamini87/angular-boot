@@ -1,5 +1,15 @@
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewEncapsulation} from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
+  ViewEncapsulation
+} from '@angular/core';
 import {isNullOrUndefined} from 'util';
+import {Toolkit2} from '@angular-boot/util';
 
 /**
  * Created By Jafar Amini in December 2018
@@ -103,6 +113,7 @@ export class PaginationComponent implements OnInit, OnChanges {
   }
 
   private emitSelectedPage(page: number) {
+    this.currentPage = page;
     this.selectedPage.emit(page);
   }
 
@@ -117,5 +128,9 @@ export class PaginationComponent implements OnInit, OnChanges {
     //     this.generateIndicates();
     //   }
     // }
+  }
+
+  en2Fa(value) {
+    return Toolkit2.Common.En2Fa(value);
   }
 }
