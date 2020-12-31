@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {
   BaseListComponentSeven2,
   ListComponentData, ListQueryParam
-} from '../../../../../../projects/angular-boot/common/src/lib/nb-common/feature';
+} from '../../../../../../projects/angular-boot/common/src/lib/feature';
 import {TableColumn} from '../table-column';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ReportBuilderService} from './report-builder.service';

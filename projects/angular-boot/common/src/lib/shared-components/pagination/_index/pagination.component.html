@@ -3,7 +3,7 @@
 
   <div class="d-flex justify-content-between align-items-center">
     <div class="">
-      <span>صفحه {{+currentPage + 1 | nbpipe: en2Fa}} از {{totalPages | nbpipe: en2Fa}}</span>
+      <span *ngIf="showTotalPage">صفحه {{+currentPage + 1 | nbpipe: en2Fa}} از {{totalPages | nbpipe: en2Fa}}</span>
     </div>
     <div class="">
       <ul class="pagination pagination-circle justify-content-center">
@@ -43,10 +43,12 @@
         </li>
       </ul>
     </div>
-    <div class="">
-      <ng-select>
-        <ng-option> A1</ng-option>
-      </ng-select>
+    <div class="col-2">
+      <ng-container *ngIf="showSizeSelection">
+        <ng-select id="size" name="size" [(ngModel)]="size" (change)="onSizeChange($event)">
+          <ng-option *ngFor="let item of sizeSelectionArray" [value]="item"> {{item}}</ng-option>
+        </ng-select>
+      </ng-container>
     </div>
   </div>
 </nav>

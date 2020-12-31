@@ -8,7 +8,7 @@ import {ModalComponent} from '../../../../../projects/angular-boot/widgets/src/l
   styleUrls: ['./modal-test.component.scss']
 })
 export class ModalTestComponent implements OnInit {
-  @ViewChild('testModal') testModal: ModalComponent;
+  @ViewChild('testModal', {static: true}) testModal: ModalComponent;
   modalId: string;
   modalId2: string;
 

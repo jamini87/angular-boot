@@ -1,4 +1,4 @@
-import {isNullOrUndefined} from 'util';
+import {isNullOrUndefined} from '../../../nb-util';
 
 export class Css3Colors {
   public static REDS = class {

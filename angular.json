@@ -4,15 +4,15 @@
   "newProjectRoot": "projects",
   "projects": {
     "angular-boot": {
-      "root": "",
-      "sourceRoot": "src",
       "projectType": "application",
-      "prefix": "app",
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
         }
       },
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -21,7 +21,8 @@
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
-            "tsConfig": "src/tsconfig.app.json",
+            "tsConfig": "tsconfig.app.json",
+            "aot": false,
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -30,11 +31,10 @@
               "src/styles.scss"
             ],
             "scripts": [
-		"node_modules/jquery/dist/jquery.min.js",
-		"node_modules/hammerjs/hammer.min.js",
-		"node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
-		"node_modules/@angular-boot/nb-assets/dist/bootstrap-notify/bootstrap-notify.min.js"],
-            "es5BrowserSupport": true
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "node_modules/@angular-boot/nb-assets/dist/bootstrap-notify/bootstrap-notify.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -58,6 +58,11 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
                 }
               ]
             }
@@ -85,19 +90,19 @@
           "options": {
             "main": "src/test.ts",
             "polyfills": "src/polyfills.ts",
-            "tsConfig": "src/tsconfig.spec.json",
-            "karmaConfig": "src/karma.conf.js",
+            "tsConfig": "tsconfig.spec.json",
+            "karmaConfig": "karma.conf.js",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
             "styles": [
               "src/styles.scss"
             ],
             "scripts": [
-		"node_modules/jquery/dist/jquery.min.js",
-		"node_modules/hammerjs/hammer.min.js",
-		"node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
-		"node_modules/@angular-boot/nb-assets/dist/bootstrap-notify/bootstrap-notify.min.js"],
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "node_modules/@angular-boot/nb-assets/dist/bootstrap-notify/bootstrap-notify.min.js"
             ]
           }
         },
@@ -105,21 +110,15 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "src/tsconfig.app.json",
-              "src/tsconfig.spec.json"
+              "tsconfig.app.json",
+              "tsconfig.spec.json",
+              "e2e/tsconfig.json"
             ],
             "exclude": [
               "**/node_modules/**"
             ]
           }
-        }
-      }
-    },
-    "angular-boot-e2e": {
-      "root": "e2e/",
-      "projectType": "application",
-      "prefix": "",
-      "architect": {
+        },
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
@@ -131,57 +130,13 @@
               "devServerTarget": "angular-boot:serve:production"
             }
           }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": "e2e/tsconfig.e2e.json",
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        }
-      }
-    },
-    "@angular-boot/util": {
-      "root": "projects/angular-boot/util",
-      "sourceRoot": "projects/angular-boot/util/src",
-      "projectType": "library",
-      "prefix": "lib",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
-          "options": {
-            "tsConfig": "projects/angular-boot/util/tsconfig.lib.json",
-            "project": "projects/angular-boot/util/ng-package.json"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "projects/angular-boot/util/src/test.ts",
-            "tsConfig": "projects/angular-boot/util/tsconfig.spec.json",
-            "karmaConfig": "projects/angular-boot/util/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/angular-boot/util/tsconfig.lib.json",
-              "projects/angular-boot/util/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
         }
       }
     },
     "@angular-boot/animation": {
+      "projectType": "library",
       "root": "projects/angular-boot/animation",
       "sourceRoot": "projects/angular-boot/animation/src",
-      "projectType": "library",
       "prefix": "lib",
       "architect": {
         "build": {
@@ -214,9 +169,9 @@
       }
     },
     "@angular-boot/common": {
+      "projectType": "library",
       "root": "projects/angular-boot/common",
       "sourceRoot": "projects/angular-boot/common/src",
-      "projectType": "library",
       "prefix": "lib",
       "architect": {
         "build": {
@@ -249,9 +204,9 @@
       }
     },
     "@angular-boot/core": {
+      "projectType": "library",
       "root": "projects/angular-boot/core",
       "sourceRoot": "projects/angular-boot/core/src",
-      "projectType": "library",
       "prefix": "lib",
       "architect": {
         "build": {
@@ -284,9 +239,9 @@
       }
     },
     "@angular-boot/nb-assets": {
+      "projectType": "library",
       "root": "projects/angular-boot/nb-assets",
       "sourceRoot": "projects/angular-boot/nb-assets/src",
-      "projectType": "library",
       "prefix": "lib",
       "architect": {
         "build": {
@@ -318,10 +273,45 @@
         }
       }
     },
+    "@angular-boot/util": {
+      "projectType": "library",
+      "root": "projects/angular-boot/util",
+      "sourceRoot": "projects/angular-boot/util/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/angular-boot/util/tsconfig.lib.json",
+            "project": "projects/angular-boot/util/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/angular-boot/util/src/test.ts",
+            "tsConfig": "projects/angular-boot/util/tsconfig.spec.json",
+            "karmaConfig": "projects/angular-boot/util/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/angular-boot/util/tsconfig.lib.json",
+              "projects/angular-boot/util/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
     "@angular-boot/validation": {
+      "projectType": "library",
       "root": "projects/angular-boot/validation",
       "sourceRoot": "projects/angular-boot/validation/src",
-      "projectType": "library",
       "prefix": "lib",
       "architect": {
         "build": {
@@ -354,9 +344,9 @@
       }
     },
     "@angular-boot/widgets": {
+      "projectType": "library",
       "root": "projects/angular-boot/widgets",
       "sourceRoot": "projects/angular-boot/widgets/src",
-      "projectType": "library",
       "prefix": "lib",
       "architect": {
         "build": {
@@ -387,7 +377,6 @@
           }
         }
       }
-    }
-  },
+    }},
   "defaultProject": "angular-boot"
 }

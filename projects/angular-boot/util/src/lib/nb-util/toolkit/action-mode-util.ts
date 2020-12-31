@@ -1,8 +1,8 @@
 /**
  * @author Jafar Amini in March 2018.
  */
-import {isNullOrUndefined} from 'util';
-import {ActionMode} from "../../nb-helper/appendix";
+import {ActionMode} from '../../nb-helper/appendix';
+import {isNullOrUndefined} from '../util-functions';
 
 export class ActionModeUtil {
   public static isEditOrAddMode(myMode_I: ActionMode){

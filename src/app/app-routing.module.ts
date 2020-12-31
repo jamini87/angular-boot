@@ -1,5 +1,6 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule, ExtraOptions } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule, ExtraOptions} from '@angular/router';
+
 
 const routes: Routes = [
   {
@@ -15,10 +16,10 @@ const routes: Routes = [
     path: 'auth',
     loadChildren: './base-modules/auth/feature/auth.module#AuthModule'
   },
- {
-   path: 'panel',
-   loadChildren: './base-modules/panel/panel.module#PanelModule'
- }
+  {
+    path: 'panel',
+    loadChildren: './base-modules/panel/panel.module#PanelModule'
+  }
 ];
 
 export const routingConfiguration: ExtraOptions = {
@@ -26,9 +27,9 @@ export const routingConfiguration: ExtraOptions = {
   paramsInheritanceStrategy: 'always'
 };
 
-
 @NgModule({
   imports: [RouterModule.forRoot(routes, routingConfiguration)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

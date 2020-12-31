@@ -1,7 +1,7 @@
 /**
  * @author Jafar Amini in May 2018.
  */
-import {isNullOrUndefined} from 'util';
+import {isNullOrUndefined} from '../../../nb-util';
 
 export class Paging {
   page?: number; //  Parameter to allow for paging of the result.

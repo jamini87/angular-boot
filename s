@@ -17,8 +17,8 @@ while [ $# -gt 0 ]; do
 done
 
 if [[ $local = 'true' ]]; then
-		 ng s --port 4200
+		 ng s --port 3200
 elif [[ $lan = 'true' ]]; then
      lanIp=$(ip -4 addr show wlo1 | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
-		 ng s --host $lanIp --port 4200
+		 ng s --host $lanIp --port 3200
 fi

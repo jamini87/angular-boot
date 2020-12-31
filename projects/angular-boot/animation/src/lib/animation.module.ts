@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { AnimationComponent } from './animation.component';
 
+
+
 @NgModule({
   declarations: [AnimationComponent],
   imports: [

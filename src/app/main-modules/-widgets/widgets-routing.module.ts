@@ -25,6 +25,10 @@ const routes: Routes = [
   {
     path: 'pagination-test',
     loadChildren: './pagination-test/pagination-test.module#PaginationTestModule'
+  },
+  {
+    path: 'pageable-sample',
+    loadChildren: './pageable-sample/pageable-sample.module#PageableSampleModule'
   }
 ];
 

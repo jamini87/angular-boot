@@ -11,10 +11,10 @@ import {
   SimpleChanges
 } from '@angular/core';
 import {ModalUtil} from './modal-util';
-import {isNullOrUndefined} from 'util';
 import {WindowMediaUtil} from './window-media-util';
 import {WindowMedias} from './window-medias';
 import {ModalSize} from './modal-size.enum';
+import {isNullOrUndefined} from '@angular-boot/util';
 
 declare var $: any;
 

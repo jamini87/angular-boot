@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {ServiceBase2} from "../../../../../../projects/angular-boot/core/src/lib/nb-core/service";
-import {ServiceConfig} from "../../../../../../projects/angular-boot/core/src/lib/nb-core/config";
-import {SearchCommonQuery} from "../../../../../../projects/angular-boot/util/src/lib/nb-helper/helper/query";
+import {HttpClient} from '@angular/common/http';
+import {ServiceBase2} from '../../../../../../projects/angular-boot/core/src/lib/service';
+import {SearchCommonQuery} from '../../../../../../projects/angular-boot/util/src/lib/nb-helper/helper/query';
+import {ServiceConfig} from '../../../../../../projects/angular-boot/core/src/lib/config';
 
 
 @Injectable({

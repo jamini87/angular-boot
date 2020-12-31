@@ -6,9 +6,8 @@ import {
   OnInit,
   Output,
   SimpleChanges,
-  ViewEncapsulation
 } from '@angular/core';
-import {isNullOrUndefined} from 'util';
+import {isNullOrUndefined} from '@angular-boot/util';
 import {Toolkit2} from '@angular-boot/util';
 
 /**
@@ -20,14 +19,16 @@ import {Toolkit2} from '@angular-boot/util';
   styleUrls: ['./pagination.component.scss']
 })
 export class PaginationComponent implements OnInit, OnChanges {
-
+  @Input() size = 5;
+  indicates: number[] = [];
+  currentIndicator: number;
   @Input() offset: number;
   @Input() indicatorCount: number;
-  indicates: number[] = [];
-
-  currentIndicator: number;
-  @Output() selectedPage: EventEmitter<number> = new EventEmitter<number>();
-
+  @Input() showTotalPage = true;
+  @Input() showSizeSelection = true;
+  @Input() sizeSelectionArray = [5, 10, 20, 50];
+  @Input() defaultSizeIndex = 0;
+  @Input() totalPages: number;
   private _currentPage: number;
   @Input()
   set currentPage(val) {
@@ -39,7 +40,8 @@ export class PaginationComponent implements OnInit, OnChanges {
     return this._currentPage;
   }
 
-  @Input() totalPages: number;
+  @Output() selectedPage: EventEmitter<number> = new EventEmitter<number>();
+  @Output() sizeChange: EventEmitter<number> = new EventEmitter<number>();
 
   // @Output() indicatorCountChange: EventEmitter<number> = new EventEmitter<number>();
 
@@ -123,6 +125,18 @@ export class PaginationComponent implements OnInit, OnChanges {
         this.generateIndicates();
       }
     }
+    if (changes.hasOwnProperty('defaultSizeIndex')) {
+      if (!isNullOrUndefined(this.defaultSizeIndex)) {
+        if (this.defaultSizeIndex < 0) {
+          throw new Error('defaultSizeIndex should not be less than 0');
+          this.defaultSizeIndex = 0;
+        } else if (this.defaultSizeIndex >= this.sizeSelectionArray.length) {
+          throw new Error('defaultSizeIndex should not be less than 0');
+          this.defaultSizeIndex = this.sizeSelectionArray.length - 1;
+        }
+        this.size = this.sizeSelectionArray[this.defaultSizeIndex];
+      }
+    }
     // if (changes.hasOwnProperty('currentPage')) {
     //   if (!isNullOrUndefined(this._currentPage)) {
     //     this.generateIndicates();
@@ -132,5 +146,10 @@ export class PaginationComponent implements OnInit, OnChanges {
 
   en2Fa(value) {
     return Toolkit2.Common.En2Fa(value);
+  }
+
+  onSizeChange(event) {
+    console.log(event);
+    this.sizeChange.emit(event);
   }
 }

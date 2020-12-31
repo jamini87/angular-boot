@@ -2,9 +2,9 @@
  * @author Jafar Amini
  */
 import ChartDefault from './chart-default';
-import {isNullOrUndefined} from 'util';
 import {ChartColor, ChartInterface} from './chart.interface';
 import {ChartType} from './chart-type.enum';
+import {isNullOrUndefined} from '../../nb-util';
 
 export class Chart implements ChartInterface {
   label: string;

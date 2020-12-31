@@ -1,5 +1,5 @@
 import {ReadMode} from '../../nb-helper/helper/helper';
-import {isNullOrUndefined} from 'util';
+import {isNullOrUndefined} from '../util-functions';
 
 export class FileUtil {
 

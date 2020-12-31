@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
-import {ModalUtil} from "../../../../../../projects/angular-boot/widgets/src/lib/nb-widgets/modal/modal-util";
+import {ActivatedRoute, Router} from '@angular/router';
+import {ModalUtil} from '../../../../../../projects/angular-boot/widgets/src/lib/nb-widgets/modal/modal-util';
 
 @Component({
   selector: 'app-modal-test2-index',

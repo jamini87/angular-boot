@@ -1,8 +1,8 @@
 /**
  * @author Jafar Amini in March 2018.
  */
-import {isNullOrUndefined} from 'util';
 import {PairKeyValue} from '../../nb-helper/helper/pairs';
+import {isNullOrUndefined} from '../util-functions';
 
 export class StringUtil {
   public static getShorten(text: string, length: number, extra?: string) {

@@ -10,8 +10,7 @@ import {
   ElementRef,
   ViewChild
 } from '@angular/core';
-import {isNullOrUndefined} from 'util';
-import {Toolkit2} from '@angular-boot/util';
+import {isNullOrUndefined, Toolkit2} from '@angular-boot/util';
 import {fromEvent, Subject} from 'rxjs';
 import {debounceTime, map, takeUntil} from 'rxjs/operators';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';

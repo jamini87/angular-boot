@@ -2,7 +2,7 @@
  * @author Jafar Amini in March 2018.
  */
 import {Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild, ViewEncapsulation} from '@angular/core';
-import {isNullOrUndefined} from 'util';
+import {isNullOrUndefined} from '@angular-boot/util';
 
 @Component({
   selector: 'nbw-json-print',
@@ -16,7 +16,7 @@ import {isNullOrUndefined} from 'util';
 })
 export class JsonPrintComponent implements OnInit, OnChanges {
   @Input() json_In;
-  @ViewChild('jsonPrintPre') jsonPrintPre;
+  @ViewChild('jsonPrintPre', {static: true}) jsonPrintPre;
 
 
   constructor() {

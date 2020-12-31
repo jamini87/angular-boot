@@ -1,9 +1,8 @@
 import {ActivatedRouteSnapshot} from '@angular/router';
-import {isNullOrUndefined} from 'util';
 import {CaseFormat} from './case-format';
 import {UnFlatifyOptions} from './un-flatify-options';
-import {PairKeyValue} from "../../nb-helper/helper/pairs";
-import {el} from "@angular/platform-browser/testing/src/browser_util";
+import {PairKeyValue} from '../../nb-helper/helper/pairs';
+import {isNullOrUndefined} from '../util-functions';
 
 export class ObjectUtil {
   public static getObjectPropertyFromParamMap(object: Object, route: ActivatedRouteSnapshot) {

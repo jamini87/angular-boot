@@ -2,8 +2,8 @@
  * Edited by Jafar Amini in March 2018.
  */
 import swal from 'sweetalert2';
+import {isNullOrUndefined} from '../util-functions';
 // declare var swal: any;
-import {isNullOrUndefined} from 'util';
 
 export class SwalUtil {
   public static successAdd(title?: string, text?: string) {

@@ -1,4 +1,4 @@
-import {isNullOrUndefined} from 'util';
+import {isNullOrUndefined} from '../util-functions';
 
 export class CaseFormat {
   public static camelCaseToLowerHyphen( myStr ): string {

@@ -5,9 +5,9 @@ import {NotifyType} from './notify-type';
 import ConfigDefault from './notify-config-default';
 import {NotifyPlacement} from './notify-placement';
 import {Animate} from '../animate';
-import {isNullOrUndefined} from 'util';
 import template1 from './templates/template';
 import {TEMPLATES} from './templates/template.enums';
+import {isNullOrUndefined} from '../../util-functions';
 
 export class NotifyConfig {
   settings?: NotifyConfigSettings;

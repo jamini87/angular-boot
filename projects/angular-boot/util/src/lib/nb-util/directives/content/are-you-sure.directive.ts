@@ -1,5 +1,5 @@
 import {Directive, ElementRef, EventEmitter, Inject, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
-import {isNullOrUndefined} from "util";
+import {isNullOrUndefined} from '../../util-functions';
 
 @Directive({
   selector: '[nbdAreYouSure]'

@@ -5,7 +5,7 @@ import {NotifyType} from './notify-type';
 import {NotifyPlacement} from './notify-placement';
 import {NotifyConfig} from './notify-config';
 import {TEMPLATES} from './templates/template.enums';
-import {isNullOrUndefined} from 'util';
+import {isNullOrUndefined} from '../../util-functions';
 
 declare const $: any;
 

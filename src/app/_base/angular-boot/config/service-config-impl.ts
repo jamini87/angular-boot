@@ -30,7 +30,7 @@ export class ServiceConfigImpl implements ServiceConfig {
   }
 
   getUrl(): string {
-    return 'http://localhost:8081';
+    return 'http://localhost:8082';
   }
 
   setToken(res: string): void {

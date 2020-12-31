@@ -3,7 +3,7 @@
  */
 import {Notify, NotifyConfig} from '../toolkit/notify';
 import {ObjectUtil} from '../toolkit/object-util';
-import {isNullOrUndefined} from 'util';
+import {isNullOrUndefined} from '../util-functions';
 
 export class DefaultNotify {
   static notifySuccess(message: string, title?: string, notifyConfig?: NotifyConfig) {

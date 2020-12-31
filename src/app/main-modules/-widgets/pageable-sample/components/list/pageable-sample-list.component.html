@@ -1,0 +1,59 @@
+<div class="container-fluid">
+  <div class="d-md-flex justify-content-between mb-2">
+    <h4 class="text-center mt-1">لیست اشخاص</h4>
+    <div class="col-md-5 search">
+      <div class="search-box">
+        <i class="fa fa-search"></i>
+        <nbw-auto-search-input cssClass="form-control search-input" class="w-100"
+                               placeholder="جستجو"
+                               [(ngModel)]="componentDataModel.queryParamReal.term"
+                               (currentValue)="onChangedTerm()">
+        </nbw-auto-search-input>
+      </div>
+    </div>
+    <div class="row justify-content-end">
+      <div class="text-center">
+        <button class="btn btn-save2" [routerLink]="'../ADD'">
+          افزودن شخص جدید
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+      <tr>
+        <th class="small-td text-center">#</th>
+        <th>نام</th>
+        <th>نام خانوادگی</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let dataModel of componentDataModel.itemPage.content; let i = index;">
+        <td class="text-center">{{i + 1}}</td>
+        <td>{{dataModel.firstName}}</td>
+        <td>{{dataModel.lastName}}</td>
+        <td></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="">
+    queryParam.paging.page: {{componentDataModel.queryParam.paging.page}}
+    <br>
+    queryParam.paging.size: {{componentDataModel.queryParam.paging.size}}
+  </div>
+
+  <shr-pagination
+    *ngIf="componentDataModel.itemPage"
+    [indicatorCount]="componentDataModel.indicatorCount"
+    [totalPages]="componentDataModel.itemPage.totalPages"
+    [currentPage]="componentDataModel.queryParamReal.paging.page"
+    [defaultSizeIndex]="defaultSizeIndex"
+    [size]="componentDataModel.queryParamReal.paging.size"
+    (selectedPage)="setCurrentPage($event)"
+    (sizeChange)="setCurrentSize($event)"
+    class="class1"></shr-pagination>
+
+</div>

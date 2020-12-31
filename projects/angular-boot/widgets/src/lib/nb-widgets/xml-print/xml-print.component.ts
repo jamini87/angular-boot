@@ -3,7 +3,7 @@
  */
 import {Component, Input, OnChanges, OnInit,
   SimpleChanges, ViewChild, ViewEncapsulation} from '@angular/core';
-import {isNullOrUndefined} from 'util';
+import {isNullOrUndefined} from '@angular-boot/util';
 declare var require: any;
 const format = require('xml-formatter');
 @Component({
@@ -17,7 +17,7 @@ const format = require('xml-formatter');
 export class XmlPrintComponent implements OnInit, OnChanges {
 
   @Input() xml_In;
-  @ViewChild('xmlPrintDiv') xmlPrintDiv;
+  @ViewChild('xmlPrintDiv', {static: true}) xmlPrintDiv;
   constructor() { }
 
   ngOnInit() {

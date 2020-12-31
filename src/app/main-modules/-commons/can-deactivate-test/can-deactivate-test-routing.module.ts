@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {UserFormComponent} from './user-form/user-form.component';
-import {CanDeactivateGuard} from '../../../../../projects/angular-boot/common/src/lib/nb-common/routing';
+import {CanDeactivateGuard} from '../../../../../projects/angular-boot/common/src/lib/routing';
 
 const routes: Routes = [
   {

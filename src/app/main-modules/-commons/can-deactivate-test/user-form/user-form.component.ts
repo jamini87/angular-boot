@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from '@angular/forms';
-import {FormCanDeactivate} from "../../../../../../projects/angular-boot/common/src/lib/nb-common/routing";
+import {FormCanDeactivate} from '../../../../../../projects/angular-boot/common/src/lib/routing';
 
 @Component({
   selector: 'app-user-form',
@@ -11,7 +11,7 @@ export class UserFormComponent extends FormCanDeactivate implements OnInit {
 
   name: string;
 
-  @ViewChild('form')
+  @ViewChild('form', {static: true})
   form: NgForm;
 
 

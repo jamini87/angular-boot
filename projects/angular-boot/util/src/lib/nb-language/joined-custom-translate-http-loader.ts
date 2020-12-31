@@ -5,7 +5,7 @@ import {TranslateLoader} from '@ngx-translate/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {forkJoin, Observable} from 'rxjs';
 import {map, take} from 'rxjs/operators';
-import {Toolkit2} from "../nb-util";
+import {Toolkit2} from '../nb-util';
 
 /**
  // Usage in module

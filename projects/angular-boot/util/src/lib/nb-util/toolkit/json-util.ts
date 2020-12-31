@@ -1,5 +1,5 @@
-import {PairKeyValue} from "../../nb-helper/helper/pairs";
-import {isNullOrUndefined} from "util";
+import {PairKeyValue} from '../../nb-helper/helper/pairs';
+import {isNullOrUndefined} from '../util-functions';
 
 export class JsonUtil {
   public static isJsonString(str) {
