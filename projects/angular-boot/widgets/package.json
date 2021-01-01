@@ -3,9 +3,7 @@
   "version": "0.6.51",
   "peerDependencies": {
     "@angular/common": ">=8.2.14",
-    "@angular/core": ">=8.2.14"
-  },
-  "dependencies": {
+    "@angular/core": ">=8.2.14",
     "xml-formatter": "^2.4.0"
   },
   "private": false,
