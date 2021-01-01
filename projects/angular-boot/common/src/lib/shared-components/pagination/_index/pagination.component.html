@@ -45,9 +45,12 @@
     </div>
     <div class="col-2">
       <ng-container *ngIf="showSizeSelection">
-        <ng-select id="size" name="size" [(ngModel)]="size" (change)="onSizeChange($event)">
-          <ng-option *ngFor="let item of sizeSelectionArray" [value]="item"> {{item}}</ng-option>
-        </ng-select>
+<!--        <ng-select id="size" name="size" [(ngModel)]="size" (change)="onSizeChange($event)">-->
+<!--          <ng-option *ngFor="let item of sizeSelectionArray" [value]="item"> {{item}}</ng-option>-->
+<!--        </ng-select>-->
+        <select id="size" name="size" class="form-control" [(ngModel)]="size" (change)="onSizeChange(size)">
+          <option *ngFor="let item of sizeSelectionArray" [value]="item"> {{item}}</option>
+        </select>
       </ng-container>
     </div>
   </div>

@@ -19,6 +19,10 @@ const routes: Routes = [
     loadChildren: './json-print-test/json-print-test.module#JsonPrintTestModule'
   },
   {
+    path: 'xml-print',
+    loadChildren: './xml-print-test/xml-print-test.module#XmlPrintTestModule'
+  },
+  {
     path: 'test3',
     loadChildren: './modal-test2/modal-test2.module#ModalTest2Module'
   },
