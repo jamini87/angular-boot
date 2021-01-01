@@ -3,5 +3,6 @@
   "dest": "../../../dist/angular-boot/widgets",
   "lib": {
     "entryFile": "src/public-api.ts"
-  }
+  },
+  "whitelistedNonPeerDependencies": ["xml-formatter"]
 }
