@@ -3,7 +3,7 @@ import { WidgetsComponent } from './widgets.component';
 import {FormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import {JsonPrintComponent} from './nb-widgets/json-print/json-print.component';
-import {XmlPrintComponent} from './nb-widgets/xml-print/xml-print.component';
+// import {XmlPrintComponent} from './nb-widgets/xml-print/xml-print.component';
 import {CarouselComponent} from './nb-widgets/carousel/carousel.component';
 import {ModalComponent} from './nb-widgets/modal/modal.component';
 import {SwitchComponent} from './nb-widgets/switch/switch.component';
@@ -15,7 +15,7 @@ import {AutoSearchInputComponent} from './nb-widgets/auto-search-input/auto-sear
   declarations: [
     WidgetsComponent,
     JsonPrintComponent,
-    XmlPrintComponent,
+    // XmlPrintComponent,
     CarouselComponent,
     ModalComponent,
     SwitchComponent,
@@ -27,7 +27,7 @@ import {AutoSearchInputComponent} from './nb-widgets/auto-search-input/auto-sear
   exports: [
     WidgetsComponent,
     JsonPrintComponent,
-    XmlPrintComponent,
+    // XmlPrintComponent,
     CarouselComponent,
     ModalComponent,
     SwitchComponent,

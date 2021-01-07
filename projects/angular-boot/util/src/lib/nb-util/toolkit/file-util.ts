@@ -1,4 +1,4 @@
-import {ReadMode} from '../../nb-helper/helper/helper';
+import {ReadMode} from '../../nb-helper/helper/helper/read-mode.enum';
 import {isNullOrUndefined} from '../util-functions';
 
 export class FileUtil {
@@ -22,7 +22,7 @@ export class FileUtil {
     } else {
       myMultiparKey = multiparKey;
     }
-    for(let i = 0; i < event.target.files.length; i++) {
+    for (let i = 0; i < event.target.files.length; i++) {
       formData.append(myMultiparKey, event.target.files[i]);
     }
     formData.append('count', event.target.files.length);
@@ -44,7 +44,7 @@ export class FileUtil {
         break;
       case ReadMode.ArrayBuffer:
         reader.readAsArrayBuffer(file);
-        break
+        break;
       case ReadMode.BinaryString:
         reader.readAsBinaryString(file);
         break;

@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {FindLanguageFromKeyPipe} from './find-language-from-key.pipe';
 
 @NgModule({
@@ -11,4 +11,5 @@ import {FindLanguageFromKeyPipe} from './find-language-from-key.pipe';
     FindLanguageFromKeyPipe
   ]
 })
-export class NbLanguageModule { }
+export class NbLanguageModule {
+}

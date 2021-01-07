@@ -1,6 +1,6 @@
 {
   "name": "@angular-boot/animation",
-  "version": "0.6.51",
+  "version": "0.6.53",
   "peerDependencies": {
     "@angular/common": ">=8.2.14",
     "@angular/core": ">=8.2.14"

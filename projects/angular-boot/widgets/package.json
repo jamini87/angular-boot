@@ -1,13 +1,11 @@
 {
   "name": "@angular-boot/widgets",
-  "version": "0.6.51",
+  "version": "0.6.53",
   "peerDependencies": {
     "@angular/common": ">=8.2.14",
     "@angular/core": ">=8.2.14"
   },
-  "dependencies": {
-    "xml-formatter": "^2.4.0"
-  },
+  "dependencies": {},
   "private": false,
   "keywords": [
     "@angular-boot/widgets"
