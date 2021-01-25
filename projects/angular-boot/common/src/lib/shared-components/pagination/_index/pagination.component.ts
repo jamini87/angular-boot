@@ -13,6 +13,9 @@ import {Toolkit2} from '@angular-boot/util';
 /**
  * Created By Jafar Amini in December 2018
  */
+declare type InputPropName = 'size' | 'offset' | 'indicatorCount' | 'showTotalPage' |
+  'showSizeSelection' | 'sizeSelectionArray' | 'defaultSizeIndex' | 'totalPages';
+
 @Component({
   selector: 'shr-pagination',
   templateUrl: './pagination.component.html',
@@ -20,8 +23,6 @@ import {Toolkit2} from '@angular-boot/util';
 })
 export class PaginationComponent implements OnInit, OnChanges {
   @Input() size = 5;
-  indicates: number[] = [];
-  currentIndicator: number;
   @Input() offset: number;
   @Input() indicatorCount: number;
   @Input() showTotalPage = true;
@@ -40,7 +41,14 @@ export class PaginationComponent implements OnInit, OnChanges {
     return this._currentPage;
   }
 
+  indicates: number[] = [];
+  currentIndicator: number;
+
+  /**
+   * @Deprecated use currentPageChange instead
+   */
   @Output() selectedPage: EventEmitter<number> = new EventEmitter<number>();
+  @Output() currentPageChange: EventEmitter<number> = new EventEmitter<number>();
   @Output() sizeChange: EventEmitter<number> = new EventEmitter<number>();
 
   // @Output() indicatorCountChange: EventEmitter<number> = new EventEmitter<number>();
@@ -116,32 +124,42 @@ export class PaginationComponent implements OnInit, OnChanges {
 
   private emitSelectedPage(page: number) {
     this.currentPage = page;
+    this.currentPageChange.emit(page);
     this.selectedPage.emit(page);
   }
 
+  private childNgOnChanges(changes: SimpleChanges) {
+    for (const propName in changes) {
+      if (changes.hasOwnProperty(propName)) {
+        this.onChange(propName as InputPropName, changes);
+      }
+    }
+  }
+
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes.hasOwnProperty('totalPages')) {
-      if (!isNullOrUndefined(this.totalPages)) {
-        this.generateIndicates();
-      }
-    }
-    if (changes.hasOwnProperty('defaultSizeIndex')) {
-      if (!isNullOrUndefined(this.defaultSizeIndex)) {
-        if (this.defaultSizeIndex < 0) {
-          throw new Error('defaultSizeIndex should not be less than 0');
-          this.defaultSizeIndex = 0;
-        } else if (this.defaultSizeIndex >= this.sizeSelectionArray.length) {
-          throw new Error('defaultSizeIndex should not be less than 0');
-          this.defaultSizeIndex = this.sizeSelectionArray.length - 1;
+    this.childNgOnChanges(changes);
+  }
+
+  private onChange(propName: InputPropName, changes: SimpleChanges) {
+    switch (propName) {
+      case 'totalPages':
+        if (!isNullOrUndefined(this.totalPages)) {
+          this.generateIndicates();
         }
-        this.size = this.sizeSelectionArray[this.defaultSizeIndex];
-      }
+        break;
+      case 'defaultSizeIndex':
+        if (!isNullOrUndefined(this.defaultSizeIndex)) {
+          if (this.defaultSizeIndex < 0) {
+            this.defaultSizeIndex = 0;
+            throw new Error('defaultSizeIndex should not be less than 0');
+          } else if (this.defaultSizeIndex >= this.sizeSelectionArray.length) {
+            this.defaultSizeIndex = this.sizeSelectionArray.length - 1;
+            throw new Error('defaultSizeIndex should not be less than 0');
+          }
+          this.size = this.sizeSelectionArray[this.defaultSizeIndex];
+        }
+        break;
     }
-    // if (changes.hasOwnProperty('currentPage')) {
-    //   if (!isNullOrUndefined(this._currentPage)) {
-    //     this.generateIndicates();
-    //   }
-    // }
   }
 
   en2Fa(value) {
