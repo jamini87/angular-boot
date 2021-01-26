@@ -14,7 +14,7 @@ import {Toolkit2} from '@angular-boot/util';
  * Created By Jafar Amini in December 2018
  */
 declare type InputPropName = 'size' | 'offset' | 'indicatorCount' | 'showTotalPage' |
-  'showSizeSelection' | 'sizeSelectionArray' | 'defaultSizeIndex' | 'totalPages';
+  'showSizeSelection' | 'sizeSelectionArray' | 'defaultSizeIndex' | 'totalPages' | 'currentPage';
 
 @Component({
   selector: 'shr-pagination',
@@ -30,16 +30,18 @@ export class PaginationComponent implements OnInit, OnChanges {
   @Input() sizeSelectionArray = [5, 10, 20, 50];
   @Input() defaultSizeIndex = 0;
   @Input() totalPages: number;
-  private _currentPage: number;
-  @Input()
-  set currentPage(val) {
-    this._currentPage = val;
-    this.initiateCurrentIndicator(this._currentPage);
-  }
-
-  get currentPage(): number {
-    return this._currentPage;
-  }
+  @Input() currentPage: number;
+  // private _currentPage: number;
+  // @Input()
+  // set currentPage(val) {
+  //   console.log('set currentPage');
+  //   this._currentPage = val;
+  //   this.initiateCurrentIndicator(this._currentPage);
+  // }
+  //
+  // get currentPage(): number {
+  //   return this._currentPage;
+  // }
 
   indicates: number[] = [];
   currentIndicator: number;
@@ -59,7 +61,8 @@ export class PaginationComponent implements OnInit, OnChanges {
   ngOnInit() {
     this.indicatorCount = this.indicatorCount || 5;
     this.offset = this.offset || 1;
-    this.initiateCurrentIndicator(this._currentPage);
+    // this.initiateCurrentIndicator(this._currentPage);
+    this.initiateCurrentIndicator(this.currentPage);
     this.generateIndicates();
   }
 
@@ -142,6 +145,10 @@ export class PaginationComponent implements OnInit, OnChanges {
 
   private onChange(propName: InputPropName, changes: SimpleChanges) {
     switch (propName) {
+      case 'currentPage':
+        console.log('set currentPage');
+        this.initiateCurrentIndicator(this.currentPage);
+        break;
       case 'totalPages':
         if (!isNullOrUndefined(this.totalPages)) {
           this.generateIndicates();
