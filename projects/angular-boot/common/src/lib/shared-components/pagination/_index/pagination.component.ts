@@ -13,7 +13,7 @@ import {Toolkit2} from '@angular-boot/util';
 /**
  * Created By Jafar Amini in December 2018
  */
-declare type InputPropName = 'size' | 'offset' | 'indicatorCount' | 'showTotalPage' |
+declare type PaginationInputPropName = 'size' | 'offset' | 'indicatorCount' | 'showTotalPage' |
   'showSizeSelection' | 'sizeSelectionArray' | 'defaultSizeIndex' | 'totalPages' | 'currentPage';
 
 @Component({
@@ -134,7 +134,7 @@ export class PaginationComponent implements OnInit, OnChanges {
   private childNgOnChanges(changes: SimpleChanges) {
     for (const propName in changes) {
       if (changes.hasOwnProperty(propName)) {
-        this.onChange(propName as InputPropName, changes);
+        this.onChange(propName as PaginationInputPropName, changes);
       }
     }
   }
@@ -143,10 +143,10 @@ export class PaginationComponent implements OnInit, OnChanges {
     this.childNgOnChanges(changes);
   }
 
-  private onChange(propName: InputPropName, changes: SimpleChanges) {
+  private onChange(propName: PaginationInputPropName, changes: SimpleChanges) {
     switch (propName) {
       case 'currentPage':
-        console.log('set currentPage');
+        // console.log('set currentPage');
         this.initiateCurrentIndicator(this.currentPage);
         break;
       case 'totalPages':
