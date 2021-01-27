@@ -13,3 +13,5 @@ npm run version:util $version
 npm run version:validation $version
 npm run version:widgets $version
 echo "$version" | tee ./npm-pack-result/libs/angular-boot/latest-version.txt
+
+# version 0.6.55 released
