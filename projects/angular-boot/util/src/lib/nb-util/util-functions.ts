@@ -1,6 +1,10 @@
 import {Observable} from 'rxjs';
 import {AbstractControl} from '@angular/forms';
 
+export function isNullOrUndefinedOrBlankString(value: any) {
+  return value === undefined || value === null || value === '';
+}
+
 export function isNullOrUndefined(value: any) {
   return value === undefined || value === null;
 }
@@ -14,7 +18,7 @@ export function isBlankString(value: any) {
 }
 
 export function isFunction(value: any) {
-  return typeof(value) === 'function';
+  return typeof (value) === 'function';
 }
 
 export function objAndSameType(obj1: any, obj2: any) {
