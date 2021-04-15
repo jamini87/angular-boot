@@ -1,4 +1,4 @@
-import {GlobalConfigurations} from '@angular-boot/core';
+import {GlobalConfigurations} from '../../../../../projects/angular-boot/core/src/lib/config';
 
 export class GlobalConfigurationsImpl implements GlobalConfigurations {
   getRoutingNoArgument(): string {

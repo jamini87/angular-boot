@@ -1,7 +1,8 @@
 /**
  * @author Jafar Amini in March 2018.
  */
-import {ValidationConfig} from '@angular-boot/validation';
+import {ValidationConfig} from '../../../../../projects/angular-boot/validation/src/lib/util';
+
 
 export class ValidationConfigImpl extends ValidationConfig {
   getValidationAlertElement(vClass): HTMLElement {

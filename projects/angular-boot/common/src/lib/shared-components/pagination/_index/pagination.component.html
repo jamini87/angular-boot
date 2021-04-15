@@ -8,13 +8,13 @@
       <ul class="pagination pagination-circle justify-content-center">
 
         <!--First-->
-        <li class="page-item" style="cursor: pointer;"
-            [ngClass]="{disabled: currentIndicator === 1}">
+        <li class="page-item"
+            [ngClass]="{disabled: currentIndicator === 1, 'cursor-pointer': currentIndicator !== 1}">
           <a class="page-link" (click)="reFirst()">اولین</a>
         </li>
 
         <!--Arrow left-->
-        <li class="page-item" [ngClass]="{disabled: currentIndicator === 1}" style="cursor: pointer;">
+        <li class="page-item" [ngClass]="{disabled: currentIndicator === 1, 'cursor-pointer': currentIndicator !== 1}">
           <a class="page-link" aria-label="Previous" (click)="previmize()">
             <span aria-hidden="true">&laquo;</span>
             <span class="sr-only">Previous</span>
@@ -28,7 +28,7 @@
           </li>
         </ng-container>
         <!--Arrow right-->
-        <li class="page-item" [ngClass]="{disabled: currentIndicator === totalPages}" style="cursor: pointer;">
+        <li class="page-item" [ngClass]="{disabled: currentIndicator === totalPages, 'cursor-pointer': currentIndicator !== totalPages}">
           <a class="page-link" aria-label="Next" (click)="nextimize()">
             <span aria-hidden="true">&raquo;</span>
             <span class="sr-only">Next</span>
@@ -36,8 +36,8 @@
         </li>
 
         <!--Last-->
-        <li class="page-item" style="cursor: pointer;"
-            [ngClass]="{disabled: currentIndicator === totalPages}">
+        <li class="page-item"
+            [ngClass]="{disabled: currentIndicator === totalPages, 'cursor-pointer': currentIndicator !== totalPages}">
           <a class="page-link" (click)="reLast()">آخرین</a>
         </li>
       </ul>

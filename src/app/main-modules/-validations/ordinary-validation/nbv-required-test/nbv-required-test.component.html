@@ -1,0 +1,25 @@
+<div class="container-fluid">
+  <form #baseInfoForm="ngForm" (submit)="onSaveInfo(baseInfoForm)">
+    <div class="form-group row">
+      <label for="title" class="col-sm-2 col-form-label text-start">Title </label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="title" name="title"
+               [(ngModel)]="reqTitle"
+               nbvRequired
+               [submitted]="formSubmitted"
+               dest="title-dest"
+               aria-describedby="title-desc">
+        <div id="title-dest"></div>
+        <!--            <small id="title-desc" class="form-text text-muted"></small>-->
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <div class="row justify-content-end">
+        <button class="btn btn-success" type="submit">
+          ثبت
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

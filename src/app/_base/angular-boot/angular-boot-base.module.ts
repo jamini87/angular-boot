@@ -3,10 +3,7 @@ import {CommonModule} from '@angular/common';
 import {CacheService} from '../../../../projects/angular-boot/core/src/lib/cache';
 import {GlobalConfigurations, ServiceConfig} from '../../../../projects/angular-boot/core/src/lib/config';
 import {ServiceConfigImpl} from './config/service-config-impl';
-import {
-  ValidationConfig,
-  ValidationMessage
-} from '../../../../projects/angular-boot/validation/src/lib/util';
+import {ValidationConfig, ValidationMessage} from '../../../../projects/angular-boot/validation/src/lib/util';
 import {ValidationConfigImpl} from './config/validation-config-impl';
 import {CustomValidationMessageImpl} from './overrides/custom-validation-message-impl';
 import {GlobalConfigurationsImpl} from './config/global-configurations-impl';

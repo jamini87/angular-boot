@@ -1,0 +1,4 @@
+$inValid-color: crimson;
+.form-control.ng-invalid:not(.ng-untouched) {
+  border: 1px solid $inValid-color;
+}

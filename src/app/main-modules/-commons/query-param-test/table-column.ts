@@ -1,4 +1,4 @@
-import {isUndefined} from '@angular-boot/util';
+import {isUndefined} from '../../../../../projects/angular-boot/util/src/lib/nb-util';
 
 export class TableColumn {
   name: string;

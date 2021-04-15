@@ -1,5 +1,4 @@
-import {ValidationMessageHelper, ValidationMessageImpl} from '@angular-boot/validation';
-// import {ValidationMessageHelper} from '@angular-boot/validation';
+import {ValidationMessageHelper, ValidationMessageImpl} from '../../../../../projects/angular-boot/validation/src/lib/util';
 
 export class CustomValidationMessageImpl extends ValidationMessageImpl {
   getDigits(): ValidationMessageHelper {

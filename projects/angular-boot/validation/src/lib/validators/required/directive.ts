@@ -28,16 +28,17 @@ export class RequiredValidator implements Validator, OnChanges {
   @Input() dest: any;
   @Input() nbvRequiredMsgHtml: any;
   @Input() nbvRequiredFieldLabel: any;
-  @Input() validSubmitted: boolean;
-  myValidSubmitted: boolean;
+  @Input() submitted: boolean;
+  mySubmitted: boolean;
+  iValidated = false;
+  vClassSuffix = '-nbvRequired';
+  abstractControl: AbstractControl;
 
   constructor(private _ValidationConfig: ValidationConfig, private _ValidationMessage: ValidationMessage) {
   }
 
-  validate(c: AbstractControl): { [key: string]: any } {
-    const vClassSuffix = '-nbvRequired';
-    let iValidated = false;
-
+  validate(abstractControl: AbstractControl): { [key: string]: any } {
+    this.abstractControl = abstractControl;
     // // Start Method 1 Worked Very Good
     // if (isNullOrUndefined(c.value)) {
     //   iValidated = true;
@@ -49,27 +50,35 @@ export class RequiredValidator implements Validator, OnChanges {
     // // End Method 1 Worked Very Good
 
     // Start Method 2 Worked Very Good
-    if (isNull(Validators.required(c))) {
-      iValidated = false;
+    if (isNull(Validators.required(abstractControl))) {
+      this.iValidated = false;
     } else {
-      iValidated = Validators.required(c)['required'];
+      this.iValidated = Validators.required(abstractControl)['required'];
     }
+    return this.manageAlert();
     // End Method 2 Worked Very Good
-    if (iValidated) {
-      if (c.dirty || this.myValidSubmitted) {
+  }
+
+  private manageAlert() {
+    if (this.iValidated) {
+      if (this.abstractControl.dirty || this.abstractControl.touched) {
         const innerHTML = getInnerHTML(this.nbvRequiredMsgHtml, this.nbvRequiredFieldLabel, this._ValidationMessage);
-        manageAddValidationAlert(this.dest, vClassSuffix, innerHTML, this._ValidationConfig);
+        manageAddValidationAlert(this.dest, this.vClassSuffix, innerHTML, this._ValidationConfig);
       }
       return {'nbvRequired': true};
     } else {
-      manageDelValidationAlert(this.dest, vClassSuffix);
+      manageDelValidationAlert(this.dest, this.vClassSuffix);
       return null;
     }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes.hasOwnProperty('validSubmitted')) {
-      this.myValidSubmitted = this.validSubmitted;
+    if (changes.hasOwnProperty('submitted')) {
+      this.mySubmitted = this.submitted;
+      if (this.mySubmitted) {
+        this.abstractControl.markAsTouched();
+      }
+      this.manageAlert();
     }
   }
 

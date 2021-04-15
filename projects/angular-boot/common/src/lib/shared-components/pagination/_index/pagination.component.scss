@@ -13,11 +13,18 @@ nav {
   border-radius: 50%;
 }
 
-.pagination .page-item .page-link:hover {
+.pagination .page-item .page-link {
   -webkit-transition: all .3s linear;
   transition: all .3s linear;
   border-radius: .125rem;
   background-color: #eee;
+}
+
+.pagination .page-item .page-link:hover {
+  -webkit-transition: all .3s linear;
+  transition: all .3s linear;
+  border-radius: .125rem;
+  background-color: #ccc;
 }
 .pagination {
   margin-top: 15px;

@@ -1,10 +1,11 @@
 /**
  * Created by Jafar Amini in March 2018.
  */
-import {CacheService, ServiceConfig, TokenMode} from '@angular-boot/core';
 import {Injector} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AuthService} from "../../../base-modules/auth/endpoint/auth.service";
+import {ServiceConfig, TokenMode} from '../../../../../projects/angular-boot/core/src/lib/config';
+import {CacheService} from '../../../../../projects/angular-boot/core/src/lib/cache';
 
 export class ServiceConfigImpl implements ServiceConfig {
   router: Router;

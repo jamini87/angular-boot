@@ -18,6 +18,10 @@ const routes: Routes = [
       {
         path: 'commons',
         loadChildren: '../../main-modules/-commons/commons-routing.module#CommonsRoutingModule'
+      },
+      {
+        path: 'validations',
+        loadChildren: '../../main-modules/-validations/validations-routing.module#ValidationsRoutingModule'
       }
     ]
   }

@@ -1,0 +1,425 @@
+<div class="container">
+  <div class="row col-12">
+    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 bg-tile tile cursor-pointer"
+         [routerLink]="['nbv-required']">
+      <div class="h-100 d-table mx-auto">
+        <a class="d-table-cell align-middle text-decoration-none">nbvRequired</a>
+      </div>
+    </div>
+    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 bg-tile tile cursor-pointer"
+         [routerLink]="['nbv-required']">
+      <div class="h-100 d-table mx-auto">
+        <a class="d-table-cell align-middle text-decoration-none">nbvRequired</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--<div class="container" dir="rtl">-->
+<!--  <form class="" novalidate>-->
+<!--    <div class="form-group row">-->
+<!--      <label class="col-sm-2 col-form-label">required</label>-->
+
+<!--      <div class="col-10">-->
+<!--        <input class="form-control" type="text" ngModel name="requried"-->
+<!--               #requried="ngModel" required>-->
+<!--        <p class="alert alert-danger" *ngIf="requried?.errors?.required">required error</p>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="form-group row">-->
+<!--      <label class="col-sm-2 col-form-label">nbvRequired</label>-->
+
+<!--      <div class="col-10">-->
+<!--        <input class="form-control" type="text" ngModel name="nbvRequired"-->
+<!--               #nbvRequired="ngModel" nbvRequired dest="dest-nbvRequired">-->
+<!--        <p id="dest-nbvRequired"></p>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <div class="form-group row">-->
+<!--      <label class="col-sm-2 col-form-label">minlength</label>-->
+
+<!--      <div class="col-10">-->
+<!--        <input class="form-control" type="text" ngModel name="minlength"-->
+<!--               #minlength="ngModel" minlength="5">-->
+<!--        <p class="alert alert-danger" *ngIf="minlength?.errors?.minlength">minlength error</p>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="form-group row">-->
+<!--      <label class="col-sm-2 col-form-label">nbvMinlength</label>-->
+
+<!--      <div class="col-10">-->
+<!--        <input class="form-control" type="text" ngModel name="nbvMinlength"-->
+<!--               dest="dest-nbvMinlength"-->
+<!--               #nbvMinlength="ngModel" nbvMinlength="5">-->
+<!--        <p id="dest-nbvMinlength"></p>-->
+<!--      </div>-->
+<!--    </div>-->
+
+
+<!--    <div class="form-group row">-->
+<!--      <label class="col-sm-2 col-form-label">nbvMaxlength</label>-->
+
+<!--      <div class="col-10">-->
+<!--        <input class="form-control" type="text" ngModel name="nbvMaxlength"-->
+<!--               dest="dest-nbvMaxlength"-->
+<!--               #nbvMaxlength="ngModel" nbvMaxlength="5">-->
+
+<!--        <p id="dest-nbvMaxlength"></p>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <div class="form-group row">-->
+<!--      <label class="col-2 col-form-label">maxlength</label>-->
+
+<!--      <div class="col-10">-->
+<!--        <input class="form-control" type="text" ngModel name="maxlength" #maxlength="ngModel" maxlength="5">-->
+<!--        <p class="alert alert-danger" *ngIf="maxlength?.errors?.maxlength">maxlength error</p>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <div class="form-group row">-->
+<!--      <label class="col-2 col-form-label">pattern</label>-->
+
+<!--      <div class="col-10">-->
+<!--        <input class="form-control" type="text" ngModel name="pattern"-->
+<!--               #pattern="ngModel" pattern="[a-z]{6}">-->
+<!--        <p class="alert alert-danger" *ngIf="pattern?.errors?.pattern">pattern error</p>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="form-group row">-->
+<!--      <label class="col-2 col-form-label">nbvPattern</label>-->
+
+<!--      <div class="col-10">-->
+<!--        <input class="form-control" type="text" ngModel name="nbvPattern"-->
+<!--               #nbvPattern="ngModel"-->
+
+<!--               [nbvPattern]="MyCustomPattern.onlyEnglishLettersWithSpecificLength.getPattern(6)"-->
+<!--               [nbvPatternMsgHtml]="MyCustomPattern.onlyEnglishLettersWithSpecificLength.getPatternMsgHtml('شش')"-->
+<!--               dest="dest-nbvPattern">-->
+<!--        <p id="dest-nbvPattern"></p>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <div class="form-group row">-->
+<!--      <label class="col-2 col-form-label">nbvBase64</label>-->
+
+<!--      <div class="col-10">-->
+<!--        <input class="form-control" type="text" ngModel name="base64" #base64="ngModel"-->
+<!--               nbvBase64>-->
+<!--        <p class="alert alert-danger" *ngIf="base64?.errors?.nbvBase64">base64 error</p>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <div class="form-group row">-->
+<!--      <label class="col-2 col-form-label">nbvCreditCard</label>-->
+
+<!--      <div class="col-10">-->
+<!--        <input class="form-control" type="text" ngModel name="creditCard" #creditCard="ngModel" nbvCreditCard>-->
+<!--        <p class="alert alert-danger" *ngIf="creditCard?.errors?.nbvCreditCard">creditCard error</p>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <div class="form-group row">-->
+<!--      <label class="col-sm-2 col-form-label">nbvDate</label>-->
+
+<!--      <div class="col-10">-->
+<!--        <input class="form-control" type="text" ngModel name="date" #date="ngModel" nbvDate>-->
+<!--        <p class="alert alert-danger" *ngIf="date?.errors?.nbvDate">date error</p>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <div class="form-group row">-->
+<!--      <label class="col-sm-2 col-form-label">nbvDateISO</label>-->
+
+<!--      <div class="col-10">-->
+<!--        <input class="form-control" type="text" ngModel name="dateISO" #dateISO="ngModel" nbvDateISO_8601>-->
+<!--        <p class="alert alert-danger" *ngIf="dateISO?.errors?.nbvDateISO_8601">dateISO error</p>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <div class="form-group row">-->
+<!--      <label class="col-sm-2 col-form-label">nbvMaxDate (Relative to nbvDate)</label>-->
+
+<!--      <div class="col-10">-->
+<!--        <input class="form-control" type="text" ngModel name="maxDate" #maxDate="ngModel"-->
+<!--               [nbvMaxDate]="date">-->
+<!--        <p class="alert alert-danger" *ngIf="maxDate?.errors?.nbvMaxDate">maxDate error</p>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <div class="form-group row">-->
+<!--      <label class="col-sm-2 col-form-label">nbvMinDate</label>-->
+
+<!--      <div class="col-10">-->
+<!--        <input class="form-control" type="text" ngModel name="minDate" #minDate="ngModel" [nbvMinDate]="dateTest">-->
+<!--        <p class="alert alert-danger" *ngIf="minDate?.errors?.nbvMinDate">minDate error. min date is {{dateTest | json}}</p>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <div class="form-group row">-->
+<!--      <label class="col-sm-2 col-form-label">nbvDigits</label>-->
+
+<!--      <div class="col-10">-->
+<!--        <input class="form-control" type="text" ngModel name="digits" #digits="ngModel"-->
+<!--               nbvDigits>-->
+<!--        <p class="alert alert-danger" *ngIf="digits?.errors?.nbvDigits">digits error</p>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <div class="form-group row">-->
+<!--      <label class="col-sm-2 col-form-label">nbvEmail</label>-->
+
+<!--      <div class="col-10">-->
+<!--        <input class="form-control" type="text" ngModel name="email" #email="ngModel" nbvEmail>-->
+<!--        <p class="alert alert-danger" *ngIf="email?.errors?.nbvEmail">email error</p>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <div class="form-group row">-->
+<!--      <label class="col-sm-2 col-form-label">nbvEqual</label>-->
+
+<!--      <div class="col-10">-->
+<!--        <input class="form-control" type="text" ngModel name="equal"-->
+<!--               #equal="ngModel" nbvEqual="aabbcc" dest="equal-dest"-->
+<!--               [popover]="myPopover"-->
+<!--               [ngStyle]="MyCmnToolkit2.Validation.getElementStyle(equal)">-->
+<!--        <popover-content #myPopover [placement]="getPlacement()"-->
+<!--                         [closeOnClickOutside]="true" [animation]="true">-->
+<!--          <p id="equal-dest"></p>-->
+<!--        </popover-content>-->
+<!--        &lt;!&ndash;<p class="alert alert-danger" *ngIf="equal?.errors?.equal">equal error</p>&ndash;&gt;-->
+<!--        &lt;!&ndash;<p id="equal-dest"></p>&ndash;&gt;-->
+<!--      </div>-->
+<!--    </div>-->
+
+
+<!--    <div class="form-group row">-->
+<!--      <label class="col-sm-2 col-form-label">equal2: (iioopp)</label>-->
+
+<!--      <div class="col-10">-->
+<!--        <input class="form-control" type="text" ngModel name="equaltest2"-->
+<!--               #equaltest2="ngModel" nbvEqual="iioopp" dest="equal2-dest"-->
+<!--               [popover]="myPopover2"-->
+<!--               [ngStyle]="MyCmnToolkit2.Validation.getElementStyle(equaltest2)">-->
+<!--        <popover-content #myPopover2 [placement]="getPlacement()"-->
+<!--                         [closeOnClickOutside]="true" [animation]="true">-->
+<!--          <p id="equal2-dest"></p>-->
+<!--        </popover-content>-->
+<!--        &lt;!&ndash;<p class="alert alert-danger" *ngIf="equal?.errors?.equal">equal error</p>&ndash;&gt;-->
+<!--        &lt;!&ndash;<p id="equal-dest"></p>&ndash;&gt;-->
+<!--      </div>-->
+<!--    </div>-->
+
+
+<!--    <div class="form-group row">-->
+<!--      <label class="col-sm-2 col-form-label">nbvNotEqual (aabbcc)</label>-->
+
+<!--      <div class="col-10">-->
+<!--        <input class="form-control" type="text" ngModel name="notEqual" #notEqual="ngModel"-->
+<!--               nbvNotEqual="aabbcc" dest="nbvNotEqual-id">-->
+<!--        <p id="nbvNotEqual-id"></p>-->
+<!--        <p class="alert alert-danger" *ngIf="notEqual?.errors?.nbvNotEqual">notEqual error</p>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <hr>-->
+<!--    <div class="form-group row">-->
+<!--      <label class="col-sm-2 col-form-label">nbvEqualTo</label>-->
+<!--      <div class="col-10">-->
+<!--        پسورد<input class="form-control" type="text" ngModel name="password" #password="ngModel">-->
+<!--        تکرار پسورد<input class="form-control" type="text" ngModel name="equalTo" #equalTo="ngModel" [nbvEqualTo]="password">-->
+<!--        <p class="alert alert-danger" *ngIf="equalTo?.errors?.nbvEqualTo">equalTo error</p>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <hr>-->
+<!--    <div class="form-group row">-->
+<!--      <label class="col-sm-2 col-form-label">nbvNotEqualTo</label>-->
+
+<!--      <div class="col-10">-->
+<!--        پسورد قدیمی:‌<input class="form-control" type="text" ngModel name="oldPassword" #oldPassword="ngModel">-->
+<!--        پسورد جدید: <input class="form-control" type="text" ngModel name="notEqualTo" #notEqualTo="ngModel"-->
+<!--                           [nbvNotEqualTo]="oldPassword"-->
+<!--                           [validationOptions]="{validationSrcType: MyValidationSrcType.FormControl}"-->
+<!--                           dest="notEqualTo-id" nbvNotEqualToMsgHtml="پسورد تکراری است">-->
+<!--        <div id="notEqualTo-id"></div>-->
+<!--        <p class="alert alert-danger" *ngIf="notEqualTo?.errors?.nbvNotEqualTo">notEqualTo error</p>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <hr>-->
+<!--    <div class="form-group row">-->
+<!--      <label class="col-sm-2 col-form-label">nbv greater than</label>-->
+
+<!--      <div class="col-10">-->
+<!--        <input class="form-control" type="text" ngModel name="gt" #gt="ngModel"-->
+<!--               nbvGt="10" dest="nbvGt-id">-->
+<!--        <p class="alert alert-danger" *ngIf="gt?.errors?.nbvGt">greater than error</p>-->
+<!--        <p id="nbvGt-id"></p>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <div class="form-group row">-->
+<!--      <label class="col-sm-2 col-form-label">nbv greater than equal</label>-->
+
+<!--      <div class="col-10">-->
+<!--        <input class="form-control" type="text" ngModel name="gte" #gte="ngModel"-->
+<!--               nbvGte="10" dest="nbvGte-id">-->
+<!--        &lt;!&ndash;<p class="alert alert-danger" *ngIf="gte?.errors?.nbvGte">greater than equal error</p>&ndash;&gt;-->
+<!--        <div id="nbvGte-id"></div>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <div class="form-group row">-->
+<!--      <label class="col-sm-2 col-form-label">nbv less than (5)</label>-->
+
+<!--      <div class="col-10">-->
+<!--        <input class="form-control" type="text" ngModel name="lt" #lt="ngModel" nbvLt="5"-->
+<!--               nbvLtValTitle="مقدار تعیین شده" dest="nbvLt-id">-->
+<!--        <div id="nbvLt-id"></div>-->
+<!--        <p class="alert alert-danger" *ngIf="lt?.errors?.nbvLt">less than error</p>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <div class="form-group row">-->
+<!--      <label class="col-sm-2 col-form-label">nbv less than equal (5)</label>-->
+
+<!--      <div class="col-10">-->
+<!--        <input class="form-control" type="text" ngModel name="lte" #lte="ngModel" nbvLte="5"-->
+<!--               dest="nbvL-id">-->
+<!--        <div id="nbvL-id"></div>-->
+<!--        <p class="alert alert-danger" *ngIf="lte?.errors?.nbvLte">less than equal error</p>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <div class="form-group row">-->
+<!--      <label class="col-sm-2 col-form-label">nbvJson</label>-->
+
+<!--      <div class="col-10">-->
+<!--        <input class="form-control" type="text" ngModel name="json" #json="ngModel"-->
+<!--               nbvJson dest="nbvJson-id">-->
+<!--        <div id="nbvJson-id"></div>-->
+<!--        <p class="alert alert-danger" *ngIf="json?.errors?.nbvJson">json error</p>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <div class="form-group row">-->
+<!--      <label class="col-sm-2 col-form-label">nbvMax (5)</label>-->
+
+<!--      <div class="col-10">-->
+<!--        <input class="form-control" type="text" ngModel name="max" #max="ngModel"-->
+<!--               nbvMax="5" dest="nbvMax-custom-id">-->
+<!--        <div id="nbvMax-custom-id"></div>-->
+<!--        <p class="alert alert-danger" *ngIf="max?.errors?.nbvMax">max error</p>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <div class="form-group row">-->
+<!--      <label class="col-sm-2 col-form-label">nbvMin</label>-->
+
+<!--      <div class="col-10">-->
+<!--        <input class="form-control" type="text" ngModel name="min" #min="ngModel"-->
+<!--               nbvMin="5" dest="min-alert-container-id">-->
+<!--        <div id="min-alert-container-id"></div>-->
+<!--        <p class="alert alert-danger" *ngIf="min?.errors?.nbvMin">min error</p>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <div class="form-group row">-->
+<!--      <label class="col-sm-2 col-form-label">nbvNumber</label>-->
+
+<!--      <div class="col-10">-->
+<!--        <input class="form-control" type="text" ngModel name="number" #number="ngModel"-->
+<!--               nbvNumber dest="my-alert-dest-id">-->
+<!--        <div id="my-alert-dest-id"></div>-->
+<!--        <p class="alert alert-danger" *ngIf="number?.errors?.nbvNumber">number error</p>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    &lt;!&ndash;<div class="form-group row">&ndash;&gt;-->
+<!--    &lt;!&ndash;<label class="col-sm-2 col-form-label">phone</label>&ndash;&gt;-->
+
+<!--    &lt;!&ndash;<div class="col-10">&ndash;&gt;-->
+<!--    &lt;!&ndash;<input class="form-control" type="text" ngModel name="phone" #phone="ngModel" phone>&ndash;&gt;-->
+<!--    &lt;!&ndash;<p class="alert alert-danger" *ngIf="phone?.errors?.phone">phone error</p>&ndash;&gt;-->
+<!--    &lt;!&ndash;</div>&ndash;&gt;-->
+<!--    &lt;!&ndash;</div>&ndash;&gt;-->
+
+<!--    &lt;!&ndash;<div class="form-group row">&ndash;&gt;-->
+<!--    &lt;!&ndash;<label class="col-sm-2 col-form-label">property</label>&ndash;&gt;-->
+
+<!--    &lt;!&ndash;<div class="col-10">&ndash;&gt;-->
+<!--    &lt;!&ndash;<input class="form-control" type="text" [(ngModel)]="objProperty" name="property" #property="ngModel"&ndash;&gt;-->
+<!--    &lt;!&ndash;property="id">&ndash;&gt;-->
+<!--    &lt;!&ndash;<p class="alert alert-danger" *ngIf="property?.errors?.property">property error</p>&ndash;&gt;-->
+<!--    &lt;!&ndash;</div>&ndash;&gt;-->
+<!--    &lt;!&ndash;</div>&ndash;&gt;-->
+
+<!--    <div class="form-group row">-->
+<!--      <label class="col-sm-2 col-form-label">nbvRange</label>-->
+
+<!--      <div class="col-10">-->
+<!--        <input class="form-control" type="text" ngModel name="range" #range="ngModel"-->
+<!--               [nbvRange]="[4,9]" dest="range-id">-->
+<!--        <div id="range-id"></div>-->
+<!--        <p class="alert alert-danger" *ngIf="range?.errors?.nbvRange">range error</p>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <div class="form-group row">-->
+<!--      <label class="col-sm-2 col-form-label">nbvRangeLength [4,9]</label>-->
+
+<!--      <div class="col-10">-->
+<!--        <input class="form-control" type="text" ngModel name="rangeLength" #rangeLength="ngModel"-->
+<!--               [nbvRangeLength]="[4,9]" dest="nbvRangeLength-id">-->
+<!--        <div id="nbvRangeLength-id"></div>-->
+<!--        <p class="alert alert-danger" *ngIf="rangeLength?.errors?.nbvRangeLength">rangeLength error</p>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <div class="form-group row">-->
+<!--      <label class="col-sm-2 col-form-label">nbvUrl</label>-->
+
+<!--      <div class="col-10">-->
+<!--        <input class="form-control" type="text" ngModel name="url" #url="ngModel"-->
+<!--               nbvUrl dest="url-alert-id">-->
+<!--        <div id="url-alert-id"></div>-->
+<!--        <p class="alert alert-danger" *ngIf="url?.errors?.nbvUrl">url error</p>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <div class="form-group row">-->
+<!--      <label class="col-sm-2 col-form-label">uuid</label>-->
+
+<!--      <div class="col-10">-->
+<!--        <input class="form-control" type="text" ngModel name="uuid" #uuid="ngModel"-->
+<!--               nbvUuid="3" dest="uuid-id">-->
+<!--        <p class="alert alert-danger" *ngIf="uuid?.errors?.nbvUuid">uuid error</p>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <div class="form-group row">-->
+<!--      <label class="col-sm-2 col-form-label">arrayLength</label>-->
+<!--      <div class="col-10">-->
+<!--        <input class="form-control" type="text" [(ngModel)]="arrayLengthTest" name="arrayLength" #arrayLength="ngModel"-->
+<!--               arrayLength="2">-->
+<!--        <p class="alert alert-danger" *ngIf="arrayLength?.errors?.arrayLength">arrayLength error</p>-->
+<!--      </div>-->
+<!--    </div>-->
+
+
+<!--    <hr>-->
+<!--    <div class="form-group row">-->
+<!--      <label class="col-sm-2 col-form-label">minlength and pattern</label>-->
+
+<!--      <div class="col-10">-->
+<!--        <input class="form-control" type="text" ngModel name="minlength"-->
+<!--               #minlength="ngModel" nbvMinlength="5"-->
+<!--               nbvPattern="[آ-ی ]+" dest="min-pat-dest"-->
+<!--               nbvPatternMsgHtml="فقط حروف فارسی وارد شود"-->
+<!--        >-->
+<!--        <p id="min-pat-dest"></p>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--  </form>-->
+<!--</div>-->
