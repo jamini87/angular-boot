@@ -34,6 +34,27 @@ export class WindowMediaUtil {
     return false;
   }
 
+  public static isSmOrSmaller() {
+    if (WindowMediaUtil.isSm() || WindowMediaUtil.isXs()) {
+      return true;
+    }
+    return false;
+  }
+
+  public static isMdOrSmaller() {
+    if (WindowMediaUtil.isMd() || WindowMediaUtil.isSm() || WindowMediaUtil.isXs()) {
+      return true;
+    }
+    return false;
+  }
+
+  public static isLgOrSmaller() {
+    if (WindowMediaUtil.isLg() || WindowMediaUtil.isMd() || WindowMediaUtil.isSm() || WindowMediaUtil.isXs()) {
+      return true;
+    }
+    return false;
+  }
+
   public static matchXl() {
     if (window.matchMedia('(min-width: 1200px)').matches) {
       return true;
