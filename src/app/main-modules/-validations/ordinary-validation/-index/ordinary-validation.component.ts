@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {CustomPattern, ValidationSrcType} from '@angular-boot/validation';
-import {FormGroup} from '@angular/forms';
+import {CustomPattern, NbValidators, ValidationSrcType} from '@angular-boot/validation';
+import {FormGroup, Validators} from '@angular/forms';
 import {Toolkit2} from '@angular-boot/util';
 
 @Component({
@@ -27,6 +27,7 @@ export class OrdinaryValidationComponent implements OnInit {
   }
 
   ngOnInit() {
+    // this.formGroup.controls['firstName'].setValidators(NbValidators.email);
   }
 
   onSubmit(form) {

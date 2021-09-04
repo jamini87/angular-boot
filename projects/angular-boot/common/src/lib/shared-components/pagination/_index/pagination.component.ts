@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import {isNullOrUndefined} from '@angular-boot/util';
 import {Toolkit2} from '@angular-boot/util';
+import {ShrPaginationEvent} from '../../../models';
 
 /**
  * Created By Jafar Amini in December 2018
@@ -45,7 +46,7 @@ export class PaginationComponent implements OnInit, OnChanges {
 
   indicates: number[] = [];
   currentIndicator: number;
-
+  @Output() pageSizeChange: EventEmitter<ShrPaginationEvent> = new EventEmitter<ShrPaginationEvent>();
   /**
    * @Deprecated use currentPageChange instead
    */
@@ -125,12 +126,6 @@ export class PaginationComponent implements OnInit, OnChanges {
     this.generateIndicates();
   }
 
-  private emitSelectedPage(page: number) {
-    this.currentPage = page;
-    this.currentPageChange.emit(page);
-    this.selectedPage.emit(page);
-  }
-
   private childNgOnChanges(changes: SimpleChanges) {
     for (const propName in changes) {
       if (changes.hasOwnProperty(propName)) {
@@ -148,6 +143,7 @@ export class PaginationComponent implements OnInit, OnChanges {
       case 'currentPage':
         // console.log('set currentPage');
         this.initiateCurrentIndicator(this.currentPage);
+        this.generateIndicates();
         break;
       case 'totalPages':
         if (!isNullOrUndefined(this.totalPages)) {
@@ -173,8 +169,22 @@ export class PaginationComponent implements OnInit, OnChanges {
     return Toolkit2.Common.En2Fa(value);
   }
 
+  private emitSelectedPage(page: number) {
+    this.currentPage = page;
+    this.currentPageChange.emit(page);
+    this.selectedPage.emit(page);
+    this.pageSizeChange.emit(new ShrPaginationEvent(page, this.size));
+  }
+
   onSizeChange(event) {
     console.log(event);
     this.sizeChange.emit(event);
+    // console.log('prev size: ', this.size);
+    // console.log('current size: ', event);
+    if(event > this.size) { // if current_size is larger than prev_size
+      this.currentPage = Math.floor(this.currentPage / Math.ceil(event / this.size));
+    }
+    this.offset = Math.floor(this.currentPage / this.indicatorCount) * this.indicatorCount + 1;
+    this.pageSizeChange.emit(new ShrPaginationEvent(this.currentPage, event));
   }
 }
