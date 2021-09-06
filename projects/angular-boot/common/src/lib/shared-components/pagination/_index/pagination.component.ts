@@ -184,7 +184,7 @@ export class PaginationComponent implements OnInit, OnChanges {
     if(event > this.size) { // if current_size is larger than prev_size
       this.currentPage = Math.floor(this.currentPage / Math.ceil(event / this.size));
     }
-    this.calculateOffset()
+    this.calculateOffset();
     this.pageSizeChange.emit(new ShrPaginationEvent(this.currentPage, event));
   }
 
