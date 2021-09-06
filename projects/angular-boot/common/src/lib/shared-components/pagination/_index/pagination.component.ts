@@ -61,7 +61,7 @@ export class PaginationComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.indicatorCount = this.indicatorCount || 5;
-    this.offset = this.offset || 1;
+    this.calculateOffset();
     // this.initiateCurrentIndicator(this._currentPage);
     this.initiateCurrentIndicator(this.currentPage);
     this.generateIndicates();
@@ -184,7 +184,12 @@ export class PaginationComponent implements OnInit, OnChanges {
     if(event > this.size) { // if current_size is larger than prev_size
       this.currentPage = Math.floor(this.currentPage / Math.ceil(event / this.size));
     }
-    this.offset = Math.floor(this.currentPage / this.indicatorCount) * this.indicatorCount + 1;
+    this.calculateOffset()
     this.pageSizeChange.emit(new ShrPaginationEvent(this.currentPage, event));
   }
+
+  private calculateOffset() {
+    this.offset = Math.floor(this.currentPage / this.indicatorCount) * this.indicatorCount + 1;
+  }
+
 }
