@@ -162,6 +162,11 @@ export class PaginationComponent implements OnInit, OnChanges {
           this.size = this.sizeSelectionArray[this.defaultSizeIndex];
         }
         break;
+        case 'indicatorCount':
+        if (!isNullOrUndefined(this.indicatorCount)) {
+          this.generateIndicates();
+        }
+        break;
     }
   }
 
@@ -181,7 +186,7 @@ export class PaginationComponent implements OnInit, OnChanges {
     this.sizeChange.emit(event);
     // console.log('prev size: ', this.size);
     // console.log('current size: ', event);
-    if(event > this.size) { // if current_size is larger than prev_size
+    if (event > this.size) { // if current_size is larger than prev_size
       this.currentPage = Math.floor(this.currentPage / Math.ceil(event / this.size));
     }
     this.calculateOffset();

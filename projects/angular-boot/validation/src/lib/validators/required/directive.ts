@@ -1,7 +1,7 @@
 /**
  * Edited by Jafar Amini in March 2018.
  */
-import {Directive, forwardRef, Input, OnChanges, SimpleChanges} from '@angular/core';
+import {Directive, forwardRef, HostListener, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {NG_VALIDATORS, Validator, AbstractControl, Validators} from '@angular/forms';
 
 import {ValidationMessage} from '../../util/validation-message';
@@ -37,6 +37,10 @@ export class RequiredValidator implements Validator, OnChanges {
   constructor(private _ValidationConfig: ValidationConfig, private _ValidationMessage: ValidationMessage) {
   }
 
+  @HostListener('blur') onBlur() {
+    this.manageAlert();
+  }
+
   validate(abstractControl: AbstractControl): { [key: string]: any } {
     this.abstractControl = abstractControl;
     // // Start Method 1 Worked Very Good
@@ -61,9 +65,11 @@ export class RequiredValidator implements Validator, OnChanges {
 
   private manageAlert() {
     if (this.iValidated) {
-      if (this.abstractControl.dirty || this.abstractControl.touched) {
+      if (this.abstractControl.dirty || this.abstractControl.touched || this.submitted) {
         const innerHTML = getInnerHTML(this.nbvRequiredMsgHtml, this.nbvRequiredFieldLabel, this._ValidationMessage);
         manageAddValidationAlert(this.dest, this.vClassSuffix, innerHTML, this._ValidationConfig);
+      } else {
+        manageDelValidationAlert(this.dest, this.vClassSuffix);
       }
       return {'nbvRequired': true};
     } else {
@@ -75,8 +81,12 @@ export class RequiredValidator implements Validator, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.hasOwnProperty('submitted')) {
       this.mySubmitted = this.submitted;
-      if (this.mySubmitted) {
-        this.abstractControl.markAsTouched();
+      if (this.abstractControl) {
+        if (this.mySubmitted) {
+          this.abstractControl.markAsTouched();
+        } else {
+          this.abstractControl.markAsUntouched();
+        }
       }
       this.manageAlert();
     }
